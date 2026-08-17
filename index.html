@@ -28,6 +28,78 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
+  <style>
+    /* ── Smooth scrolling ── */
+    html { scroll-behavior: smooth; }
+
+    /* ── Silky reveal animation ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px) scale(0.98);
+      transition:
+        opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* ── Sample card entrance ── */
+    .sample-set {
+      transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+    .sample-set:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 24px 64px rgba(15,23,42,0.1);
+    }
+
+    /* ── Player card hover ── */
+    .player-card {
+      transition:
+        border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+    .player-card:hover {
+      transform: translateY(-3px) scale(1.012);
+      box-shadow: 0 16px 36px rgba(15,23,42,0.13);
+    }
+
+    /* ── Waveform button ── */
+    .waveform-button {
+      transition:
+        border-color 0.22s ease,
+        box-shadow 0.22s ease;
+    }
+
+    /* ── Hero wave bars ── */
+    .hero-wave-bar {
+      animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+      animation-duration: 3.2s;
+    }
+
+    /* ── Back to top button ── */
+    #back-to-top {
+      transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* ── Page header on scroll ── */
+    .site-header {
+      transition: background 0.35s ease, backdrop-filter 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    /* ── Dropdown smooth ── */
+    #language-filter {
+      transition: border-color 0.22s ease, box-shadow 0.22s ease;
+    }
+  </style>
 </head>
 
 <body class="antialiased">
@@ -739,15 +811,16 @@
           entry.target.classList.add('is-visible');
           observer.unobserve(entry.target);
         });
-      }, { threshold: 0.08, rootMargin: '0px 0px -4% 0px' });
+      }, { threshold: 0.04, rootMargin: '0px 0px -2% 0px' });
 
       document.querySelectorAll('.reveal').forEach((element, index) => {
-        if (!element.style.transitionDelay && index < 10) element.style.transitionDelay = `${Math.min(index * 35, 175)}ms`;
+        if (!element.style.transitionDelay && index < 12)
+          element.style.transitionDelay = `${Math.min(index * 55, 320)}ms`;
         observer.observe(element);
       });
     }
 
-    function setupLazyWaveforms() {
+      // Pre-load waveforms 800px before they enter viewport for zero-wait experience
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
@@ -755,7 +828,7 @@
           if (player) player.ensureWaveform();
           observer.unobserve(entry.target);
         });
-      }, { rootMargin: '420px 0px' });
+      }, { rootMargin: '800px 0px' });
 
       players.forEach(player => observer.observe(player.root));
     }
