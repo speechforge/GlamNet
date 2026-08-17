@@ -1,37 +1,42 @@
 # GLAMNet: High-Fidelity Streaming Neural Vocoder for Indic Languages
 
-Welcome to the official repository for **GLAMNet**. 
-This repository contains the configuration files, evaluation sample website, and setup instructions.
+GLAMNet is a streaming neural vocoder designed specifically for the phonetic complexities and spectral characteristics of Indic languages.
 
-**Note**: The full training codebase, model weights, and inference scripts will be released here upon paper acceptance.
+## Acoustic & Phonetic Alignment via IndicMFA
 
-## Audio Samples Website
-We provide an interactive demo to listen to our GLAMNet reconstructed audio compared against baselines.
-Please check our GitHub pages: [Demo Website](https://speechforge.github.io/GlamNet/)
+GLAMNet's training pipeline requires precise letter-wise alignment between the speech corpus and text transcripts. To achieve this, we utilize a Grapheme-to-Grapheme (G2G) methodology rather than traditional Grapheme-to-Phoneme (G2P) processes.
 
-## Setup and Indic MFA Alignment
-
-Our training pipeline relies on aligned phonetic data using IndicMFA. 
-Before the full code release, you can prepare your dataset using the following instructions:
-
-### 1. Clone IndicMFA
-Please clone the IndicMFA repository to handle forced alignment for Indic languages:
+### 1. Setup and Dependencies
+We employ [IndicMFA](https://github.com/AI4Bharat/IndicMFA) to perform forced alignment for Indian languages.
 ```bash
 git clone https://github.com/AI4Bharat/IndicMFA.git
 cd IndicMFA
-# Follow the official setup instructions inside the IndicMFA repo
 ```
 
-### 2. Dataset Format
-Ensure your dataset is formatted in standard Kaldi/MFA format. For each language, you need:
-- `wavs/`: Directory containing all `.wav` audio files (24kHz recommended).
-- `transcripts.txt`: A single text file mapping `file_id|transcript`.
+You must download the pre-trained Acoustic Models (AM) and G2G Pronunciation Dictionaries (mapping each grapheme to itself) for your target languages from the [IndicMFA Releases](https://github.com/AI4Bharat/IndicMFA/releases).
 
-### 3. Running Alignment
-Run the forced aligner to generate TextGrids for your dataset. The output TextGrids will be directly consumed by GLAMNet once the code is available.
+### 2. Dataset Preparation
+Your speech corpus must contain `.wav` audio files paired with corresponding text transcripts. The audio should be resampled to 24kHz for compatibility with the GLAMNet data loaders.
 
-## Repository Structure
-- `docs/`: Contains the interactive HTML demo and baseline audio samples.
-- `configs/`: YAML configuration files containing the hyperparameter structures used in our models.
-- `train.py`: Skeletal training entry point (full logic pending).
+### 3. Generating Alignments
+Run the Montreal Forced Aligner to generate the necessary TextGrid representations:
+```bash
+mfa align <corpus_directory> <g2g_dictionary> <acoustic_model> <output_textgrids>
+```
+The output TextGrids contain temporal boundaries for each grapheme. These phonetic alignments are strictly required by the GLAMNet architecture for accurate pitch and duration conditioning.
 
+## Training Configuration
+
+Initialize the distributed training pipeline by providing the target YAML configuration file.
+
+```bash
+python train.py --config configs/vocos.yaml --num_gpus 1
+```
+
+*Note: The dataset initialization will fail if the pre-computed MFA TextGrid alignments are not located in the target directory.*
+
+## Interactive Audio Samples
+
+We provide an interactive demo to listen to our GLAMNet reconstructed audio compared against state-of-the-art baselines.
+
+[Listen to the Audio Samples](https://speechforge.github.io/GlamNet/)
