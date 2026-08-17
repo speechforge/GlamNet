@@ -122,6 +122,7 @@
 
       <nav class="order-3 hidden w-full items-center justify-center gap-1 border-t border-[var(--line)] pt-2 sm:flex md:order-2 md:w-auto md:border-0 md:pt-0" aria-label="Sample sections">
         <a href="#indic" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">IndicVoices-R</a>
+        <a href="#spectrogram" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Spectrogram</a>
       </nav>
 
       <div id="accessibility-menu" class="relative order-2 md:order-3">
@@ -291,6 +292,110 @@
 
     
   </main>
+
+  <!-- ═══════════════════════ SPECTROGRAM SECTION ═══════════════════════ -->
+  <section id="spectrogram" class="scroll-mt-24 border-t border-[var(--line)] py-24 sm:py-32" data-observe-section>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+      <div class="reveal grid items-end gap-8 md:grid-cols-[auto_1fr]">
+        <div class="section-number" aria-hidden="true">02</div>
+        <div class="pb-1 md:pb-3">
+          <p class="eyebrow mb-3">Frequency · Time · FFT</p>
+          <div class="flex flex-wrap items-end justify-between gap-4">
+            <h2 class="text-3xl font-extrabold tracking-[-0.045em] sm:text-5xl">Spectrogram Analysis</h2>
+            <p class="max-w-md text-sm leading-6 text-[var(--muted)]">Ground Truth vs GLAMNet — synchronized spectrogram comparison with shared scrollbar and linked playback cursor.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="reveal mt-10 flex flex-wrap items-center gap-4 border-y border-[var(--line)] py-5" style="transition-delay:80ms">
+        <div class="flex items-center gap-3">
+          <span class="text-xs font-bold uppercase tracking-wider text-[var(--muted)]">Sample</span>
+          <div class="relative">
+            <select id="spec-sample-select" style="appearance:none;-webkit-appearance:none;background-color:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:0.75rem;padding:0.45rem 2.4rem 0.45rem 0.9rem;font-size:0.8rem;font-weight:600;font-family:inherit;cursor:pointer;outline:none;max-width:280px;">
+              <option value="">— select a sample —</option>
+            </select>
+            <span style="pointer-events:none;position:absolute;right:0.65rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true"><svg viewBox="0 0 20 20" style="width:0.85rem;height:0.85rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </div>
+        <div class="ml-auto flex items-center gap-2">
+          <span class="text-xs font-bold uppercase tracking-wider text-[var(--muted)]">Zoom</span>
+          <button id="spec-zoom-out" style="width:2rem;height:2rem;border-radius:0.5rem;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-weight:700;cursor:pointer;font-size:1.1rem;transition:background 0.18s;" aria-label="Zoom out">−</button>
+          <span id="spec-zoom-label" style="font-family:var(--font-mono);font-size:0.75rem;font-weight:600;min-width:2.2rem;text-align:center;">1×</span>
+          <button id="spec-zoom-in" style="width:2rem;height:2rem;border-radius:0.5rem;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-weight:700;cursor:pointer;font-size:1.1rem;transition:background 0.18s;" aria-label="Zoom in">+</button>
+        </div>
+      </div>
+
+      <!-- Play buttons -->
+      <div class="reveal mt-5 flex flex-wrap items-center gap-3" style="transition-delay:120ms">
+        <button id="spec-play-gt" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:#12a87a44;" disabled>
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
+          Ground Truth
+        </button>
+        <button id="spec-play-gl" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:#ee6c4d44;" disabled>
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
+          GLAMNet
+        </button>
+        <button id="spec-play-both" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:var(--accent);color:var(--accent);" disabled>
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
+          Sync Play Both
+        </button>
+        <span id="spec-time-label" class="ml-auto font-mono text-xs text-[var(--muted)]">0:00 / —:——</span>
+      </div>
+
+      <!-- Two spectrogram panels -->
+      <div class="reveal mt-5" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;transition-delay:160ms">
+        <!-- GT -->
+        <div>
+          <p style="font-family:var(--font-mono);font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#12a87a;margin-bottom:0.5rem;text-align:center;">Ground Truth</p>
+          <div id="spec-gt-wrap" style="position:relative;overflow:hidden;border-radius:1rem;border:1px solid var(--line);height:220px;background:#050810;cursor:crosshair;">
+            <canvas id="spec-gt-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;"></canvas>
+            <div id="spec-cursor-gt" style="position:absolute;top:0;bottom:0;width:2px;background:rgba(255,255,255,0.9);box-shadow:0 0 8px rgba(255,255,255,0.6);pointer-events:none;display:none;"></div>
+            <!-- Y-axis freq labels -->
+            <div style="position:absolute;left:4px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;padding:4px 0;pointer-events:none;">
+              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">12k</span>
+              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">8k</span>
+              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">4k</span>
+              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">0</span>
+            </div>
+            <div id="spec-gt-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-family:var(--font-mono);color:rgba(255,255,255,0.4);background:#050810;letter-spacing:0.05em;">Select a sample to view spectrogram</div>
+          </div>
+        </div>
+        <!-- GLAMNet -->
+        <div>
+          <p style="font-family:var(--font-mono);font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#ee6c4d;margin-bottom:0.5rem;text-align:center;">GLAMNet</p>
+          <div id="spec-glamnet-wrap" style="position:relative;overflow:hidden;border-radius:1rem;border:1px solid var(--line);height:220px;background:#050810;cursor:crosshair;">
+            <canvas id="spec-glamnet-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;"></canvas>
+            <div id="spec-cursor-glamnet" style="position:absolute;top:0;bottom:0;width:2px;background:rgba(255,255,255,0.9);box-shadow:0 0 8px rgba(255,255,255,0.6);pointer-events:none;display:none;"></div>
+            <div style="position:absolute;left:4px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;padding:4px 0;pointer-events:none;">
+              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">12k</span>
+              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">8k</span>
+              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">4k</span>
+              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">0</span>
+            </div>
+            <div id="spec-glamnet-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-family:var(--font-mono);color:rgba(255,255,255,0.4);background:#050810;letter-spacing:0.05em;">Select a sample to view spectrogram</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shared scrollbar -->
+      <div id="spec-track" style="margin-top:0.75rem;height:6px;border-radius:3px;background:var(--panel);border:1px solid var(--line);position:relative;cursor:pointer;">
+        <div id="spec-thumb" style="position:absolute;top:0;bottom:0;left:0;width:100%;border-radius:3px;background:var(--accent);opacity:0.5;cursor:grab;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:0.3rem;font-family:var(--font-mono);font-size:0.48rem;color:var(--muted);">
+        <span>0:00</span><span>← drag scrollbar to pan ·  hover to inspect →</span><span id="spec-dur-label">—:——</span>
+      </div>
+
+      <!-- Energy colormap legend -->
+      <div class="mt-4 flex items-center gap-3">
+        <span style="font-family:var(--font-mono);font-size:0.55rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);">Low</span>
+        <div style="flex:1;height:7px;border-radius:4px;background:linear-gradient(to right,#440154,#3b528b,#21908d,#5dc963,#fde725);"></div>
+        <span style="font-family:var(--font-mono);font-size:0.55rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);">High energy</span>
+      </div>
+
+    </div>
+  </section>
 
   <footer class="border-t border-[var(--line)] py-8">
     <div class="mx-auto max-w-7xl px-4 text-center font-mono text-[0.62rem] uppercase tracking-[0.12em] text-[var(--muted)] sm:px-6 lg:px-8">
@@ -894,6 +999,258 @@
         if (target) target.scrollIntoView({ block: 'start' });
       });
     }
+
+    // ═══════════════════════════════════════════════════════
+    // SPECTROGRAM MODULE
+    // ═══════════════════════════════════════════════════════
+    (function() {
+      const FFT_SIZE = 512, HOP_SIZE = 128, PANEL_H = 220;
+      let S = { zoom:1, scroll:0, gtData:null, glData:null, gtAudio:null, glAudio:null, duration:0, playing:false, mode:null, raf:null };
+
+      // Hann window
+      const HANN = new Float32Array(FFT_SIZE);
+      for (let i=0;i<FFT_SIZE;i++) HANN[i]=0.5*(1-Math.cos(2*Math.PI*i/(FFT_SIZE-1)));
+
+      // Cooley-Tukey in-place FFT
+      function fft(re,im){
+        const n=re.length;
+        for(let i=1,j=0;i<n;i++){let bit=n>>1;for(;j&bit;bit>>=1)j^=bit;j^=bit;if(i<j){let t=re[i];re[i]=re[j];re[j]=t;t=im[i];im[i]=im[j];im[j]=t;}}
+        for(let len=2;len<=n;len<<=1){const a=-2*Math.PI/len,wr=Math.cos(a),wi=Math.sin(a);for(let i=0;i<n;i+=len){let cr=1,ci=0;for(let j=0;j<(len>>1);j++){const ur=re[i+j],ui=im[i+j],vr=re[i+j+(len>>1)]*cr-im[i+j+(len>>1)]*ci,vi=re[i+j+(len>>1)]*ci+im[i+j+(len>>1)]*cr;re[i+j]=ur+vr;im[i+j]=ui+vi;re[i+j+(len>>1)]=ur-vr;im[i+j+(len>>1)]=ui-vi;const nr=cr*wr-ci*wi;ci=cr*wi+ci*wr;cr=nr;}}}
+      }
+
+      function computeSpec(buf){
+        const ch=buf.getChannelData(0), half=FFT_SIZE>>1;
+        const nF=Math.floor((ch.length-FFT_SIZE)/HOP_SIZE)+1;
+        const frames=new Float32Array(nF*half);
+        const re=new Float32Array(FFT_SIZE),im=new Float32Array(FFT_SIZE);
+        for(let f=0;f<nF;f++){
+          const s=f*HOP_SIZE;
+          for(let i=0;i<FFT_SIZE;i++){re[i]=(s+i<ch.length)?ch[s+i]*HANN[i]:0;im[i]=0;}
+          fft(re,im);
+          const b=f*half;
+          for(let i=0;i<half;i++) frames[b+i]=10*Math.log10(Math.max(re[i]*re[i]+im[i]*im[i],1e-12));
+        }
+        return {frames,nF,half};
+      }
+
+      // Viridis colormap
+      const CM=[[68,1,84],[59,82,139],[33,145,140],[94,201,98],[253,231,37]];
+      function rgb(t){const x=t*(CM.length-1),lo=0|x,hi=Math.min(CM.length-1,lo+1),f=x-lo;return[(CM[lo][0]+f*(CM[hi][0]-CM[lo][0]))|0,(CM[lo][1]+f*(CM[hi][1]-CM[lo][1]))|0,(CM[lo][2]+f*(CM[hi][2]-CM[lo][2]))|0];}
+
+      function drawSpec(canvas,spec,scroll,zoom){
+        if(!spec) return;
+        const {frames,nF,half}=spec;
+        const wrap=canvas.parentElement;
+        const W=wrap.clientWidth, H=PANEL_H;
+        const totalW=nF*zoom;
+        const scrollPx=scroll*Math.max(0,totalW-W);
+        canvas.width=W; canvas.height=H;
+        const ctx=canvas.getContext('2d');
+        const img=ctx.createImageData(W,H);
+        const d=img.data;
+        // Global min/max for normalization
+        let mn=Infinity,mx=-Infinity;
+        for(let i=0;i<frames.length;i++){if(frames[i]<mn)mn=frames[i];if(frames[i]>mx)mx=frames[i];}
+        mn=Math.max(mn,mx-80); const rng=mx-mn||1;
+        for(let px=0;px<W;px++){
+          const fi=Math.min(nF-1,Math.floor((px+scrollPx)/zoom));
+          const base=fi*half;
+          for(let py=0;py<H;py++){
+            // Linear freq (flipped: top=high freq)
+            const bin=Math.min(half-1,Math.floor((1-py/H)*(half-1)));
+            const t=Math.max(0,Math.min(1,(frames[base+bin]-mn)/rng));
+            const [r,g,b]=rgb(t), p=(py*W+px)*4;
+            d[p]=r;d[p+1]=g;d[p+2]=b;d[p+3]=255;
+          }
+        }
+        ctx.putImageData(img,0,0);
+      }
+
+      function redraw(){
+        drawSpec(document.getElementById('spec-gt-canvas'),S.gtData,S.scroll,S.zoom);
+        drawSpec(document.getElementById('spec-glamnet-canvas'),S.glData,S.scroll,S.zoom);
+        updateThumb();
+      }
+
+      function updateThumb(){
+        const thumb=document.getElementById('spec-thumb');
+        if(!thumb||!S.gtData) return;
+        const W=document.getElementById('spec-gt-wrap').clientWidth;
+        const ratio=Math.min(1,W/(S.gtData.nF*S.zoom));
+        thumb.style.width=`${ratio*100}%`;
+        thumb.style.left=`${S.scroll*(1-ratio)*100}%`;
+      }
+
+      function setCursor(show, xPx){
+        ['spec-cursor-gt','spec-cursor-glamnet'].forEach(id=>{
+          const el=document.getElementById(id);
+          if(el){el.style.display=show?'block':'none';if(show)el.style.left=`${xPx}px`;}
+        });
+      }
+
+      function tickPlayback(){
+        if(!S.gtAudio||!S.duration) return;
+        const t=S.gtAudio.currentTime/S.duration;
+        const W=document.getElementById('spec-gt-wrap').clientWidth;
+        const totalW=(S.gtData?.nF||1)*S.zoom;
+        const scrollPx=S.scroll*Math.max(0,totalW-W);
+        const xPx=t*totalW-scrollPx;
+        if(xPx>=0&&xPx<=W) setCursor(true,xPx); else setCursor(false,0);
+        const tl=document.getElementById('spec-time-label');
+        if(tl) tl.textContent=`${formatTime(S.gtAudio.currentTime)} / ${formatTime(S.duration)}`;
+        if(S.playing) S.raf=requestAnimationFrame(tickPlayback);
+      }
+
+      function stopAll(){
+        S.playing=false; S.mode=null;
+        if(S.raf){cancelAnimationFrame(S.raf);S.raf=null;}
+        ['gtAudio','glAudio'].forEach(k=>{if(S[k]){S[k].pause();S[k].currentTime=0;}});
+        setCursor(false,0);
+        setPlayIcons('stopped');
+      }
+
+      const PLAY_ICON='<svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>';
+      const PAUSE_ICON='<svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M7 5.5A1.5 1.5 0 0 1 8.5 4h1A1.5 1.5 0 0 1 11 5.5v13A1.5 1.5 0 0 1 9.5 20h-1A1.5 1.5 0 0 1 7 18.5v-13Zm6 0A1.5 1.5 0 0 1 14.5 4h1A1.5 1.5 0 0 1 17 5.5v13a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-13Z"/></svg>';
+
+      function setPlayIcons(mode){
+        const bg=document.getElementById('spec-play-gt');
+        const bl=document.getElementById('spec-play-gl');
+        const bb=document.getElementById('spec-play-both');
+        if(!bg) return;
+        bg.innerHTML=(mode==='gt'?PAUSE_ICON:PLAY_ICON)+' Ground Truth';
+        bl.innerHTML=(mode==='glamnet'?PAUSE_ICON:PLAY_ICON)+' GLAMNet';
+        bb.innerHTML=(mode==='both'?PAUSE_ICON:PLAY_ICON)+' Sync Play Both';
+      }
+
+      function setLoading(id,msg){const el=document.getElementById(id);if(el){el.style.display='flex';el.textContent=msg;}}
+      function clearLoading(id){const el=document.getElementById(id);if(el)el.style.display='none';}
+      function enableBtns(on){['spec-play-gt','spec-play-gl','spec-play-both'].forEach(id=>{const el=document.getElementById(id);if(el)el.disabled=!on;});}
+
+      async function loadSample(id){
+        stopAll(); S.gtData=null; S.glData=null;
+        setLoading('spec-gt-loading','Computing spectrogram…');
+        setLoading('spec-glamnet-loading','Computing spectrogram…');
+        enableBtns(false);
+        try{
+          const AudioCtx=window.AudioContext||window.webkitAudioContext;
+          const actx=new AudioCtx();
+          const decode=async(src)=>{const r=await fetch(src);const ab=await r.arrayBuffer();return actx.decodeAudioData(ab);};
+          const [gb,lb]=await Promise.all([decode(`samples/indic/ground_truth/${id}.wav`),decode(`samples/indic/glamnet/${id}.wav`)]);
+          S.gtData=computeSpec(gb); S.glData=computeSpec(lb);
+          S.duration=gb.duration; S.scroll=0; S.zoom=1;
+          S.gtAudio=new Audio(`samples/indic/ground_truth/${id}.wav`);
+          S.glAudio=new Audio(`samples/indic/glamnet/${id}.wav`);
+          document.getElementById('spec-zoom-label').textContent='1×';
+          const dur=document.getElementById('spec-dur-label');
+          if(dur) dur.textContent=formatTime(S.duration);
+          clearLoading('spec-gt-loading'); clearLoading('spec-glamnet-loading');
+          enableBtns(true);
+          redraw();
+        } catch(e){
+          setLoading('spec-gt-loading','Error loading audio file');
+          setLoading('spec-glamnet-loading','Error loading audio file');
+        }
+      }
+
+      function initSpectrogram(){
+        // Populate selector
+        const sel=document.getElementById('spec-sample-select');
+        if(!sel) return;
+        INDIC_SAMPLES.forEach(s=>{
+          const o=document.createElement('option');
+          o.value=s.id; o.textContent=`${s.detail} — …${s.id.slice(-10)}`;
+          sel.appendChild(o);
+        });
+        sel.addEventListener('change',()=>{if(sel.value)loadSample(sel.value);});
+
+        // Zoom
+        document.getElementById('spec-zoom-in').addEventListener('click',()=>{
+          S.zoom=Math.min(16,S.zoom*2);
+          document.getElementById('spec-zoom-label').textContent=S.zoom+'×';
+          redraw();
+        });
+        document.getElementById('spec-zoom-out').addEventListener('click',()=>{
+          S.zoom=Math.max(1,S.zoom/2);
+          document.getElementById('spec-zoom-label').textContent=S.zoom+'×';
+          redraw();
+        });
+
+        // Scrollbar drag
+        const track=document.getElementById('spec-track');
+        const thumb=document.getElementById('spec-thumb');
+        let drag=false,dx0=0,s0=0;
+        thumb.addEventListener('mousedown',e=>{drag=true;dx0=e.clientX;s0=S.scroll;e.preventDefault();thumb.style.cursor='grabbing';});
+        document.addEventListener('mousemove',e=>{
+          if(!drag) return;
+          const tw=track.clientWidth, thw=thumb.clientWidth;
+          S.scroll=Math.max(0,Math.min(1,s0+(e.clientX-dx0)/(tw-thw)));
+          redraw();
+        });
+        document.addEventListener('mouseup',()=>{drag=false;thumb.style.cursor='grab';});
+        track.addEventListener('click',e=>{
+          if(e.target===thumb) return;
+          const r=track.getBoundingClientRect();
+          S.scroll=Math.max(0,Math.min(1,(e.clientX-r.left)/r.width));
+          redraw();
+        });
+
+        // Hover cursor — synced across both panels
+        ['spec-gt-wrap','spec-glamnet-wrap'].forEach(wid=>{
+          const wrap=document.getElementById(wid);
+          if(!wrap) return;
+          wrap.addEventListener('mousemove',e=>{
+            if(!S.gtData) return;
+            const r=wrap.getBoundingClientRect();
+            setCursor(true,e.clientX-r.left);
+          });
+          wrap.addEventListener('mouseleave',()=>{
+            if(!S.playing) setCursor(false,0);
+          });
+        });
+
+        // Play GT
+        document.getElementById('spec-play-gt').addEventListener('click',()=>{
+          if(!S.gtAudio) return;
+          if(S.playing&&S.mode==='gt'){stopAll();return;}
+          stopAll(); S.mode='gt'; S.playing=true;
+          S.gtAudio.play();
+          S.gtAudio.onended=()=>{S.playing=false;setPlayIcons('stopped');};
+          setPlayIcons('gt');
+          S.raf=requestAnimationFrame(tickPlayback);
+        });
+
+        // Play GLAMNet
+        document.getElementById('spec-play-gl').addEventListener('click',()=>{
+          if(!S.glAudio) return;
+          if(S.playing&&S.mode==='glamnet'){stopAll();return;}
+          stopAll(); S.mode='glamnet'; S.playing=true;
+          S.glAudio.play();
+          S.glAudio.onended=()=>{S.playing=false;setPlayIcons('stopped');};
+          setPlayIcons('glamnet');
+          // For cursor, use gtAudio timing reference (sync seek)
+          if(S.gtAudio){S.gtAudio.currentTime=0;}
+          S.raf=requestAnimationFrame(tickPlayback);
+        });
+
+        // Play Both (sync)
+        document.getElementById('spec-play-both').addEventListener('click',()=>{
+          if(!S.gtAudio||!S.glAudio) return;
+          if(S.playing&&S.mode==='both'){stopAll();return;}
+          stopAll(); S.mode='both'; S.playing=true;
+          S.gtAudio.currentTime=0; S.glAudio.currentTime=0;
+          S.gtAudio.play(); S.glAudio.play();
+          S.gtAudio.onended=()=>{S.playing=false;S.glAudio&&S.glAudio.pause();setPlayIcons('stopped');};
+          setPlayIcons('both');
+          S.raf=requestAnimationFrame(tickPlayback);
+        });
+
+        // Resize
+        window.addEventListener('resize',()=>{if(S.gtData)redraw();});
+      }
+
+      // Init after renderSamples has run
+      setTimeout(initSpectrogram, 200);
+    })();
   </script>
 </body>
 </html>
