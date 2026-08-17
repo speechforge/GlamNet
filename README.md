@@ -35,6 +35,20 @@ python train.py --config configs/vocos.yaml --num_gpus 1
 
 *Note: The dataset initialization will fail if the pre-computed MFA TextGrid alignments are not located in the target directory.*
 
+## Inference Configuration
+
+To run streaming autoregressive inference, utilize the included inference script. You must specify the path to a trained checkpoint, the YAML configuration, and your input audio file.
+
+```bash
+python inference_ljspeech.py \
+    --config configs/vocos.yaml \
+    --checkpoint path/to/glamnet_weights.ckpt \
+    --input_wav demo_input/LJ001-0001.wav \
+    --output_wav output.wav
+```
+
+*Note: The inference script will strictly parse the input audio and compute mel spectrograms prior to passing them through the streaming decoder.*
+
 ## Interactive Audio Samples
 
 We provide an interactive demo to listen to our GLAMNet reconstructed audio compared against state-of-the-art baselines.
