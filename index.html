@@ -24,9 +24,11 @@
     })();
   </script>
 
+  <!-- Fonts: async load so they never block first paint -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap"></noscript>
   <link rel="stylesheet" href="./styles.css">
   <style>
     /* ── Smooth scrolling ── */
@@ -121,8 +123,8 @@
       </a>
 
       <nav class="order-3 hidden w-full items-center justify-center gap-1 border-t border-[var(--line)] pt-2 sm:flex md:order-2 md:w-auto md:border-0 md:pt-0" aria-label="Sample sections">
-        <a href="#indic" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">IndicVoices-R</a>
-        <a href="#spectrogram" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Spectrogram</a>
+        <a href="#indic" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Utterance Samples</a>
+        <a href="#spectrogram" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Spectrogram Analysis</a>
       </nav>
 
       <div id="accessibility-menu" class="relative order-2 md:order-3">
@@ -925,6 +927,7 @@
       });
     }
 
+    function setupLazyWaveforms() {
       // Pre-load waveforms 800px before they enter viewport for zero-wait experience
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
