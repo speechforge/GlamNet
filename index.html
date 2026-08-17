@@ -286,7 +286,6 @@
         <article class="player-card rounded-2xl p-4" style="--player-accent: ${accent}" data-audio-player data-src="${src}" data-context="${context}">
           <div class="mb-3 flex items-center justify-between gap-3">
             <div class="flex min-w-0 items-center gap-2.5">
-              <span class="method-code grid size-8 shrink-0 place-items-center rounded-lg text-[0.62rem] font-bold tracking-wider text-white" aria-hidden="true">${code}</span>
               <h4 class="truncate text-sm font-bold tracking-tight">${label}</h4>
             </div>
             <span class="player-state text-[0.56rem] uppercase tracking-wider" aria-live="polite">Ready</span>
@@ -334,7 +333,7 @@
                 <h3 class="mt-2 max-w-4xl text-base font-semibold leading-7 tracking-[-0.015em] sm:text-lg">“${sample.transcript}”</h3>
               </div>
             </header>
-            <div class="grid gap-3 md:grid-cols-3 xl:grid-cols-6">${players}</div>
+            <div class="grid gap-3 md:grid-cols-2 xl:grid-cols-3">${players}</div>
           </article>`;
       }).join('');
       
