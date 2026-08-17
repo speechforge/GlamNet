@@ -197,16 +197,21 @@
         </div>
 
         
-        <div class="mt-6 mb-2 flex items-center gap-3">
-          <label for="language-filter" class="text-sm font-bold uppercase tracking-wider text-[var(--muted)]">Filter by Language: </label>
-          <select id="language-filter" class="rounded-lg border border-[var(--line)] bg-[var(--panel)] px-3 py-2 text-sm font-semibold shadow-sm focus:border-[var(--accent)] focus:outline-none focus:ring-1 focus:ring-[var(--accent)]">
-            <option value="all">All Languages (25)</option>
-            <option value="Gujarati">Gujarati (5)</option>
-            <option value="Hindi">Hindi (5)</option>
-            <option value="Marathi">Marathi (5)</option>
-            <option value="Tamil">Tamil (5)</option>
-            <option value="Telugu">Telugu (5)</option>
-          </select>
+        <div class="mt-6 mb-4 flex items-center gap-4">
+          <label for="language-filter" class="text-sm font-bold uppercase tracking-wider text-[var(--muted)]">Filter by Language</label>
+          <div class="relative">
+            <select id="language-filter" style="appearance:none;-webkit-appearance:none;background-color:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:0.75rem;padding:0.5rem 2.5rem 0.5rem 1rem;font-size:0.875rem;font-weight:600;font-family:inherit;cursor:pointer;outline:none;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
+              <option value="all">All Languages</option>
+              <option value="Gujarati">Gujarati</option>
+              <option value="Hindi">Hindi</option>
+              <option value="Marathi">Marathi</option>
+              <option value="Tamil">Tamil</option>
+              <option value="Telugu">Telugu</option>
+            </select>
+            <span style="pointer-events:none;position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true">
+              <svg viewBox="0 0 20 20" style="width:1rem;height:1rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+          </div>
         </div>
         <div id="indic-samples" class="mt-8 space-y-6"></div>
       </div>
@@ -333,7 +338,7 @@
                 <h3 class="mt-2 max-w-4xl text-base font-semibold leading-7 tracking-[-0.015em] sm:text-lg">“${sample.transcript}”</h3>
               </div>
             </header>
-            <div class="grid gap-3 md:grid-cols-2 xl:grid-cols-3">${players}</div>
+            <div class="grid gap-3 grid-cols-3">${players}</div>
           </article>`;
       }).join('');
       
