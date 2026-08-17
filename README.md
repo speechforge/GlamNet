@@ -1,4 +1,4 @@
-# GLAMNet: High-Fidelity Streaming Neural Vocoder for Indic Languages
+# GLAMNet
 
 GLAMNet is a streaming neural vocoder designed specifically for the phonetic complexities and spectral characteristics of Indic languages.
 
