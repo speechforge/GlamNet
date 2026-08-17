@@ -1,0 +1,38 @@
+data:
+  init_args:
+    train_params:
+      filelist_path: null
+      manifest_path: ???
+      n_fft: 1024
+      hop_length: 256
+      n_mels: 100
+      padding: center
+    val_params:
+      filelist_path: null
+      manifest_path: ???
+      n_fft: 1024
+      hop_length: 256
+      n_mels: 100
+      padding: center
+
+model:
+  init_args:
+    boundary_loss_coeff: 1.0
+    boundary_loss_distance_weight: 1.0
+    boundary_loss_n_fft: 1024
+    boundary_loss_hop_length: 256
+    boundary_loss_n_mels: 100
+    boundary_loss_padding: center
+    backbone:
+      init_args:
+        conditioner:
+          class_path: vocos.conditioning.FrameConditioner
+          init_args:
+            output_dim: 512
+            language_vocab_size: 6
+            phone_vocab_size: ???
+            articulatory_dim: ???
+            use_language: true
+            use_phone: true
+            use_articulatory: true
+            use_boundary: true

@@ -1,0 +1,7 @@
+# Overlay after a conditioned config. Replaces all frame-level conditioning with unknown/zero values.
+data:
+  init_args:
+    train_params:
+      missing_conditioning: true
+    val_params:
+      missing_conditioning: true

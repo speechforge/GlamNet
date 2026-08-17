@@ -1,0 +1,7 @@
+# Overlay after a phone-conditioned config.
+data:
+  init_args:
+    train_params:
+      shuffle_phone_labels: true
+    val_params:
+      shuffle_phone_labels: true

@@ -1,0 +1,27 @@
+data:
+  init_args:
+    train_params:
+      filelist_path: null
+      manifest_path: ???
+      n_fft: 1024
+      hop_length: 256
+      n_mels: 100
+      padding: center
+    val_params:
+      filelist_path: null
+      manifest_path: ???
+      n_fft: 1024
+      hop_length: 256
+      n_mels: 100
+      padding: center
+
+model:
+  init_args:
+    backbone:
+      init_args:
+        conditioner:
+          class_path: vocos.conditioning.FrameConditioner
+          init_args:
+            output_dim: 512
+            articulatory_dim: ???
+            use_articulatory: true

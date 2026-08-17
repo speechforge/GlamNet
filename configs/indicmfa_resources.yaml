@@ -1,0 +1,131 @@
+# Local IndicMFA resources for the offline five-language Vocos project.
+#
+# Source repo already exists at:
+#   /home/linux/Documents/ravi_phd/Streaming_vocoder_with_prabhuji/vocos/IndicMFA
+# Do not clone or download again unless one of these local files fails an integrity check.
+#
+# IndicMFA is G2G/letter-wise. Treat TextGrid intervals from these aligners as
+# grapheme_id unless a separate validated phone-level alignment exists.
+
+schema_version: 1
+source_repository:
+  url: https://github.com/AI4Bharat/IndicMFA.git
+  local_path: /home/linux/Documents/ravi_phd/Streaming_vocoder_with_prabhuji/vocos/IndicMFA
+  observed_commit: 6b4b9d811f61e99aff85c63df02a16f7e6e9aa02
+  release_index_url: https://github.com/AI4Bharat/IndicMFA/releases
+  method: existing_clone_only
+
+mfa_usage:
+  align_template: >
+    mfa align --clean --use_mp --use_threading -j ${JOBS}
+    --no_textgrid_cleanup --temporary_directory ${MFA_TEMP_DIR}
+    ${CORPUS_LANGUAGE_DIR} ${DICTIONARY_PATH} ${ACOUSTIC_MODEL_PATH}
+    ${OUTPUT_TEXTGRID_DIR}
+  corpus_structure: corpus/<language>/<speaker_id>/<utterance>.wav_and_lab
+  language_directory_policy: language_directories_are_not_speakers
+  label_semantics: grapheme_to_grapheme_letter_alignment
+
+languages:
+  gujarati:
+    iso_639_1: gu
+    release:
+      tag: Gujarati
+      url: https://github.com/AI4Bharat/IndicMFA/releases/tag/Gujarati
+      published_at: 2024-09-01T12:01:45Z
+      acoustic_model_asset: Gujarati_Acoustic_Model.zip
+      dictionary_asset: Gujarati_Dict.txt
+    training_data:
+      hours: 42.9
+      sources: [IndicTTS, IndicVoices-R]
+    local:
+      acoustic_model_path: /home/linux/Documents/ravi_phd/Streaming_vocoder_with_prabhuji/vocos/IndicMFA_checkpoints/models/gujarati_acoustic_model.zip
+      acoustic_model_size_bytes: 61651716
+      acoustic_model_sha256: 092c1a69c1c04bf53d2fb685422baa5374403aba6bd519c353d84bb8e801bdef
+      dictionary_path: /home/linux/Documents/ravi_phd/Streaming_vocoder_with_prabhuji/vocos/IndicMFA_checkpoints/dicts/gujarati_dict.txt
+      dictionary_entries: 162
+      dictionary_size_bytes: 1738
+      dictionary_sha256: ebc170953ae8394dae3794b95c88f1df5adf7519e953b775a0642a904a5a3183
+
+  hindi:
+    iso_639_1: hi
+    release:
+      tag: Hindi
+      url: https://github.com/AI4Bharat/IndicMFA/releases/tag/Hindi
+      published_at: 2024-08-08T08:41:24Z
+      acoustic_model_asset: Hindi_All_Acoustic.zip
+      dictionary_asset: Hindi_Dict_g2g.txt
+    training_data:
+      hours: 255.33
+      sources: [IndicTTS, IndicVoices-R, Limmits]
+    local:
+      acoustic_model_path: /home/linux/Documents/ravi_phd/Streaming_vocoder_with_prabhuji/vocos/IndicMFA_checkpoints/models/hindi_acoustic_model.zip
+      acoustic_model_size_bytes: 61338606
+      acoustic_model_sha256: 1c2e02e5f328df0a5466af47a4304b949e393cfcdeea9c2bcb5159fca9de19f2
+      dictionary_path: /home/linux/Documents/ravi_phd/Streaming_vocoder_with_prabhuji/vocos/IndicMFA_checkpoints/dicts/hindi_dict.txt
+      dictionary_entries: 506
+      dictionary_size_bytes: 8151
+      dictionary_sha256: 33929a4937b2537e2a3e37d517cbbeb8f8804d78650a0b449c2e496118c2be11
+    observed_existing_mfa_temp:
+      source_feature_directory: /home/linux/Documents/MFA/hindi/hindi/split5
+      inventory_report: reports/alignment/hindi_feature_inventory.json
+      copied_to_artifacts: false
+
+  marathi:
+    iso_639_1: mr
+    release:
+      tag: Marathi
+      url: https://github.com/AI4Bharat/IndicMFA/releases/tag/Marathi
+      published_at: 2024-08-31T06:14:23Z
+      acoustic_model_asset: Marathi_Acoustic_Model.zip
+      dictionary_asset: Marathi_Dict.txt
+    training_data:
+      hours: 212.58
+      sources: [IndicTTS, IndicVoices-R, Limmits, Rasa]
+    local:
+      acoustic_model_path: /home/linux/Documents/ravi_phd/Streaming_vocoder_with_prabhuji/vocos/IndicMFA_checkpoints/models/marathi_acoustic_model.zip
+      acoustic_model_size_bytes: 61406831
+      acoustic_model_sha256: 36f9a003996ce5833338957d84fa4ac1057379c27515881c4849bb21aad56f28
+      dictionary_path: /home/linux/Documents/ravi_phd/Streaming_vocoder_with_prabhuji/vocos/IndicMFA_checkpoints/dicts/marathi_dict.txt
+      dictionary_entries: 512
+      dictionary_size_bytes: 8211
+      dictionary_sha256: bb42099e44bd98a6d3247e40f1c432fe96f8c9691c629a657e0b24eecab2a1f2
+
+  tamil:
+    iso_639_1: ta
+    release:
+      tag: Tamil
+      url: https://github.com/AI4Bharat/IndicMFA/releases/tag/Tamil
+      published_at: 2024-08-09T07:07:29Z
+      acoustic_model_asset: Tamil_Acoustic_Model.zip
+      dictionary_asset: Tamil_Dictionary_g2g.txt
+    training_data:
+      hours: 300.48
+      sources: [IndicTTS, IndicVoices-R, Rasa]
+    local:
+      acoustic_model_path: /home/linux/Documents/ravi_phd/Streaming_vocoder_with_prabhuji/vocos/IndicMFA_checkpoints/models/tamil_acoustic_model.zip
+      acoustic_model_size_bytes: 61357880
+      acoustic_model_sha256: 3f8bc73000bdc28dbc80f1d4cc429060977cc6e65e6cbb5b00f4476434b43a45
+      dictionary_path: /home/linux/Documents/ravi_phd/Streaming_vocoder_with_prabhuji/vocos/IndicMFA_checkpoints/dicts/tamil_dict.txt
+      dictionary_entries: 339
+      dictionary_size_bytes: 5310
+      dictionary_sha256: f800b3272dcd1209ea9bacab8b6b67117b7074f5fc8c6fa9b27f3cceccf51ce8
+
+  telugu:
+    iso_639_1: te
+    release:
+      tag: Telugu
+      url: https://github.com/AI4Bharat/IndicMFA/releases/tag/Telugu
+      published_at: 2024-08-10T11:27:36Z
+      acoustic_model_asset: Telugu_Acoustic_Model.zip
+      dictionary_asset: Telugu_Dictionary_g2g.txt
+    training_data:
+      hours: 261.77
+      sources: [IndicTTS, IndicVoices-R, Limmits, GoogleCrowdSourced]
+    local:
+      acoustic_model_path: /home/linux/Documents/ravi_phd/Streaming_vocoder_with_prabhuji/vocos/IndicMFA_checkpoints/models/telugu_acoustic_model.zip
+      acoustic_model_size_bytes: 61448474
+      acoustic_model_sha256: b6b1ec92f28cdc705f84ce37a1577b995c9b9f1eed6f154acfb5fc3146ad4c43
+      dictionary_path: /home/linux/Documents/ravi_phd/Streaming_vocoder_with_prabhuji/vocos/IndicMFA_checkpoints/dicts/telugu_dict.txt
+      dictionary_entries: 98
+      dictionary_size_bytes: 784
+      dictionary_sha256: 6e6cd1ea7b1aef7372f9d36b1a2ee9d930c6cd2f4fb21ab29bdf14e45fa6323b

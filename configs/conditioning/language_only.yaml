@@ -1,0 +1,27 @@
+data:
+  init_args:
+    train_params:
+      filelist_path: null
+      manifest_path: manifests/frame_labels/train_aligned.jsonl
+      n_fft: 1024
+      hop_length: 256
+      n_mels: 100
+      padding: center
+    val_params:
+      filelist_path: null
+      manifest_path: manifests/frame_labels/validation_aligned.jsonl
+      n_fft: 1024
+      hop_length: 256
+      n_mels: 100
+      padding: center
+
+model:
+  init_args:
+    backbone:
+      init_args:
+        conditioner:
+          class_path: vocos.conditioning.FrameConditioner
+          init_args:
+            output_dim: 512
+            language_vocab_size: 6
+            use_language: true
