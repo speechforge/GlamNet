@@ -240,12 +240,12 @@
 
   <script>
         const METHODS = [
-      { folder: 'ground_truth', label: 'Ground truth', code: 'REF', accent: '#12a87a' },
-      { folder: 'parallel_wavegan', label: 'Parallel WaveGAN', code: 'PWG', accent: '#7c879a' },
-      { folder: 'hifigan', label: 'HiFi-GAN', code: 'HFG', accent: '#6f7ee8' },
-      { folder: 'bigvgan', label: 'BigVGAN', code: 'BVG', accent: '#2374e1' },
-      { folder: 'vocos', label: 'Vocos', code: 'VOC', accent: '#9a61d0' },
-      { folder: 'glamnet', label: 'GLAMNet', code: 'GLM', accent: '#ee6c4d' }
+      { folder: 'ground_truth', label: 'Ground Truth', accent: '#12a87a' },
+      { folder: 'parallel_wavegan', label: 'Parallel WaveGAN', accent: '#7c879a' },
+      { folder: 'hifigan', label: 'HiFi-GAN', accent: '#6f7ee8' },
+      { folder: 'bigvgan', label: 'BigVGAN', accent: '#2374e1' },
+      { folder: 'vocos', label: 'Vocos', accent: '#9a61d0' },
+      { folder: 'glamnet', label: 'GLAMNet', accent: '#ee6c4d' }
     ];
 
             const INDIC_SAMPLES = [
@@ -338,7 +338,7 @@
                 <h3 class="mt-2 max-w-4xl text-base font-semibold leading-7 tracking-[-0.015em] sm:text-lg">“${sample.transcript}”</h3>
               </div>
             </header>
-            <div class="grid gap-3 grid-cols-3">${players}</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;">${players}</div>
           </article>`;
       }).join('');
       
