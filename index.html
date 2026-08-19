@@ -242,27 +242,27 @@
         </div>
       </div>
 
-      <div class="mt-12 reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(0.5rem,1.5vw,1rem);transition-delay:160ms;" aria-label="Contents">
-        <a href="#indic" class="dataset-link group flex items-center justify-between rounded-2xl p-3.5 sm:p-5">
-          <span class="min-w-0 pr-1 sm:pr-2">
-            <span class="eyebrow block truncate text-[0.62rem] sm:text-[0.69rem]">01 · 5 Languages</span>
-            <span class="mt-1.5 block text-xs sm:text-base lg:text-lg font-bold tracking-tight truncate">Demo Samples</span>
+      <div class="mt-14 reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(0.75rem,2vw,1.5rem);transition-delay:160ms;" aria-label="Contents">
+        <a href="#indic" class="dataset-link group flex items-center justify-between rounded-3xl p-6 sm:p-7 shadow-sm">
+          <span class="min-w-0 pr-3">
+            <span class="eyebrow block truncate text-[0.7rem] sm:text-xs font-semibold">01 · 5 Languages</span>
+            <span class="mt-2 block text-base sm:text-lg lg:text-xl font-extrabold tracking-tight truncate">Demo Samples</span>
           </span>
-          <span class="grid size-8 sm:size-10 shrink-0 place-items-center rounded-full border border-[var(--line)] transition-transform group-hover:translate-x-1 text-xs sm:text-sm font-bold" aria-hidden="true">↓</span>
+          <span class="grid size-11 sm:size-12 shrink-0 place-items-center rounded-full border border-[var(--line)] bg-[var(--panel-solid)] transition-transform group-hover:translate-x-1 group-hover:scale-105 text-sm sm:text-base font-bold shadow-sm" aria-hidden="true">↓</span>
         </a>
-        <a href="#ablation" class="dataset-link group flex items-center justify-between rounded-2xl p-3.5 sm:p-5">
-          <span class="min-w-0 pr-1 sm:pr-2">
-            <span class="eyebrow block truncate text-[0.62rem] sm:text-[0.69rem]">02 · Ablations</span>
-            <span class="mt-1.5 block text-xs sm:text-base lg:text-lg font-bold tracking-tight truncate">Ablation Studies</span>
+        <a href="#ablation" class="dataset-link group flex items-center justify-between rounded-3xl p-6 sm:p-7 shadow-sm">
+          <span class="min-w-0 pr-3">
+            <span class="eyebrow block truncate text-[0.7rem] sm:text-xs font-semibold">02 · Ablations</span>
+            <span class="mt-2 block text-base sm:text-lg lg:text-xl font-extrabold tracking-tight truncate">Ablation Studies</span>
           </span>
-          <span class="grid size-8 sm:size-10 shrink-0 place-items-center rounded-full border border-[var(--line)] transition-transform group-hover:translate-x-1 text-xs sm:text-sm font-bold" aria-hidden="true">↓</span>
+          <span class="grid size-11 sm:size-12 shrink-0 place-items-center rounded-full border border-[var(--line)] bg-[var(--panel-solid)] transition-transform group-hover:translate-x-1 group-hover:scale-105 text-sm sm:text-base font-bold shadow-sm" aria-hidden="true">↓</span>
         </a>
-        <a href="#spectrogram" class="dataset-link group flex items-center justify-between rounded-2xl p-3.5 sm:p-5">
-          <span class="min-w-0 pr-1 sm:pr-2">
-            <span class="eyebrow block truncate text-[0.62rem] sm:text-[0.69rem]">03 · Visualizer</span>
-            <span class="mt-1.5 block text-xs sm:text-base lg:text-lg font-bold tracking-tight truncate">Spectrogram Analysis</span>
+        <a href="#spectrogram" class="dataset-link group flex items-center justify-between rounded-3xl p-6 sm:p-7 shadow-sm">
+          <span class="min-w-0 pr-3">
+            <span class="eyebrow block truncate text-[0.7rem] sm:text-xs font-semibold">03 · Visualizer</span>
+            <span class="mt-2 block text-base sm:text-lg lg:text-xl font-extrabold tracking-tight truncate">Spectrogram Analysis</span>
           </span>
-          <span class="grid size-8 sm:size-10 shrink-0 place-items-center rounded-full border border-[var(--line)] transition-transform group-hover:translate-x-1 text-xs sm:text-sm font-bold" aria-hidden="true">↓</span>
+          <span class="grid size-11 sm:size-12 shrink-0 place-items-center rounded-full border border-[var(--line)] bg-[var(--panel-solid)] transition-transform group-hover:translate-x-1 group-hover:scale-105 text-sm sm:text-base font-bold shadow-sm" aria-hidden="true">↓</span>
         </a>
       </div>
     </section>
@@ -279,34 +279,39 @@
           </div>
         </div>
 
-        <div class="mt-12 flex flex-wrap gap-x-5 gap-y-2 border-y border-[var(--line)] py-4 font-mono text-[0.62rem] uppercase tracking-[0.12em] text-[var(--muted)] reveal" aria-label="Playback instructions">
-          <span class="flex items-center gap-2"><i class="size-1.5 rounded-full bg-[var(--accent)]"></i> Click waveform to play / pause</span>
-          <span class="flex items-center gap-2"><i class="size-1.5 rounded-full bg-[var(--accent-2)]"></i> One clip plays at a time</span>
-          <span class="flex items-center gap-2"><i class="size-1.5 rounded-full bg-emerald-500"></i> Actual amplitude trace</span>
-        </div>
-
-        
-        <div class="mt-6 mb-4 flex items-center gap-4">
-          <label for="language-filter" class="text-sm font-bold uppercase tracking-wider text-[var(--muted)]">Filter by Language</label>
-          <div class="relative">
-            <select id="language-filter" style="appearance:none;-webkit-appearance:none;background-color:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:0.75rem;padding:0.5rem 2.5rem 0.5rem 1rem;font-size:0.875rem;font-weight:600;font-family:inherit;cursor:pointer;outline:none;box-shadow:0 1px 3px rgba(0,0,0,0.08);">
-              <option value="all">All Languages</option>
-              <option value="Gujarati">Gujarati</option>
-              <option value="Hindi">Hindi</option>
-              <option value="Marathi">Marathi</option>
-              <option value="Tamil">Tamil</option>
-              <option value="Telugu">Telugu</option>
-            </select>
-            <span style="pointer-events:none;position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true">
-              <svg viewBox="0 0 20 20" style="width:1rem;height:1rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
+        <div class="reveal mt-12">
+          <!-- Language Filter Pills with Generous Spacing -->
+          <div class="flex flex-wrap items-center gap-3 sm:gap-4 border-b border-[var(--line)] pb-6" id="indic-filter-group">
+            <button type="button" class="indic-pill active control-button rounded-xl px-4 py-2.5 text-xs font-bold border border-[var(--line)] transition-all" data-language="all">All Languages (25)</button>
+            <button type="button" class="indic-pill control-button rounded-xl px-4 py-2.5 text-xs font-bold border border-[var(--line)] transition-all" data-language="Gujarati">Gujarati (5)</button>
+            <button type="button" class="indic-pill control-button rounded-xl px-4 py-2.5 text-xs font-bold border border-[var(--line)] transition-all" data-language="Hindi">Hindi (5)</button>
+            <button type="button" class="indic-pill control-button rounded-xl px-4 py-2.5 text-xs font-bold border border-[var(--line)] transition-all" data-language="Marathi">Marathi (5)</button>
+            <button type="button" class="indic-pill control-button rounded-xl px-4 py-2.5 text-xs font-bold border border-[var(--line)] transition-all" data-language="Tamil">Tamil (5)</button>
+            <button type="button" class="indic-pill control-button rounded-xl px-4 py-2.5 text-xs font-bold border border-[var(--line)] transition-all" data-language="Telugu">Telugu (5)</button>
           </div>
+
+          <!-- Sample Selection Dropdown & Spacious Transcript Box -->
+          <div class="mt-8 flex flex-wrap items-center justify-between gap-5 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5 sm:p-6 shadow-sm">
+            <div class="flex items-center gap-3">
+              <label for="indic-sample-select" class="text-xs font-bold uppercase tracking-wider text-[var(--muted)] shrink-0">Select Utterance:</label>
+              <div class="relative">
+                <select id="indic-sample-select" style="appearance:none;-webkit-appearance:none;background-color:var(--panel-solid);color:var(--ink);border:1px solid var(--line);border-radius:0.75rem;padding:0.55rem 2.5rem 0.55rem 1.1rem;font-size:0.875rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;">
+                </select>
+                <span style="pointer-events:none;position:absolute;right:0.8rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" style="width:1rem;height:1rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            </div>
+            <div id="indic-transcript-display" class="flex-1 min-w-[280px] max-w-2xl text-sm sm:text-base font-medium italic text-[var(--ink)] leading-relaxed">
+              “શું મધર હૅલ્પેજ એન જી ઓની યાદીમાં છે જો હોય તો કૃપયા તેને રૂપિયા ત્રણ હજારનું ધ્યા દાન આપજો”
+            </div>
+          </div>
+
+          <!-- Dynamic Audio Players Container (6 Models) -->
+          <div id="indic-players-grid" class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
         </div>
-        <div id="indic-samples" class="mt-8 space-y-6"></div>
       </div>
     </section>
-
-    
   </main>
 
 
@@ -371,125 +376,105 @@
         <div class="pb-1 md:pb-3">
           <div class="flex flex-wrap items-end justify-between gap-4">
             <h2 class="text-3xl font-extrabold tracking-[-0.045em] sm:text-5xl">Spectrogram Analysis</h2>
-            <p class="max-w-md text-sm leading-6 text-[var(--muted)]">Synchronized spectrogram comparison</p>
+            <p class="max-w-md text-sm leading-6 text-[var(--muted)]">Synchronized spectrogram comparison.</p>
           </div>
         </div>
       </div>
 
-      <!-- Controls & Transcript Display -->
-      <div class="reveal mt-10 flex flex-wrap items-center justify-between gap-4 border-y border-[var(--line)] py-5" style="transition-delay:80ms">
-        <div class="flex items-center gap-3">
-          <span class="text-xs font-bold uppercase tracking-wider text-[var(--muted)]">Sample</span>
-          <div class="relative">
-            <select id="spec-sample-select" style="appearance:none;-webkit-appearance:none;background-color:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:0.75rem;padding:0.45rem 2.4rem 0.45rem 0.9rem;font-size:0.8rem;font-weight:600;font-family:inherit;cursor:pointer;outline:none;min-width:200px;">
-              <option value="">— select a sample —</option>
-            </select>
-            <span style="pointer-events:none;position:absolute;right:0.65rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true"><svg viewBox="0 0 20 20" style="width:0.85rem;height:0.85rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          </div>
-        </div>
-        <div id="spec-transcript-display" class="flex-1 min-w-[260px] max-w-2xl text-sm font-medium italic text-[var(--ink)]">
-          — select a sample to inspect spectrogram and transcription —
-        </div>
-        <div class="flex items-center gap-2">
-          <span class="text-xs font-bold uppercase tracking-wider text-[var(--muted)]">Zoom</span>
-          <button id="spec-zoom-out" style="width:2rem;height:2rem;border-radius:0.5rem;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-weight:700;cursor:pointer;font-size:1.1rem;transition:background 0.18s;" aria-label="Zoom out">−</button>
-          <span id="spec-zoom-label" style="font-family:var(--font-mono);font-size:0.75rem;font-weight:600;min-width:2.2rem;text-align:center;">1×</span>
-          <button id="spec-zoom-in" style="width:2rem;height:2rem;border-radius:0.5rem;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-weight:700;cursor:pointer;font-size:1.1rem;transition:background 0.18s;" aria-label="Zoom in">+</button>
-        </div>
-      </div>
-
-      <!-- Play buttons -->
-      <div class="reveal mt-5 flex flex-wrap items-center gap-3" style="transition-delay:120ms">
-        <button id="spec-play-gt" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:#10b98144;" disabled>
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
-          Ground Truth
-        </button>
-        <button id="spec-play-gl" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:#ea580c44;" disabled>
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
-          GLAMNet
-        </button>
-        <button id="spec-play-both" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:var(--accent);color:var(--accent);" disabled>
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
-          Sync Play Both
-        </button>
-        <span id="spec-time-label" class="ml-auto font-mono text-xs text-[var(--muted)]">0:00 / —:——</span>
-      </div>
-
-      <!-- Two spectrogram panels -->
-      <div class="reveal mt-5" style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;transition-delay:160ms">
-        <!-- Left panel -->
-        <div>
-          <!-- Model selector for left panel -->
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;">
-            <div class="relative" style="flex:1;">
-              <select id="spec-left-model" style="appearance:none;-webkit-appearance:none;width:100%;background-color:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:0.6rem;padding:0.35rem 2rem 0.35rem 0.7rem;font-size:0.72rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;">
-                <option value="ground_truth">Ground Truth</option>
-                <option value="parallel_wavegan">Parallel WaveGAN</option>
-                <option value="hifigan">HiFi-GAN</option>
-                <option value="bigvgan">BigVGAN</option>
-                <option value="vocos">Vocos</option>
-                <option value="glamnet">GLAMNet</option>
+      <div class="reveal mt-12">
+        <!-- Sample Selection Dropdown & Spacious Transcript Box -->
+        <div class="flex flex-wrap items-center justify-between gap-5 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5 sm:p-6 shadow-sm">
+          <div class="flex items-center gap-3">
+            <label for="spec-sample-select" class="text-xs font-bold uppercase tracking-wider text-[var(--muted)] shrink-0">Select Utterance:</label>
+            <div class="relative">
+              <select id="spec-sample-select" style="appearance:none;-webkit-appearance:none;background-color:var(--panel-solid);color:var(--ink);border:1px solid var(--line);border-radius:0.75rem;padding:0.55rem 2.5rem 0.55rem 1.1rem;font-size:0.875rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;">
               </select>
-              <span style="pointer-events:none;position:absolute;right:0.5rem;top:50%;transform:translateY(-50%);color:var(--muted);"><svg viewBox="0 0 20 20" style="width:0.75rem;height:0.75rem;" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 8 4 4 4-4" stroke-linecap="round"/></svg></span>
+              <span style="pointer-events:none;position:absolute;right:0.8rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true">
+                <svg viewBox="0 0 20 20" style="width:1rem;height:1rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
             </div>
-            <div id="spec-left-status" style="font-family:var(--font-mono);font-size:0.5rem;color:#12a87a;margin-left:0.5rem;white-space:nowrap;">Left Panel</div>
           </div>
-          <div id="spec-gt-wrap" style="position:relative;overflow:hidden;border-radius:1rem;border:1px solid var(--line);height:220px;background:#050810;cursor:crosshair;">
-            <canvas id="spec-gt-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;"></canvas>
-            <div id="spec-cursor-gt" style="position:absolute;top:0;bottom:0;width:2px;background:rgba(255,255,255,0.95);box-shadow:0 0 0 1px rgba(0,0,0,0.5),0 0 10px rgba(255,255,255,0.7);pointer-events:none;display:none;"></div>
-            <div style="position:absolute;left:4px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;padding:4px 0;pointer-events:none;">
-              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">12k</span>
-              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">8k</span>
-              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">4k</span>
-              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">0</span>
-            </div>
-            <div id="spec-gt-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-family:var(--font-mono);color:rgba(255,255,255,0.4);background:#050810;letter-spacing:0.05em;">Select a sample to view spectrogram</div>
+          <div id="spec-transcript-display" class="flex-1 min-w-[280px] max-w-2xl text-sm sm:text-base font-medium italic text-[var(--ink)] leading-relaxed">
+            “શું મધર હૅલ્પેજ એન જી ઓની યાદીમાં છે જો હોય તો કૃપયા તેને રૂપિયા ત્રણ હજારનું ધ્યા દાન આપજો”
           </div>
-        </div>
-        <!-- Right panel -->
-        <div>
-          <!-- Model selector for right panel -->
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0.5rem;">
-            <div class="relative" style="flex:1;">
-              <select id="spec-right-model" style="appearance:none;-webkit-appearance:none;width:100%;background-color:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:0.6rem;padding:0.35rem 2rem 0.35rem 0.7rem;font-size:0.72rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;">
-                <option value="ground_truth">Ground Truth</option>
-                <option value="parallel_wavegan">Parallel WaveGAN</option>
-                <option value="hifigan">HiFi-GAN</option>
-                <option value="bigvgan">BigVGAN</option>
-                <option value="vocos">Vocos</option>
-                <option value="glamnet" selected>GLAMNet</option>
-              </select>
-              <span style="pointer-events:none;position:absolute;right:0.5rem;top:50%;transform:translateY(-50%);color:var(--muted);"><svg viewBox="0 0 20 20" style="width:0.75rem;height:0.75rem;" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 8 4 4 4-4" stroke-linecap="round"/></svg></span>
-            </div>
-            <div id="spec-right-status" style="font-family:var(--font-mono);font-size:0.5rem;color:#ee6c4d;margin-left:0.5rem;white-space:nowrap;">Right Panel</div>
-          </div>
-          <div id="spec-glamnet-wrap" style="position:relative;overflow:hidden;border-radius:1rem;border:1px solid var(--line);height:220px;background:#050810;cursor:crosshair;">
-            <canvas id="spec-glamnet-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;"></canvas>
-            <div id="spec-cursor-glamnet" style="position:absolute;top:0;bottom:0;width:2px;background:rgba(255,255,255,0.95);box-shadow:0 0 0 1px rgba(0,0,0,0.5),0 0 10px rgba(255,255,255,0.7);pointer-events:none;display:none;"></div>
-            <div style="position:absolute;left:4px;top:0;bottom:0;display:flex;flex-direction:column;justify-content:space-between;padding:4px 0;pointer-events:none;">
-              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">12k</span>
-              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">8k</span>
-              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">4k</span>
-              <span style="font-size:0.42rem;font-family:var(--font-mono);color:rgba(255,255,255,0.55);">0</span>
-            </div>
-            <div id="spec-glamnet-loading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-family:var(--font-mono);color:rgba(255,255,255,0.4);background:#050810;letter-spacing:0.05em;">Select a sample to view spectrogram</div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-[var(--muted)]">Zoom</span>
+            <button id="spec-zoom-out" style="width:2.25rem;height:2.25rem;border-radius:0.5rem;border:1px solid var(--line);background:var(--panel-solid);color:var(--ink);font-weight:700;cursor:pointer;font-size:1.1rem;transition:background 0.18s;" aria-label="Zoom out">−</button>
+            <span id="spec-zoom-label" style="font-family:var(--font-mono);font-size:0.8rem;font-weight:600;min-width:2.4rem;text-align:center;">1×</span>
+            <button id="spec-zoom-in" style="width:2.25rem;height:2.25rem;border-radius:0.5rem;border:1px solid var(--line);background:var(--panel-solid);color:var(--ink);font-weight:700;cursor:pointer;font-size:1.1rem;transition:background 0.18s;" aria-label="Zoom in">+</button>
           </div>
         </div>
-      </div>
 
-      <!-- Shared scrollbar -->
-      <div id="spec-track" style="margin-top:0.75rem;height:6px;border-radius:3px;background:var(--panel);border:1px solid var(--line);position:relative;cursor:pointer;">
-        <div id="spec-thumb" style="position:absolute;top:0;bottom:0;left:0;width:100%;border-radius:3px;background:var(--accent);opacity:0.5;cursor:grab;"></div>
-      </div>
-      <div style="display:flex;justify-content:space-between;margin-top:0.3rem;font-family:var(--font-mono);font-size:0.48rem;color:var(--muted);">
-        <span>0:00</span><span>← drag scrollbar to pan ·  hover to inspect →</span><span id="spec-dur-label">—:——</span>
-      </div>
+        <!-- Play buttons & Time -->
+        <div class="mt-6 flex flex-wrap items-center gap-3.5">
+          <button id="spec-play-gt" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:#10b98144;" disabled>
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
+            Ground Truth
+          </button>
+          <button id="spec-play-gl" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:#ea580c44;" disabled>
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
+            GLAMNet
+          </button>
+          <button id="spec-play-both" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:var(--accent);color:var(--accent);" disabled>
+            <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
+            Sync Play Both
+          </button>
+          <span id="spec-time-label" class="ml-auto font-mono text-xs font-semibold text-[var(--muted)]">0:00 / —:——</span>
+        </div>
 
-      <!-- Energy colormap legend -->
-      <div class="mt-4 flex items-center gap-3">
-        <span style="font-family:var(--font-mono);font-size:0.55rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);">Low</span>
-        <div style="flex:1;height:7px;border-radius:4px;background:linear-gradient(to right,#440154,#3b528b,#21908d,#5dc963,#fde725);"></div>
-        <span style="font-family:var(--font-mono);font-size:0.55rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--muted);">High energy</span>
+        <!-- Two spectrogram panels -->
+        <div class="mt-6" style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
+          <!-- Left panel -->
+          <div>
+            <div class="mb-2 flex items-center justify-between">
+              <div class="relative">
+                <select id="spec-left-model" style="appearance:none;-webkit-appearance:none;background-color:var(--panel-solid);color:var(--ink);border:1px solid var(--line);border-radius:0.6rem;padding:0.35rem 2rem 0.35rem 0.75rem;font-size:0.78rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;">
+                  <option value="ground_truth" selected>Ground Truth (Reference)</option>
+                  <option value="parallel_wavegan">Parallel WaveGAN</option>
+                  <option value="hifigan">HiFi-GAN</option>
+                  <option value="bigvgan">BigVGAN</option>
+                  <option value="vocos">Vocos</option>
+                  <option value="glamnet">GLAMNet (Ours)</option>
+                </select>
+                <span style="pointer-events:none;position:absolute;right:0.6rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true"><svg viewBox="0 0 20 20" style="width:0.75rem;height:0.75rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+              <span id="spec-status-left" class="font-mono text-xs text-[var(--muted)]">No audio loaded</span>
+            </div>
+            <div id="spec-gt-wrap" style="position:relative;border:1px solid var(--line);border-radius:1rem;overflow:hidden;background:#05070a;height:180px;">
+              <canvas id="spec-gt-canvas" style="width:100%;height:100%;display:block;"></canvas>
+              <div id="spec-cursor-gt" style="display:none;position:absolute;top:0;bottom:0;width:2px;background:#ffffff;box-shadow:0 0 6px #ffffff;pointer-events:none;left:0;"></div>
+              <div id="spec-loading-left" style="display:none;position:absolute;inset:0;background:#000000bb;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:0.8rem;">Rendering...</div>
+            </div>
+          </div>
+
+          <!-- Right panel -->
+          <div>
+            <div class="mb-2 flex items-center justify-between">
+              <div class="relative">
+                <select id="spec-right-model" style="appearance:none;-webkit-appearance:none;background-color:var(--panel-solid);color:var(--ink);border:1px solid var(--line);border-radius:0.6rem;padding:0.35rem 2rem 0.35rem 0.75rem;font-size:0.78rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;">
+                  <option value="ground_truth">Ground Truth (Reference)</option>
+                  <option value="parallel_wavegan">Parallel WaveGAN</option>
+                  <option value="hifigan">HiFi-GAN</option>
+                  <option value="bigvgan">BigVGAN</option>
+                  <option value="vocos">Vocos</option>
+                  <option value="glamnet" selected>GLAMNet (Ours)</option>
+                </select>
+                <span style="pointer-events:none;position:absolute;right:0.6rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true"><svg viewBox="0 0 20 20" style="width:0.75rem;height:0.75rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
+              <span id="spec-status-right" class="font-mono text-xs text-[var(--muted)]">No audio loaded</span>
+            </div>
+            <div id="spec-glamnet-wrap" style="position:relative;border:1px solid var(--line);border-radius:1rem;overflow:hidden;background:#05070a;height:180px;">
+              <canvas id="spec-glamnet-canvas" style="width:100%;height:100%;display:block;"></canvas>
+              <div id="spec-cursor-glamnet" style="display:none;position:absolute;top:0;bottom:0;width:2px;background:#ffffff;box-shadow:0 0 6px #ffffff;pointer-events:none;left:0;"></div>
+              <div id="spec-loading-right" style="display:none;position:absolute;inset:0;background:#000000bb;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:0.8rem;">Rendering...</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scrollbar track -->
+        <div id="spec-scrollbar" style="margin-top:0.75rem;height:14px;background:var(--panel);border:1px solid var(--line);border-radius:999px;position:relative;cursor:pointer;">
+          <div id="spec-thumb" style="position:absolute;top:2px;bottom:2px;left:0;width:100%;background:var(--muted);opacity:0.4;border-radius:999px;cursor:grab;transition:opacity 0.15s;"></div>
+        </div>
       </div>
 
     </div>
@@ -533,32 +518,207 @@
     ];
 
             const INDIC_SAMPLES = [
-      { id: 'indic_voices_r_val_gujarati_val_3377699720634089_chunk_4_enhanced_298', transcript: 'ચોમાસામાં જ્યારે વધુ વરસાદ કે ઓછા વારસાદના લીધે પાક નિષ્ફળ જતો હોય છે ત્યારે ખેડૂતો બાકીની ઋતુમાં તેનું નુકસાન કઈ રીતે ભરપાઈ થઇ જાય તેવું આયોજન કરીને વાવેતર કરતા હોય છે વાવણી કરતા હોય છે અને મહેનત કરતા હોય છે', detail: 'Gujarati' },
-      { id: 'indic_voices_r_val_gujarati_val_3377699720638776_chunk_5_enhanced_40', transcript: 'તો અમે તમને મહેરબાની કરીને એટલું કહેવા માંગીએ છીએ કે તમે તમારા એ ડ્રાઈવર હાજર ન હોય તો અમને કશો વાંધો નથી પણ તમે તમારા બીજા ડ્રાઈવરને મોકલો', detail: 'Gujarati' },
-      { id: 'indic_voices_r_val_gujarati_val_3377699720545441_chunk_3_enhanced_218', transcript: 'ત્રીસ આઠ ઓગણીસ સો છ્યાંશી', detail: 'Gujarati' },
-      { id: 'indic_voices_r_val_gujarati_val_3377699720586489_chunk_2_enhanced_70', transcript: 'દિન પ્રતિદિન ચાલું જ હોય છે લોકો રોજ કંઈક નવી વાત લઈને આવે છે આ જ આપણે આજકાલની વાત જોઈએ', detail: 'Gujarati' },
-      { id: 'indic_voices_r_val_gujarati_val_3377699720595120_chunk_1_enhanced_330', transcript: 'રાજકીય જૂથો ટુર્નામેન્ટનું આયોજન કરી શકે છે જેમ કે બે રાજકીય જૂથ જેમ કે કોંગ્રેસ અને ભાજપ તે બંને ટુર્નામેન્ટનું આયોજન કરી શકે છે તે બંને અલગ અલગ ટીમ બનાવીને ટુર્નામેન્ટ કરીને પછી જે ક્રિકેટ રમવા રમાડીને', detail: 'Gujarati' },
-      { id: 'indic_voices_r_val_hindi_val_5348024557708431_chunk_11_enhanced_69', transcript: 'तभी महिला बच्चों का मतलब देख भाल करती हैं घर में घर गृहस्ती चलाती हैं अगर पुरुष नहीं हैं तो महिला कुछ भी नहीं कर पाएँगे कैसे घर चलाएँगी कैसे क्या करेंगी', detail: 'Hindi' },
-      { id: 'indic_voices_r_val_hindi_val_5348024557680704_chunk_7_enhanced_112', transcript: 'पूरी को आटे के द्वारा बनाया जाता है छोलों को मसाले के द्वारा बनाया जाता है और पनीर की सब्ज़ी में बहुत सारा मसाला मसालों का उपयोग किया जाता है उस में', detail: 'Hindi' },
-      { id: 'indic_voices_r_val_hindi_val_5348024557629280_chunk_1_enhanced_99', transcript: 'एक जनवरी दो हजार बाईस दस सितम्बर दो हजार बीस एक अक्टूबर दो हजार इक्कीस बारह सितम्बर दो हजार बाईस एक नवम्बर दो हजार बीस', detail: 'Hindi' },
-      { id: 'indic_voices_r_val_hindi_val_5348024557698966_chunk_6_enhanced_175', transcript: 'हाँ क्योंकि हमने पैसा आपका पेमेंट कर दिए हैं हाँ', detail: 'Hindi' },
-      { id: 'indic_voices_r_val_hindi_val_5348024557637479_chunk_8_enhanced_17', transcript: 'और जो सुबह दस बजे से पहले का समय है वे हमारो हमारे घर वालों के लिए है', detail: 'Hindi' },
-      { id: 'indic_voices_r_val_marathi_val_562949953538091_chunk_6_enhanced_140', transcript: 'तसेच पंजाबमधील लोक लस्सी पिण्यास प्राधान्य देतात आसाममध्ये लोक जास्त प्रमाणात भात आणि मांसाहार खाण्यास प्राधान्य देतात अशा प्रकारे पूर्ण भारतभर वेगवेगळ्या प्रकारचे अन्न खाल्ले जाते पण बहुतेक भागात सात्त्विक अन्न जास्त प्रमाणात खाल्ले जाते', detail: 'Marathi' },
-      { id: 'indic_voices_r_val_marathi_val_562949953543536_chunk_2_enhanced_159', transcript: 'कारण पूर्ण महाराष्ट्रामध्ये यवतमाळ जिल्हा हा कापसासाठी प्रसिद्ध आहे कापूस हा इथे खूप मोठ्या प्रमाणात पिकवल्या जातो त्याचप्रमाणे गहू आहे', detail: 'Marathi' },
-      { id: 'indic_voices_r_val_marathi_val_562949953556471_chunk_1_enhanced_141', transcript: 'मी रामेश्वरीमध्ये असताना माझ्या घरून तुमची गाडी बुक केलेली होती कारण की आम्हाला थोड्या लवकर जायचं होतं मानेवाड्याला परंतु तुमची गाडी अजूनही तिथे आलेली नाही आहे त्याच्यामुळे आम्ही थोडं पायी पायी चालत निघालेलो आहोत पायी पाई चालत आम्ही मानेवाड्याच्या अर्ध्या रस्त्यापर्यंत पोहोचलेलो आहोत', detail: 'Marathi' },
-      { id: 'indic_voices_r_val_marathi_val_562949953487998_chunk_1_enhanced_125', transcript: 'मला अडकलेल्या व्यवहारातील पाचशे रुपये पंजाब ग्रामीण बँकेमधील नऊ आठ दोन नऊ सहा नऊ पाच एक एक तीन आठ एक ह्या खात्यामधील कधी परत मिळतील', detail: 'Marathi' },
-      { id: 'indic_voices_r_val_marathi_val_562949953511276_chunk_5_enhanced_171', transcript: 'आम्ही भरपूर काही सोबत सण आहे र सण साजरे करतो', detail: 'Marathi' },
-      { id: 'indic_voices_r_val_tamil_val_3096224743890565_chunk_2_enhanced_142', transcript: 'ஆனால் நேரில் பார்த்தீங்கன்னா அந்த ஸாரி வந்துட்டு ரொம்ப லைட்டாக டிசைன்ஸ் ரொம்ப கம்மியாக பார்க்கவே ஒரு மாதிரி பிடிக்காத மாதிரி இருக்குது', detail: 'Tamil' },
-      { id: 'indic_voices_r_val_tamil_val_3096224744143465_chunk_3_enhanced_209', transcript: 'இந்த டைத்துக்குதான் வரணும் இந்த டைத்துக்கு சாப்பிட்ணும் இந்த டைத்துக்கு தூங்குணும் இந்த டைத்துக்கு எழுதணும் ஹோம்ஒர்க் பண்ணணும் அப்படிங்கிற ஒரு கண்டீஷன் நாலேஜ்லாம் இருக்கும்', detail: 'Tamil' },
-      { id: 'indic_voices_r_val_tamil_val_3096224743978107_chunk_1_enhanced_197', transcript: 'எண் மூன்று ஐந்து ஒன்பது ஓன்று எட்டு மூன்று மூன்று ஒன்பது ஆறு மூன்று ஐந்து ஆறு என்ற என் வங்கிக் கணக்கை ஓலா மனி டிஜிட்டல் பேமெண்ட் செயலியுடன் இணைக்க முடியுமா', detail: 'Tamil' },
-      { id: 'indic_voices_r_val_tamil_val_3096224744040929_chunk_3_enhanced_37', transcript: 'அப்பறம் பதினொன்னு ஏழு ரெண்டாயிரத்தி இருபத்தி மூணு', detail: 'Tamil' },
-      { id: 'indic_voices_r_val_tamil_val_3096224743890593_chunk_17_enhanced_145', transcript: 'பல பேரை பார்த்தீங்கன்னா வீட்டுக்கே போக மாட்டாங்க விவசாயிகள்னு பார்த்தீங்கன்னா ஒவ்வொருத்தரும் அங்கேயே அந்த அதாவது வயல்லேயே வந்துட்டு ஒரு கூடாரம் மாதிரி அமைச்சி அந்த வயல்லேயே தங்கி அதுக்கான தண்ணியை அன் தண்ணி நீர் பாச்சறது', detail: 'Tamil' },
-      { id: 'indic_voices_r_val_telugu_val_4503599627470423_chunk_1_enhanced_1', transcript: 'వదిలిపెట్టు', detail: 'Telugu' },
-      { id: 'indic_voices_r_val_telugu_val_4503599627472764_chunk_1_enhanced_109', transcript: 'డిజిటల్ పేమెంట్ యాప్ యాక్సిస్ బ్యాంక్ లైమ్ కి నా ఎనిమిది రెండు రెండు తొమ్మిది ఆరు ఏడు మూడు ఆరు రెండు ఎనిమిది ఒకటి ఒకటి మూడు తొమ్మిది ఐదు బ్యాంక్ ఖాతా లింకు చేయబడిందేమో చూడు', detail: 'Telugu' },
-      { id: 'indic_voices_r_val_telugu_val_4503599627407267_chunk_11_enhanced_101', transcript: 'ముఖ్యంగా ఏంటంటే అ డ్రైనేజ్ సిస్టంలో దగ్గర ఏవి పడితే అవి వస్తువులు చెత్తచెదారం పడకుండా అవి తగిన విధంగా ఉంచుకుంటే చాలా నీట్గా ఉంటుంది మన భారతదేశంలో మన అందరికి కూడా స్వచ్చభారత్ అని పెట్టారు స్వచ్ఛభారత్ అంటే', detail: 'Telugu' },
-      { id: 'indic_voices_r_val_telugu_val_4503599627621480_chunk_28_enhanced_156', transcript: 'ఇటువంటి చిట్కాలను ఇంటి', detail: 'Telugu' },
-      { id: 'indic_voices_r_val_telugu_val_4503599627472776_chunk_1_enhanced_81', transcript: 'అనుసరించు', detail: 'Telugu' },
-    ];
+      {
+            "id": "indic_voices_r_val_gujarati_val_3377699720545419_chunk_1_enhanced_260",
+            "language": "Gujarati",
+            "sampleNum": 1,
+            "duration": "8.0s",
+            "label": "Gujarati · Sample 1 (8.0s)",
+            "transcript": "શું મધર હૅલ્પેજ એન જી ઓની યાદીમાં છે જો હોય તો કૃપયા તેને રૂપિયા ત્રણ હજારનું ધ્યા દાન આપજો"
+      },
+      {
+            "id": "indic_voices_r_val_gujarati_val_3377699720545441_chunk_3_enhanced_218",
+            "language": "Gujarati",
+            "sampleNum": 2,
+            "duration": "2.4s",
+            "label": "Gujarati · Sample 2 (2.4s)",
+            "transcript": "ત્રીસ આઠ ઓગણીસ સો છ્યાંશી"
+      },
+      {
+            "id": "indic_voices_r_val_gujarati_val_3377699720586489_chunk_2_enhanced_70",
+            "language": "Gujarati",
+            "sampleNum": 3,
+            "duration": "7.0s",
+            "label": "Gujarati · Sample 3 (7.0s)",
+            "transcript": "દિન પ્રતિદિન ચાલું જ હોય છે લોકો રોજ કંઈક નવી વાત લઈને આવે છે આ જ આપણે આજકાલની વાત જોઈએ"
+      },
+      {
+            "id": "indic_voices_r_val_gujarati_val_3377699720595120_chunk_1_enhanced_330",
+            "language": "Gujarati",
+            "sampleNum": 4,
+            "duration": "19.6s",
+            "label": "Gujarati · Sample 4 (19.6s)",
+            "transcript": "રાજકીય જૂથો ટુર્નામેન્ટનું આયોજન કરી શકે છે જેમ કે બે રાજકીય જૂથ જેમ કે કોંગ્રેસ અને ભાજપ તે બંને ટુર્નામેન્ટનું આયોજન કરી શકે છે તે બંને અલગ અલગ ટીમ બનાવીને ટુર્નામેન્ટ કરીને પછી જે ક્રિકેટ રમવા રમાડીને"
+      },
+      {
+            "id": "indic_voices_r_val_gujarati_val_3377699720634089_chunk_4_enhanced_298",
+            "language": "Gujarati",
+            "sampleNum": 5,
+            "duration": "18.2s",
+            "label": "Gujarati · Sample 5 (18.2s)",
+            "transcript": "ચોમાસામાં જ્યારે વધુ વરસાદ કે ઓછા વારસાદના લીધે પાક નિષ્ફળ જતો હોય છે ત્યારે ખેડૂતો બાકીની ઋતુમાં તેનું નુકસાન કઈ રીતે ભરપાઈ થઇ જાય તેવું આયોજન કરીને વાવેતર કરતા હોય છે વાવણી કરતા હોય છે અને મહેનત કરતા હોય છે"
+      },
+      {
+            "id": "indic_voices_r_val_hindi_val_5348024557708431_chunk_11_enhanced_69",
+            "language": "Hindi",
+            "sampleNum": 1,
+            "duration": "10.6s",
+            "label": "Hindi · Sample 1 (10.6s)",
+            "transcript": "तभी महिला बच्चों का मतलब देख भाल करती हैं घर में घर गृहस्ती चलाती हैं अगर पुरुष नहीं हैं तो महिला कुछ भी नहीं कर पाएँगे कैसे घर चलाएँगी कैसे क्या करेंगी"
+      },
+      {
+            "id": "indic_voices_r_val_hindi_val_5348024557680704_chunk_7_enhanced_112",
+            "language": "Hindi",
+            "sampleNum": 2,
+            "duration": "10.4s",
+            "label": "Hindi · Sample 2 (10.4s)",
+            "transcript": "पूरी को आटे के द्वारा बनाया जाता है छोलों को मसाले के द्वारा बनाया जाता है और पनीर की सब्ज़ी में बहुत सारा मसाला मसालों का उपयोग किया जाता है उस में"
+      },
+      {
+            "id": "indic_voices_r_val_hindi_val_5348024557629280_chunk_1_enhanced_99",
+            "language": "Hindi",
+            "sampleNum": 3,
+            "duration": "17.2s",
+            "label": "Hindi · Sample 3 (17.2s)",
+            "transcript": "एक जनवरी दो हजार बाईस दस सितम्बर दो हजार बीस एक अक्टूबर दो हजार इक्कीस बारह सितम्बर दो हजार बाईस एक नवम्बर दो हजार बीस"
+      },
+      {
+            "id": "indic_voices_r_val_hindi_val_5348024557698966_chunk_6_enhanced_175",
+            "language": "Hindi",
+            "sampleNum": 4,
+            "duration": "6.1s",
+            "label": "Hindi · Sample 4 (6.1s)",
+            "transcript": "हाँ क्योंकि हमने पैसा आपका पेमेंट कर दिए हैं हाँ"
+      },
+      {
+            "id": "indic_voices_r_val_hindi_val_5348024557637479_chunk_8_enhanced_17",
+            "language": "Hindi",
+            "sampleNum": 5,
+            "duration": "5.1s",
+            "label": "Hindi · Sample 5 (5.1s)",
+            "transcript": "और जो सुबह दस बजे से पहले का समय है वे हमारो हमारे घर वालों के लिए है"
+      },
+      {
+            "id": "indic_voices_r_val_marathi_val_562949953538091_chunk_6_enhanced_140",
+            "language": "Marathi",
+            "sampleNum": 1,
+            "duration": "15.3s",
+            "label": "Marathi · Sample 1 (15.3s)",
+            "transcript": "तसेच पंजाबमधील लोक लस्सी पिण्यास प्राधान्य देतात आसाममध्ये लोक जास्त प्रमाणात भात आणि मांसाहार खाण्यास प्राधान्य देतात अशा प्रकारे पूर्ण भारतभर वेगवेगळ्या प्रकारचे अन्न खाल्ले जाते पण बहुतेक भागात सात्त्विक अन्न जास्त प्रमाणात खाल्ले जाते"
+      },
+      {
+            "id": "indic_voices_r_val_marathi_val_562949953543536_chunk_2_enhanced_159",
+            "language": "Marathi",
+            "sampleNum": 2,
+            "duration": "10.6s",
+            "label": "Marathi · Sample 2 (10.6s)",
+            "transcript": "कारण पूर्ण महाराष्ट्रामध्ये यवतमाळ जिल्हा हा कापसासाठी प्रसिद्ध आहे कापूस हा इथे खूप मोठ्या प्रमाणात पिकवल्या जातो त्याचप्रमाणे गहू आहे"
+      },
+      {
+            "id": "indic_voices_r_val_marathi_val_562949953556471_chunk_1_enhanced_141",
+            "language": "Marathi",
+            "sampleNum": 3,
+            "duration": "19.1s",
+            "label": "Marathi · Sample 3 (19.1s)",
+            "transcript": "मी रामेश्वरीमध्ये असताना माझ्या घरून तुमची गाडी बुक केलेली होती कारण की आम्हाला थोड्या लवकर जायचं होतं मानेवाड्याला परंतु तुमची गाडी अजूनही तिथे आलेली नाही आहे त्याच्यामुळे आम्ही थोडं पायी पायी चालत निघालेलो आहोत पायी पाई चालत आम्ही मानेवाड्याच्या अर्ध्या रस्त्यापर्यंत पोहोचलेलो आहोत"
+      },
+      {
+            "id": "indic_voices_r_val_marathi_val_562949953487998_chunk_1_enhanced_125",
+            "language": "Marathi",
+            "sampleNum": 4,
+            "duration": "18.7s",
+            "label": "Marathi · Sample 4 (18.7s)",
+            "transcript": "मला अडकलेल्या व्यवहारातील पाचशे रुपये पंजाब ग्रामीण बँकेमधील नऊ आठ दोन नऊ सहा नऊ पाच एक एक तीन आठ एक ह्या खात्यामधील कधी परत मिळतील"
+      },
+      {
+            "id": "indic_voices_r_val_marathi_val_562949953511276_chunk_5_enhanced_171",
+            "language": "Marathi",
+            "sampleNum": 5,
+            "duration": "6.5s",
+            "label": "Marathi · Sample 5 (6.5s)",
+            "transcript": "आम्ही भरपूर काही सोबत सण आहे र सण साजरे करतो"
+      },
+      {
+            "id": "indic_voices_r_val_tamil_val_3096224743890565_chunk_2_enhanced_142",
+            "language": "Tamil",
+            "sampleNum": 1,
+            "duration": "10.8s",
+            "label": "Tamil · Sample 1 (10.8s)",
+            "transcript": "ஆனால் நேரில் பார்த்தீங்கன்னா அந்த ஸாரி வந்துட்டு ரொம்ப லைட்டாக டிசைன்ஸ் ரொம்ப கம்மியாக பார்க்கவே ஒரு மாதிரி பிடிக்காத மாதிரி இருக்குது"
+      },
+      {
+            "id": "indic_voices_r_val_tamil_val_3096224744143465_chunk_3_enhanced_209",
+            "language": "Tamil",
+            "sampleNum": 2,
+            "duration": "8.7s",
+            "label": "Tamil · Sample 2 (8.7s)",
+            "transcript": "இந்த டைத்துக்குதான் வரணும் இந்த டைத்துக்கு சாப்பிட்ணும் இந்த டைத்துக்கு தூங்குணும் இந்த டைத்துக்கு எழுதணும் ஹோம்ஒர்க் பண்ணணும் அப்படிங்கிற ஒரு கண்டீஷன் நாலேஜ்லாம் இருக்கும்"
+      },
+      {
+            "id": "indic_voices_r_val_tamil_val_3096224743978107_chunk_1_enhanced_197",
+            "language": "Tamil",
+            "sampleNum": 3,
+            "duration": "16.0s",
+            "label": "Tamil · Sample 3 (16.0s)",
+            "transcript": "எண் மூன்று ஐந்து ஒன்பது ஓன்று எட்டு மூன்று மூன்று ஒன்பது ஆறு மூன்று ஐந்து ஆறு என்ற என் வங்கிக் கணக்கை ஓலா மனி டிஜிட்டல் பேமெண்ட் செயலியுடன் இணைக்க முடியுமா"
+      },
+      {
+            "id": "indic_voices_r_val_tamil_val_3096224744040929_chunk_3_enhanced_37",
+            "language": "Tamil",
+            "sampleNum": 4,
+            "duration": "4.3s",
+            "label": "Tamil · Sample 4 (4.3s)",
+            "transcript": "அப்பறம் பதினொன்னு ஏழு ரெண்டாயிரத்தி இருபத்தி மூணு"
+      },
+      {
+            "id": "indic_voices_r_val_tamil_val_3096224743890593_chunk_17_enhanced_145",
+            "language": "Tamil",
+            "sampleNum": 5,
+            "duration": "13.7s",
+            "label": "Tamil · Sample 5 (13.7s)",
+            "transcript": "பல பேரை பார்த்தீங்கன்னா வீட்டுக்கே போக மாட்டாங்க விவசாயிகள்னு பார்த்தீங்கன்னா ஒவ்வொருத்தரும் அங்கேயே அந்த அதாவது வயல்லேயே வந்துட்டு ஒரு கூடாரம் மாதிரி அமைச்சி அந்த வயல்லேயே தங்கி அதுக்கான தண்ணியை அன் தண்ணி நீர் பாச்சறது"
+      },
+      {
+            "id": "indic_voices_r_val_telugu_val_4503599627470423_chunk_1_enhanced_1",
+            "language": "Telugu",
+            "sampleNum": 1,
+            "duration": "1.3s",
+            "label": "Telugu · Sample 1 (1.3s)",
+            "transcript": "వదిలిపెట్టు"
+      },
+      {
+            "id": "indic_voices_r_val_telugu_val_4503599627472764_chunk_1_enhanced_109",
+            "language": "Telugu",
+            "sampleNum": 2,
+            "duration": "18.1s",
+            "label": "Telugu · Sample 2 (18.1s)",
+            "transcript": "డిజిటల్ పేమెంట్ యాప్ యాక్సిస్ బ్యాంక్ లైమ్ కి నా ఎనిమిది రెండు రెండు తొమ్మిది ఆరు ఏడు మూడు ఆరు రెండు ఎనిమిది ఒకటి ఒకటి మూడు తొమ్మిది ఐదు బ్యాంక్ ఖాతా లింకు చేయబడిందేమో చూడు"
+      },
+      {
+            "id": "indic_voices_r_val_telugu_val_4503599627407267_chunk_11_enhanced_101",
+            "language": "Telugu",
+            "sampleNum": 3,
+            "duration": "12.5s",
+            "label": "Telugu · Sample 3 (12.5s)",
+            "transcript": "ముఖ్యంగా ఏంటంటే అ డ్రైనేజ్ సిస్టంలో దగ్గర ఏవి పడితే అవి వస్తువులు చెత్తచెదారం పడకుండా అవి తగిన విధంగా ఉంచుకుంటే చాలా నీట్గా ఉంటుంది మన భారతదేశంలో మన అందరికి కూడా స్వచ్చభారత్ అని పెట్టారు స్వచ్ఛభారత్ అంటే"
+      },
+      {
+            "id": "indic_voices_r_val_telugu_val_4503599627621480_chunk_28_enhanced_156",
+            "language": "Telugu",
+            "sampleNum": 4,
+            "duration": "3.4s",
+            "label": "Telugu · Sample 4 (3.4s)",
+            "transcript": "ఇటువంటి చిట్కాలను ఇంటి"
+      },
+      {
+            "id": "indic_voices_r_val_telugu_val_4503599627472776_chunk_1_enhanced_81",
+            "language": "Telugu",
+            "sampleNum": 5,
+            "duration": "1.9s",
+            "label": "Telugu · Sample 5 (1.9s)",
+            "transcript": "అనుసరించు"
+      }
+];
 
     
 
@@ -602,32 +762,103 @@
         </article>`;
     }
 
-            function renderSamples() {
-      const container = document.getElementById('indic-samples');
-      container.innerHTML = INDIC_SAMPLES.map((sample, sampleIndex) => {
-        const players = METHODS.map(method => playerMarkup({
-          src: `samples/indic/${method.folder}/${sample.id}.wav`,
-          label: method.label,
-          code: method.code,
-          accent: method.accent,
-          context: sample.id
-        })).join('');
+            let currentIndicLanguage = 'all';
+    let currentIndicSampleId = INDIC_SAMPLES[0].id;
 
-        return `
-          <article id="sample-${sample.id}" data-language="${sample.detail}" class="sample-set reveal scroll-mt-28 rounded-3xl p-4 sm:p-6 lg:p-7">
-            <header class="mb-6 flex items-start gap-4 border-b border-[var(--line)] pb-5">
-              <span class="sample-index grid size-10 shrink-0 place-items-center rounded-xl text-[0.63rem] font-semibold">${String(sampleIndex + 1).padStart(2, '0')}</span>
-              <div>
-                <p class="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.12em] text-[var(--accent-2)]">${sample.detail}</p>
-                <h3 class="mt-2 max-w-4xl text-base font-semibold leading-7 tracking-[-0.015em] sm:text-lg">“${sample.transcript}”</h3>
-              </div>
-            </header>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:0.75rem;">${players}</div>
-          </article>`;
+    function renderIndicPlayers() {
+      const container = document.getElementById('indic-players-grid');
+      if (!container) return;
+
+      if (activePlayer && container.contains(activePlayer.root)) {
+        activePlayer.pause();
+        activePlayer = null;
+      }
+
+      container.innerHTML = METHODS.map(method => {
+        return playerMarkup({
+          src: `samples/indic/${method.folder}/${currentIndicSampleId}.wav`,
+          label: method.label,
+          accent: method.accent,
+          context: `${method.label} · ${currentIndicSampleId}`
+        });
       }).join('');
-      
-      const vctkContainer = document.getElementById('vctk-samples');
-      if (vctkContainer) vctkContainer.innerHTML = '';
+
+      // Instantiate wave players
+      container.querySelectorAll('[data-audio-player]').forEach(el => {
+        if (!el._wavePlayer) {
+          const wp = new WavePlayer(el);
+          players.push(wp);
+        }
+      });
+
+      if (typeof setupLazyWaveforms === 'function') {
+        setupLazyWaveforms();
+      }
+    }
+
+    function populateIndicDropdown() {
+      const select = document.getElementById('indic-sample-select');
+      if (!select) return;
+
+      const filtered = INDIC_SAMPLES.filter(s => currentIndicLanguage === 'all' || s.language === currentIndicLanguage);
+      select.innerHTML = filtered.map(s => `<option value="${s.id}">${s.label}</option>`).join('');
+
+      if (!filtered.some(s => s.id === currentIndicSampleId)) {
+        currentIndicSampleId = filtered[0].id;
+      }
+      select.value = currentIndicSampleId;
+
+      const transcriptDisplay = document.getElementById('indic-transcript-display');
+      const found = INDIC_SAMPLES.find(s => s.id === currentIndicSampleId);
+      if (found && transcriptDisplay) {
+        transcriptDisplay.textContent = `“${found.transcript}”`;
+      }
+    }
+
+    function setupIndicControls() {
+      const sampleSelect = document.getElementById('indic-sample-select');
+      const transcriptDisplay = document.getElementById('indic-transcript-display');
+      const filterGroup = document.getElementById('indic-filter-group');
+
+      populateIndicDropdown();
+      renderIndicPlayers();
+
+      if (sampleSelect) {
+        sampleSelect.addEventListener('change', (e) => {
+          currentIndicSampleId = e.target.value;
+          const found = INDIC_SAMPLES.find(s => s.id === currentIndicSampleId);
+          if (found && transcriptDisplay) {
+            transcriptDisplay.textContent = `“${found.transcript}”`;
+          }
+          renderIndicPlayers();
+        });
+      }
+
+      if (filterGroup) {
+        const allBtn = filterGroup.querySelector('[data-language="all"]');
+        if (allBtn) {
+          allBtn.style.backgroundColor = 'var(--ink)';
+          allBtn.style.color = 'var(--page)';
+        }
+
+        filterGroup.querySelectorAll('.indic-pill').forEach(btn => {
+          btn.addEventListener('click', () => {
+            filterGroup.querySelectorAll('.indic-pill').forEach(b => {
+              b.classList.remove('active');
+              b.style.backgroundColor = '';
+              b.style.color = '';
+              b.style.borderColor = 'var(--line)';
+            });
+            btn.classList.add('active');
+            btn.style.backgroundColor = 'var(--ink)';
+            btn.style.color = 'var(--page)';
+            btn.style.borderColor = 'var(--ink)';
+            currentIndicLanguage = btn.dataset.language;
+            populateIndicDropdown();
+            renderIndicPlayers();
+          });
+        });
+      }
     }
 
     function formatTime(value) {
@@ -1192,7 +1423,7 @@
       }
     }
 
-    renderSamples();
+    setupIndicControls();
     renderAblationPlayers();
     setupAblationControls();
     setupHeroWave();
