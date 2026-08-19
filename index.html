@@ -135,17 +135,7 @@
         <a href="#spectrogram" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Spectrogram Analysis</a>
       </nav>
 
-      <div class="flex items-center gap-2 order-2 md:order-3">
-        <button id="quick-theme-toggle" type="button" class="control-shell control-button flex items-center justify-center size-10 rounded-xl" aria-label="Toggle theme mode" title="Toggle Light / Dark theme">
-          <svg class="size-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-            <path d="M20.1 15.1A8.2 8.2 0 0 1 8.9 3.9 8.3 8.3 0 1 0 20.1 15.1Z" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <svg class="size-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
-            <circle cx="12" cy="12" r="3.4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" stroke-linecap="round"/>
-          </svg>
-        </button>
-
-        <div id="accessibility-menu" class="relative">
+      <div id="accessibility-menu" class="relative order-2 md:order-3">
           <button id="accessibility-toggle" type="button" class="control-shell control-button flex items-center gap-2 rounded-xl px-3 py-2.5" aria-label="Open accessibility settings" aria-haspopup="dialog" aria-controls="accessibility-panel" aria-expanded="false">
           <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
             <circle cx="12" cy="4.5" r="2"/>
@@ -219,7 +209,6 @@
             </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   </header>
@@ -942,7 +931,6 @@
 
     function setupTheme() {
       const buttons = [...document.querySelectorAll('[data-theme-option]')];
-      const quickToggle = document.getElementById('quick-theme-toggle');
       const meta = document.getElementById('theme-color-meta');
 
       const update = theme => {
@@ -958,15 +946,6 @@
         try { localStorage.setItem('glamnet-theme', theme); } catch (_) {}
         update(theme);
       }));
-
-      if (quickToggle) {
-        quickToggle.addEventListener('click', () => {
-          const currentIsDark = document.documentElement.classList.contains('dark');
-          const newTheme = currentIsDark ? 'light' : 'dark';
-          try { localStorage.setItem('glamnet-theme', newTheme); } catch (_) {}
-          update(newTheme);
-        });
-      }
 
       const savedTheme = localStorage.getItem('glamnet-theme');
       update(savedTheme === 'dark' ? 'dark' : 'light');
