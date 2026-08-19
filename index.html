@@ -124,6 +124,7 @@
 
       <nav class="order-3 hidden w-full items-center justify-center gap-1 border-t border-[var(--line)] pt-2 sm:flex md:order-2 md:w-auto md:border-0 md:pt-0" aria-label="Sample sections">
         <a href="#indic" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Utterance Samples</a>
+        <a href="#ablation" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Ablation Studies</a>
         <a href="#spectrogram" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Spectrogram Analysis</a>
       </nav>
 
@@ -234,18 +235,25 @@
         </div>
       </div>
 
-      <div class="mt-16 grid gap-3 sm:grid-cols-2 reveal" style="transition-delay: 160ms" aria-label="Contents">
+      <div class="mt-16 grid gap-3 sm:grid-cols-3 reveal" style="transition-delay: 160ms" aria-label="Contents">
         <a href="#indic" class="dataset-link group flex items-center justify-between rounded-2xl p-5">
           <span>
-            <span class="eyebrow block">5 Languages</span>
-            <span class="mt-2 block text-lg font-bold tracking-tight">IndicVoices-R</span>
+            <span class="eyebrow block">01 · 5 Languages</span>
+            <span class="mt-2 block text-base font-bold tracking-tight sm:text-lg">IndicVoices-R</span>
           </span>
           <span class="grid size-10 place-items-center rounded-full border border-[var(--line)] transition-transform group-hover:translate-x-1" aria-hidden="true">↓</span>
         </a>
-        <a href="#indic" style="display:none;" class="dataset-link group flex items-center justify-between rounded-2xl p-5">
+        <a href="#ablation" class="dataset-link group flex items-center justify-between rounded-2xl p-5">
           <span>
-            <span class="eyebrow block"></span>
-            <span class="mt-2 block text-lg font-bold tracking-tight"></span>
+            <span class="eyebrow block">02 · 17 Variants</span>
+            <span class="mt-2 block text-base font-bold tracking-tight sm:text-lg">Ablation Studies</span>
+          </span>
+          <span class="grid size-10 place-items-center rounded-full border border-[var(--line)] transition-transform group-hover:translate-x-1" aria-hidden="true">↓</span>
+        </a>
+        <a href="#spectrogram" class="dataset-link group flex items-center justify-between rounded-2xl p-5">
+          <span>
+            <span class="eyebrow block">03 · FFT & Time</span>
+            <span class="mt-2 block text-base font-bold tracking-tight sm:text-lg">Spectrogram Analysis</span>
           </span>
           <span class="grid size-10 place-items-center rounded-full border border-[var(--line)] transition-transform group-hover:translate-x-1" aria-hidden="true">↓</span>
         </a>
@@ -295,12 +303,289 @@
     
   </main>
 
+
+    <!-- ═══════════════════════ ABLATION STUDIES SECTION ═══════════════════════ -->
+    <section id="ablation" class="scroll-mt-24 border-t border-[var(--line)] py-24 sm:py-32" data-observe-section>
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="reveal grid items-end gap-8 md:grid-cols-[auto_1fr]">
+          <div class="section-number" aria-hidden="true">02</div>
+          <div class="pb-1 md:pb-3">
+            <p class="eyebrow mb-3">Architectural & Conditioning Interventions</p>
+            <div class="flex flex-wrap items-end justify-between gap-4">
+              <h2 class="text-3xl font-extrabold tracking-[-0.045em] sm:text-5xl">Ablation Studies</h2>
+              <p class="max-w-md text-sm leading-6 text-[var(--muted)]">Controlled inference-time interventions on the frozen GLAMNet checkpoint across 500 Indic evaluation utterances.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scope Banner -->
+        <div class="reveal mt-8 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5 text-sm leading-6 text-[var(--muted)]">
+          <div class="flex items-start gap-3.5">
+            <span class="grid size-7 shrink-0 place-items-center rounded-xl bg-[var(--accent)] text-white text-xs font-bold shadow-sm">ℹ</span>
+            <div>
+              <span class="font-bold text-[var(--ink)] tracking-tight text-base">Evaluation Scope & Demonstration Language:</span>
+              <p class="mt-1 text-sm text-[var(--muted)]">
+                The quantitative master analysis ($N = 500$ evaluation utterances) is conducted across all 5 Indic languages (<strong class="text-[var(--ink)]">Gujarati, Hindi, Marathi, Tamil, Telugu</strong>).
+                For interactive auditory inspection of acoustic degradation and FiLM layer dynamics, audio reconstructions across all conditions are demonstrated below on representative validation utterances in <strong class="text-[var(--accent)]">Gujarati</strong> (single speaker, 24 kHz).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Master Ablation Summary Table -->
+        <div class="reveal mt-12 overflow-hidden rounded-3xl border border-[var(--line)] bg-[var(--panel)] p-4 sm:p-6 lg:p-8 shadow-sm">
+          <div class="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-[var(--line)] pb-5">
+            <div>
+              <span class="eyebrow block">Table: Master Ablation Analysis</span>
+              <h3 class="mt-1 text-lg font-bold tracking-tight sm:text-xl">Master Ablation Results (500-Utterance Indic Evaluation Set)</h3>
+            </div>
+            <div class="flex items-center gap-3 font-mono text-[0.62rem] uppercase tracking-wider text-[var(--muted)]">
+              <span class="flex items-center gap-1.5"><strong class="text-[var(--ink)]">Bold</strong> = Best</span>
+              <span class="flex items-center gap-1.5"><u class="decoration-[var(--accent)] decoration-2">Underline</u> = 2nd Best</span>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left font-mono text-xs" style="border-collapse: separate; border-spacing: 0;">
+              <thead>
+                <tr class="border-b border-[var(--line)] bg-[var(--page)] text-[0.65rem] uppercase tracking-wider text-[var(--muted)]">
+                  <th class="py-3.5 pl-4 pr-3 font-bold">Cat.</th>
+                  <th class="py-3.5 px-3 font-bold">Condition System</th>
+                  <th class="py-3.5 px-3 text-right font-bold">PESQ (↑)</th>
+                  <th class="py-3.5 px-3 text-right font-bold">STOI (↑)</th>
+                  <th class="py-3.5 px-3 text-right font-bold">MCD (↓)</th>
+                  <th class="py-3.5 px-3 text-right font-bold">LSD dB (↓)</th>
+                  <th class="py-3.5 px-3 text-right font-bold">MR-STFT (↓)</th>
+                  <th class="py-3.5 pr-4 pl-3 text-right font-bold">F0 MAE Hz (↓)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[var(--line)] text-[0.72rem]">
+                <!-- Full Reference -->
+                <tr class="bg-[var(--panel-solid)] font-semibold transition-colors hover:bg-[var(--page)]">
+                  <td class="py-3 pl-4 pr-3 text-[var(--accent)] font-bold">Full</td>
+                  <td class="py-3 px-3 font-bold text-[var(--ink)]">GLAMNet (Ours)</td>
+                  <td class="py-3 px-3 text-right font-bold"><u class="decoration-[var(--accent)] decoration-1.5">3.191 ± 0.310</u></td>
+                  <td class="py-3 px-3 text-right font-bold text-[var(--accent)]"><strong>0.956 ± 0.014</strong></td>
+                  <td class="py-3 px-3 text-right font-bold text-[var(--accent)]"><strong>71.535 ± 13.753</strong></td>
+                  <td class="py-3 px-3 text-right font-bold text-[var(--accent)]"><strong>7.281 ± 0.151</strong></td>
+                  <td class="py-3 px-3 text-right font-bold text-[var(--accent)]"><strong>0.900 ± 0.041</strong></td>
+                  <td class="py-3 pr-4 pl-3 text-right font-bold text-[var(--accent)]"><strong>14.100 ± 10.540</strong></td>
+                </tr>
+
+                <!-- C1 Category -->
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C1</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">w/o Language at Inference</td>
+                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">1.174 ± 0.074</td>
+                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">0.751 ± 0.042</td>
+                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">508.751 ± 64.845</td>
+                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">22.632 ± 2.509</td>
+                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">5.860 ± 1.240</td>
+                  <td class="py-2.5 pr-4 pl-3 text-right text-red-500 font-semibold">73.030 ± 23.970</td>
+                </tr>
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C1</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">w/o Linguistic Conditioning at Inference</td>
+                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">1.152 ± 0.061</td>
+                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">0.735 ± 0.045</td>
+                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">532.373 ± 66.741</td>
+                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">23.750 ± 2.270</td>
+                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">6.513 ± 1.371</td>
+                  <td class="py-2.5 pr-4 pl-3 text-right text-red-500 font-semibold">78.080 ± 26.280</td>
+                </tr>
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C1</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">w/o Boundary Conditioning</td>
+                  <td class="py-2.5 px-3 text-right">3.191 ± 0.310</td>
+                  <td class="py-2.5 px-3 text-right">0.956 ± 0.014</td>
+                  <td class="py-2.5 px-3 text-right">71.535 ± 13.753</td>
+                  <td class="py-2.5 px-3 text-right">7.281 ± 0.151</td>
+                  <td class="py-2.5 px-3 text-right">0.900 ± 0.041</td>
+                  <td class="py-2.5 pr-4 pl-3 text-right">14.100 ± 10.540</td>
+                </tr>
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C1</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">w/o Grapheme at Inference</td>
+                  <td class="py-2.5 px-3 text-right font-bold text-emerald-500"><strong>3.195 ± 0.305</strong></td>
+                  <td class="py-2.5 px-3 text-right font-bold text-emerald-500"><strong>0.957 ± 0.014</strong></td>
+                  <td class="py-2.5 px-3 text-right font-bold text-emerald-500"><strong>71.286 ± 13.952</strong></td>
+                  <td class="py-2.5 px-3 text-right font-bold text-emerald-500"><strong>7.276 ± 0.150</strong></td>
+                  <td class="py-2.5 px-3 text-right font-bold text-emerald-500"><strong>0.899 ± 0.041</strong></td>
+                  <td class="py-2.5 pr-4 pl-3 text-right font-bold text-emerald-500"><strong>14.014 ± 10.551</strong></td>
+                </tr>
+
+                <!-- C2 Category -->
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C2</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">Shuffled Grapheme Labels</td>
+                  <td class="py-2.5 px-3 text-right">3.186 ± 0.302</td>
+                  <td class="py-2.5 px-3 text-right">0.956 ± 0.014</td>
+                  <td class="py-2.5 px-3 text-right">72.277 ± 14.172</td>
+                  <td class="py-2.5 px-3 text-right">7.282 ± 0.150</td>
+                  <td class="py-2.5 px-3 text-right">0.902 ± 0.041</td>
+                  <td class="py-2.5 pr-4 pl-3 text-right">14.160 ± 10.470</td>
+                </tr>
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C2</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">Swapped Wrong Language ID</td>
+                  <td class="py-2.5 px-3 text-right">3.187 ± 0.309</td>
+                  <td class="py-2.5 px-3 text-right"><u class="decoration-[var(--accent)] decoration-1">0.956 ± 0.015</u></td>
+                  <td class="py-2.5 px-3 text-right"><u class="decoration-[var(--accent)] decoration-1">72.063 ± 15.032</u></td>
+                  <td class="py-2.5 px-3 text-right"><u class="decoration-[var(--accent)] decoration-1">7.281 ± 0.151</u></td>
+                  <td class="py-2.5 px-3 text-right"><u class="decoration-[var(--accent)] decoration-1">0.901 ± 0.041</u></td>
+                  <td class="py-2.5 pr-4 pl-3 text-right"><u class="decoration-[var(--accent)] decoration-1">14.120 ± 10.680</u></td>
+                </tr>
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C2</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">Grapheme Alignment Shift -10 Frames</td>
+                  <td class="py-2.5 px-3 text-right">3.195 ± 0.306</td>
+                  <td class="py-2.5 px-3 text-right">0.956 ± 0.014</td>
+                  <td class="py-2.5 px-3 text-right">71.247 ± 13.630</td>
+                  <td class="py-2.5 px-3 text-right">7.281 ± 0.151</td>
+                  <td class="py-2.5 px-3 text-right">0.900 ± 0.040</td>
+                  <td class="py-2.5 pr-4 pl-3 text-right">14.113 ± 10.690</td>
+                </tr>
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C2</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">Grapheme Alignment Shift +10 Frames</td>
+                  <td class="py-2.5 px-3 text-right">3.192 ± 0.305</td>
+                  <td class="py-2.5 px-3 text-right">0.956 ± 0.014</td>
+                  <td class="py-2.5 px-3 text-right">71.454 ± 13.593</td>
+                  <td class="py-2.5 px-3 text-right">7.282 ± 0.151</td>
+                  <td class="py-2.5 px-3 text-right">0.901 ± 0.041</td>
+                  <td class="py-2.5 pr-4 pl-3 text-right">14.127 ± 10.584</td>
+                </tr>
+
+                <!-- C3 Category -->
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C3</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">No FiLM (Δγ=0, β=0)</td>
+                  <td class="py-2.5 px-3 text-right text-red-500">1.150 ± 0.060</td>
+                  <td class="py-2.5 px-3 text-right text-red-500">0.734 ± 0.045</td>
+                  <td class="py-2.5 px-3 text-right text-red-500">535.900 ± 66.900</td>
+                  <td class="py-2.5 px-3 text-right text-red-500">23.810 ± 2.200</td>
+                  <td class="py-2.5 px-3 text-right text-red-500">6.540 ± 1.380</td>
+                  <td class="py-2.5 pr-4 pl-3 text-right text-red-500">80.600 ± 28.300</td>
+                </tr>
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C3</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">Additive-Only (No Scale)</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">1.250 ± 0.100</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">0.794 ± 0.038</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">458.730 ± 56.680</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">19.400 ± 2.620</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">4.160 ± 0.800</td>
+                  <td class="py-2.5 pr-4 pl-3 text-right text-orange-500">82.300 ± 30.500</td>
+                </tr>
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C3</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">Scale-Only (No Shift)</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">1.200 ± 0.080</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">0.670 ± 0.048</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">366.110 ± 45.860</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">12.500 ± 1.630</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">2.120 ± 0.190</td>
+                  <td class="py-2.5 pr-4 pl-3 text-right text-orange-500">28.900 ± 16.600</td>
+                </tr>
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C3</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">Zero Embedding Override</td>
+                  <td class="py-2.5 px-3 text-right text-red-500">1.170 ± 0.070</td>
+                  <td class="py-2.5 px-3 text-right text-red-500">0.751 ± 0.042</td>
+                  <td class="py-2.5 px-3 text-right text-red-500">508.750 ± 64.840</td>
+                  <td class="py-2.5 px-3 text-right text-red-500">22.630 ± 2.510</td>
+                  <td class="py-2.5 px-3 text-right text-red-500">5.860 ± 1.240</td>
+                  <td class="py-2.5 pr-4 pl-3 text-right text-red-500">73.000 ± 24.000</td>
+                </tr>
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C3</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">Mean Language Embedding</td>
+                  <td class="py-2.5 px-3 text-right font-bold text-emerald-500"><strong>3.220 ± 0.300</strong></td>
+                  <td class="py-2.5 px-3 text-right">0.955 ± 0.015</td>
+                  <td class="py-2.5 px-3 text-right">99.880 ± 22.200</td>
+                  <td class="py-2.5 px-3 text-right">7.580 ± 0.210</td>
+                  <td class="py-2.5 px-3 text-right">1.020 ± 0.050</td>
+                  <td class="py-2.5 pr-4 pl-3 text-right">15.000 ± 11.000</td>
+                </tr>
+
+                <!-- C4 Category -->
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C4</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">Early Layers Only (Blocks 0–3)</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">1.250 ± 0.100</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">0.775 ± 0.039</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">464.450 ± 64.700</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">18.460 ± 2.020</td>
+                  <td class="py-2.5 px-3 text-right text-orange-500">4.810 ± 0.960</td>
+                  <td class="py-2.5 pr-4 pl-3 text-right text-orange-500">74.500 ± 25.900</td>
+                </tr>
+                <tr class="transition-colors hover:bg-[var(--page)]">
+                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C4</td>
+                  <td class="py-2.5 px-3 text-[var(--ink)]">Deep Layers Only (Blocks 4–7)</td>
+                  <td class="py-2.5 px-3 text-right font-semibold text-[var(--ink)]">3.090 ± 0.330</td>
+                  <td class="py-2.5 px-3 text-right font-semibold text-[var(--ink)]">0.943 ± 0.018</td>
+                  <td class="py-2.5 px-3 text-right font-semibold text-[var(--ink)]">104.260 ± 19.170</td>
+                  <td class="py-2.5 px-3 text-right font-semibold text-[var(--ink)]">7.780 ± 1.070</td>
+                  <td class="py-2.5 px-3 text-right font-semibold text-[var(--ink)]">1.050 ± 0.130</td>
+                  <td class="py-2.5 pr-4 pl-3 text-right font-semibold text-[var(--ink)]">15.600 ± 11.100</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Interactive Ablation Audio Showcase -->
+        <div class="reveal mt-16">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--line)] pb-5">
+            <div>
+              <p class="eyebrow mb-2">Auditory Demonstration</p>
+              <h3 class="text-2xl font-extrabold tracking-tight sm:text-3xl">Interactive Ablation Audio Player</h3>
+            </div>
+
+            <!-- Category Filter Controls -->
+            <div class="flex flex-wrap items-center gap-2" id="ablation-filter-group">
+              <button type="button" class="ablation-pill control-button rounded-xl px-3.5 py-2 text-xs font-bold" data-category="all">All Variants (17)</button>
+              <button type="button" class="ablation-pill control-button rounded-xl px-3.5 py-2 text-xs font-bold" data-category="full_c1">Full & C1: Conditioning</button>
+              <button type="button" class="ablation-pill control-button rounded-xl px-3.5 py-2 text-xs font-bold" data-category="c2">C2: Perturbations</button>
+              <button type="button" class="ablation-pill control-button rounded-xl px-3.5 py-2 text-xs font-bold" data-category="c3">C3: FiLM Mechanism</button>
+              <button type="button" class="ablation-pill control-button rounded-xl px-3.5 py-2 text-xs font-bold" data-category="c4">C4: Layer Depth</button>
+            </div>
+          </div>
+
+          <!-- Sample Selection Dropdown & Info -->
+          <div class="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4 sm:p-5">
+            <div class="flex items-center gap-3">
+              <label for="ablation-sample-select" class="text-xs font-bold uppercase tracking-wider text-[var(--muted)]">Select Utterance:</label>
+              <div class="relative">
+                <select id="ablation-sample-select" style="appearance:none;-webkit-appearance:none;background-color:var(--panel-solid);color:var(--ink);border:1px solid var(--line);border-radius:0.75rem;padding:0.5rem 2.4rem 0.5rem 1rem;font-size:0.85rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;">
+                  <option value="indic_voices_r_val_gujarati_val_3377699720545419_chunk_1_enhanced_260" selected>Gujarati · Sample 1 (8.0s)</option>
+                  <option value="indic_voices_r_val_gujarati_val_3377699720545441_chunk_3_enhanced_218">Gujarati · Sample 2 (2.4s)</option>
+                  <option value="indic_voices_r_val_gujarati_val_3377699720545441_chunk_5_enhanced_247">Gujarati · Sample 3 (6.6s)</option>
+                  <option value="indic_voices_r_val_gujarati_val_3377699720545452_chunk_5_enhanced_255">Gujarati · Sample 4 (7.2s)</option>
+                  <option value="indic_voices_r_val_gujarati_val_3377699720545453_chunk_10_enhanced_263">Gujarati · Sample 5 (8.2s)</option>
+                </select>
+                <span style="pointer-events:none;position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true">
+                  <svg viewBox="0 0 20 20" style="width:1rem;height:1rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </div>
+            </div>
+            <div id="ablation-transcript-display" class="flex-1 min-w-[280px] max-w-2xl text-sm font-medium italic text-[var(--ink)]">
+              “શું મધર હૅલ્પેજ એન જી ઓની યાદીમાં છે જો હોય તો કૃપયા તેને રૂપિયા ત્રણ હજારનું ધ્યા દાન આપજો”
+            </div>
+          </div>
+
+          <!-- Dynamic Audio Players Container -->
+          <div id="ablation-players-grid" class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"></div>
+        </div>
+      </div>
+    </section>
+
   <!-- ═══════════════════════ SPECTROGRAM SECTION ═══════════════════════ -->
   <section id="spectrogram" class="scroll-mt-24 border-t border-[var(--line)] py-24 sm:py-32" data-observe-section>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
       <div class="reveal grid items-end gap-8 md:grid-cols-[auto_1fr]">
-        <div class="section-number" aria-hidden="true">02</div>
+        <div class="section-number" aria-hidden="true">03</div>
         <div class="pb-1 md:pb-3">
           <p class="eyebrow mb-3">Frequency · Time · FFT</p>
           <div class="flex flex-wrap items-end justify-between gap-4">
@@ -464,31 +749,31 @@
     ];
 
             const INDIC_SAMPLES = [
-      { id: 'indic_voices_r_val_gujarati_val_3377699720634089_chunk_4_enhanced_298', transcript: '[Transcript pending...]', detail: 'Gujarati' },
-      { id: 'indic_voices_r_val_gujarati_val_3377699720638776_chunk_5_enhanced_40', transcript: '[Transcript pending...]', detail: 'Gujarati' },
-      { id: 'indic_voices_r_val_gujarati_val_3377699720545441_chunk_3_enhanced_218', transcript: '[Transcript pending...]', detail: 'Gujarati' },
-      { id: 'indic_voices_r_val_gujarati_val_3377699720586489_chunk_2_enhanced_70', transcript: '[Transcript pending...]', detail: 'Gujarati' },
-      { id: 'indic_voices_r_val_gujarati_val_3377699720595120_chunk_1_enhanced_330', transcript: '[Transcript pending...]', detail: 'Gujarati' },
-      { id: 'indic_voices_r_val_hindi_val_5348024557708431_chunk_11_enhanced_69', transcript: '[Transcript pending...]', detail: 'Hindi' },
-      { id: 'indic_voices_r_val_hindi_val_5348024557680704_chunk_7_enhanced_112', transcript: '[Transcript pending...]', detail: 'Hindi' },
-      { id: 'indic_voices_r_val_hindi_val_5348024557629280_chunk_1_enhanced_99', transcript: '[Transcript pending...]', detail: 'Hindi' },
-      { id: 'indic_voices_r_val_hindi_val_5348024557698966_chunk_6_enhanced_175', transcript: '[Transcript pending...]', detail: 'Hindi' },
-      { id: 'indic_voices_r_val_hindi_val_5348024557637479_chunk_8_enhanced_17', transcript: '[Transcript pending...]', detail: 'Hindi' },
-      { id: 'indic_voices_r_val_marathi_val_562949953538091_chunk_6_enhanced_140', transcript: '[Transcript pending...]', detail: 'Marathi' },
-      { id: 'indic_voices_r_val_marathi_val_562949953543536_chunk_2_enhanced_159', transcript: '[Transcript pending...]', detail: 'Marathi' },
-      { id: 'indic_voices_r_val_marathi_val_562949953556471_chunk_1_enhanced_141', transcript: '[Transcript pending...]', detail: 'Marathi' },
-      { id: 'indic_voices_r_val_marathi_val_562949953487998_chunk_1_enhanced_125', transcript: '[Transcript pending...]', detail: 'Marathi' },
-      { id: 'indic_voices_r_val_marathi_val_562949953511276_chunk_5_enhanced_171', transcript: '[Transcript pending...]', detail: 'Marathi' },
-      { id: 'indic_voices_r_val_tamil_val_3096224743890565_chunk_2_enhanced_142', transcript: '[Transcript pending...]', detail: 'Tamil' },
-      { id: 'indic_voices_r_val_tamil_val_3096224744143465_chunk_3_enhanced_209', transcript: '[Transcript pending...]', detail: 'Tamil' },
-      { id: 'indic_voices_r_val_tamil_val_3096224743978107_chunk_1_enhanced_197', transcript: '[Transcript pending...]', detail: 'Tamil' },
-      { id: 'indic_voices_r_val_tamil_val_3096224744040929_chunk_3_enhanced_37', transcript: '[Transcript pending...]', detail: 'Tamil' },
-      { id: 'indic_voices_r_val_tamil_val_3096224743890593_chunk_17_enhanced_145', transcript: '[Transcript pending...]', detail: 'Tamil' },
-      { id: 'indic_voices_r_val_telugu_val_4503599627470423_chunk_1_enhanced_1', transcript: '[Transcript pending...]', detail: 'Telugu' },
-      { id: 'indic_voices_r_val_telugu_val_4503599627472764_chunk_1_enhanced_109', transcript: '[Transcript pending...]', detail: 'Telugu' },
-      { id: 'indic_voices_r_val_telugu_val_4503599627407267_chunk_11_enhanced_101', transcript: '[Transcript pending...]', detail: 'Telugu' },
-      { id: 'indic_voices_r_val_telugu_val_4503599627621480_chunk_28_enhanced_156', transcript: '[Transcript pending...]', detail: 'Telugu' },
-      { id: 'indic_voices_r_val_telugu_val_4503599627472776_chunk_1_enhanced_81', transcript: '[Transcript pending...]', detail: 'Telugu' },
+      { id: 'indic_voices_r_val_gujarati_val_3377699720634089_chunk_4_enhanced_298', transcript: 'ચોમાસામાં જ્યારે વધુ વરસાદ કે ઓછા વારસાદના લીધે પાક નિષ્ફળ જતો હોય છે ત્યારે ખેડૂતો બાકીની ઋતુમાં તેનું નુકસાન કઈ રીતે ભરપાઈ થઇ જાય તેવું આયોજન કરીને વાવેતર કરતા હોય છે વાવણી કરતા હોય છે અને મહેનત કરતા હોય છે', detail: 'Gujarati' },
+      { id: 'indic_voices_r_val_gujarati_val_3377699720638776_chunk_5_enhanced_40', transcript: 'તો અમે તમને મહેરબાની કરીને એટલું કહેવા માંગીએ છીએ કે તમે તમારા એ ડ્રાઈવર હાજર ન હોય તો અમને કશો વાંધો નથી પણ તમે તમારા બીજા ડ્રાઈવરને મોકલો', detail: 'Gujarati' },
+      { id: 'indic_voices_r_val_gujarati_val_3377699720545441_chunk_3_enhanced_218', transcript: 'ત્રીસ આઠ ઓગણીસ સો છ્યાંશી', detail: 'Gujarati' },
+      { id: 'indic_voices_r_val_gujarati_val_3377699720586489_chunk_2_enhanced_70', transcript: 'દિન પ્રતિદિન ચાલું જ હોય છે લોકો રોજ કંઈક નવી વાત લઈને આવે છે આ જ આપણે આજકાલની વાત જોઈએ', detail: 'Gujarati' },
+      { id: 'indic_voices_r_val_gujarati_val_3377699720595120_chunk_1_enhanced_330', transcript: 'રાજકીય જૂથો ટુર્નામેન્ટનું આયોજન કરી શકે છે જેમ કે બે રાજકીય જૂથ જેમ કે કોંગ્રેસ અને ભાજપ તે બંને ટુર્નામેન્ટનું આયોજન કરી શકે છે તે બંને અલગ અલગ ટીમ બનાવીને ટુર્નામેન્ટ કરીને પછી જે ક્રિકેટ રમવા રમાડીને', detail: 'Gujarati' },
+      { id: 'indic_voices_r_val_hindi_val_5348024557708431_chunk_11_enhanced_69', transcript: 'तभी महिला बच्चों का मतलब देख भाल करती हैं घर में घर गृहस्ती चलाती हैं अगर पुरुष नहीं हैं तो महिला कुछ भी नहीं कर पाएँगे कैसे घर चलाएँगी कैसे क्या करेंगी', detail: 'Hindi' },
+      { id: 'indic_voices_r_val_hindi_val_5348024557680704_chunk_7_enhanced_112', transcript: 'पूरी को आटे के द्वारा बनाया जाता है छोलों को मसाले के द्वारा बनाया जाता है और पनीर की सब्ज़ी में बहुत सारा मसाला मसालों का उपयोग किया जाता है उस में', detail: 'Hindi' },
+      { id: 'indic_voices_r_val_hindi_val_5348024557629280_chunk_1_enhanced_99', transcript: 'एक जनवरी दो हजार बाईस दस सितम्बर दो हजार बीस एक अक्टूबर दो हजार इक्कीस बारह सितम्बर दो हजार बाईस एक नवम्बर दो हजार बीस', detail: 'Hindi' },
+      { id: 'indic_voices_r_val_hindi_val_5348024557698966_chunk_6_enhanced_175', transcript: 'हाँ क्योंकि हमने पैसा आपका पेमेंट कर दिए हैं हाँ', detail: 'Hindi' },
+      { id: 'indic_voices_r_val_hindi_val_5348024557637479_chunk_8_enhanced_17', transcript: 'और जो सुबह दस बजे से पहले का समय है वे हमारो हमारे घर वालों के लिए है', detail: 'Hindi' },
+      { id: 'indic_voices_r_val_marathi_val_562949953538091_chunk_6_enhanced_140', transcript: 'तसेच पंजाबमधील लोक लस्सी पिण्यास प्राधान्य देतात आसाममध्ये लोक जास्त प्रमाणात भात आणि मांसाहार खाण्यास प्राधान्य देतात अशा प्रकारे पूर्ण भारतभर वेगवेगळ्या प्रकारचे अन्न खाल्ले जाते पण बहुतेक भागात सात्त्विक अन्न जास्त प्रमाणात खाल्ले जाते', detail: 'Marathi' },
+      { id: 'indic_voices_r_val_marathi_val_562949953543536_chunk_2_enhanced_159', transcript: 'कारण पूर्ण महाराष्ट्रामध्ये यवतमाळ जिल्हा हा कापसासाठी प्रसिद्ध आहे कापूस हा इथे खूप मोठ्या प्रमाणात पिकवल्या जातो त्याचप्रमाणे गहू आहे', detail: 'Marathi' },
+      { id: 'indic_voices_r_val_marathi_val_562949953556471_chunk_1_enhanced_141', transcript: 'मी रामेश्वरीमध्ये असताना माझ्या घरून तुमची गाडी बुक केलेली होती कारण की आम्हाला थोड्या लवकर जायचं होतं मानेवाड्याला परंतु तुमची गाडी अजूनही तिथे आलेली नाही आहे त्याच्यामुळे आम्ही थोडं पायी पायी चालत निघालेलो आहोत पायी पाई चालत आम्ही मानेवाड्याच्या अर्ध्या रस्त्यापर्यंत पोहोचलेलो आहोत', detail: 'Marathi' },
+      { id: 'indic_voices_r_val_marathi_val_562949953487998_chunk_1_enhanced_125', transcript: 'मला अडकलेल्या व्यवहारातील पाचशे रुपये पंजाब ग्रामीण बँकेमधील नऊ आठ दोन नऊ सहा नऊ पाच एक एक तीन आठ एक ह्या खात्यामधील कधी परत मिळतील', detail: 'Marathi' },
+      { id: 'indic_voices_r_val_marathi_val_562949953511276_chunk_5_enhanced_171', transcript: 'आम्ही भरपूर काही सोबत सण आहे र सण साजरे करतो', detail: 'Marathi' },
+      { id: 'indic_voices_r_val_tamil_val_3096224743890565_chunk_2_enhanced_142', transcript: 'ஆனால் நேரில் பார்த்தீங்கன்னா அந்த ஸாரி வந்துட்டு ரொம்ப லைட்டாக டிசைன்ஸ் ரொம்ப கம்மியாக பார்க்கவே ஒரு மாதிரி பிடிக்காத மாதிரி இருக்குது', detail: 'Tamil' },
+      { id: 'indic_voices_r_val_tamil_val_3096224744143465_chunk_3_enhanced_209', transcript: 'இந்த டைத்துக்குதான் வரணும் இந்த டைத்துக்கு சாப்பிட்ணும் இந்த டைத்துக்கு தூங்குணும் இந்த டைத்துக்கு எழுதணும் ஹோம்ஒர்க் பண்ணணும் அப்படிங்கிற ஒரு கண்டீஷன் நாலேஜ்லாம் இருக்கும்', detail: 'Tamil' },
+      { id: 'indic_voices_r_val_tamil_val_3096224743978107_chunk_1_enhanced_197', transcript: 'எண் மூன்று ஐந்து ஒன்பது ஓன்று எட்டு மூன்று மூன்று ஒன்பது ஆறு மூன்று ஐந்து ஆறு என்ற என் வங்கிக் கணக்கை ஓலா மனி டிஜிட்டல் பேமெண்ட் செயலியுடன் இணைக்க முடியுமா', detail: 'Tamil' },
+      { id: 'indic_voices_r_val_tamil_val_3096224744040929_chunk_3_enhanced_37', transcript: 'அப்பறம் பதினொன்னு ஏழு ரெண்டாயிரத்தி இருபத்தி மூணு', detail: 'Tamil' },
+      { id: 'indic_voices_r_val_tamil_val_3096224743890593_chunk_17_enhanced_145', transcript: 'பல பேரை பார்த்தீங்கன்னா வீட்டுக்கே போக மாட்டாங்க விவசாயிகள்னு பார்த்தீங்கன்னா ஒவ்வொருத்தரும் அங்கேயே அந்த அதாவது வயல்லேயே வந்துட்டு ஒரு கூடாரம் மாதிரி அமைச்சி அந்த வயல்லேயே தங்கி அதுக்கான தண்ணியை அன் தண்ணி நீர் பாச்சறது', detail: 'Tamil' },
+      { id: 'indic_voices_r_val_telugu_val_4503599627470423_chunk_1_enhanced_1', transcript: 'వదిలిపెట్టు', detail: 'Telugu' },
+      { id: 'indic_voices_r_val_telugu_val_4503599627472764_chunk_1_enhanced_109', transcript: 'డిజిటల్ పేమెంట్ యాప్ యాక్సిస్ బ్యాంక్ లైమ్ కి నా ఎనిమిది రెండు రెండు తొమ్మిది ఆరు ఏడు మూడు ఆరు రెండు ఎనిమిది ఒకటి ఒకటి మూడు తొమ్మిది ఐదు బ్యాంక్ ఖాతా లింకు చేయబడిందేమో చూడు', detail: 'Telugu' },
+      { id: 'indic_voices_r_val_telugu_val_4503599627407267_chunk_11_enhanced_101', transcript: 'ముఖ్యంగా ఏంటంటే అ డ్రైనేజ్ సిస్టంలో దగ్గర ఏవి పడితే అవి వస్తువులు చెత్తచెదారం పడకుండా అవి తగిన విధంగా ఉంచుకుంటే చాలా నీట్గా ఉంటుంది మన భారతదేశంలో మన అందరికి కూడా స్వచ్చభారత్ అని పెట్టారు స్వచ్ఛభారత్ అంటే', detail: 'Telugu' },
+      { id: 'indic_voices_r_val_telugu_val_4503599627621480_chunk_28_enhanced_156', transcript: 'ఇటువంటి చిట్కాలను ఇంటి', detail: 'Telugu' },
+      { id: 'indic_voices_r_val_telugu_val_4503599627472776_chunk_1_enhanced_81', transcript: 'అనుసరించు', detail: 'Telugu' },
     ];
 
     
@@ -583,6 +868,8 @@
 
     class WavePlayer {
       constructor(root) {
+        if (root._wavePlayer) return root._wavePlayer;
+        root._wavePlayer = this;
         this.root = root;
         this.src = root.dataset.src;
         this.contextLabel = root.dataset.context;
@@ -1007,7 +1294,121 @@
       document.querySelectorAll('[data-observe-section]').forEach(section => observer.observe(section));
     }
 
+
+    const ABLATION_SAMPLES = [
+      { id: 'indic_voices_r_val_gujarati_val_3377699720545419_chunk_1_enhanced_260', label: 'Gujarati · Sample 1 (8.0s)', transcript: 'શું મધર હૅલ્પેજ એન જી ઓની યાદીમાં છે જો હોય તો કૃપયા તેને રૂપિયા ત્રણ હજારનું ધ્યા દાન આપજો' },
+      { id: 'indic_voices_r_val_gujarati_val_3377699720545441_chunk_3_enhanced_218', label: 'Gujarati · Sample 2 (2.4s)', transcript: 'ત્રીસ આઠ ઓગણીસ સો છ્યાંશી' },
+      { id: 'indic_voices_r_val_gujarati_val_3377699720545441_chunk_5_enhanced_247', label: 'Gujarati · Sample 3 (6.6s)', transcript: 'હા અને લાસ્ટ ડેટ છે સત્તાવીસ દસ બે હજાર બાવીસ' },
+      { id: 'indic_voices_r_val_gujarati_val_3377699720545452_chunk_5_enhanced_255', label: 'Gujarati · Sample 4 (7.2s)', transcript: 'અ બંગાળી ભાષા કે પછી બીજી અન્ય ભાષા છે જે દેશની એ ત્યાનાં નાગરિકોને સરળ પડતી હશે' },
+      { id: 'indic_voices_r_val_gujarati_val_3377699720545453_chunk_10_enhanced_263', label: 'Gujarati · Sample 5 (8.2s)', transcript: 'તો અ અત્યારે કોઇપણ સાધન ચલાવવા માટે વીજળી ખૂબ જરૂરી છે જે મોબાઈલ છે ઇન્ટરનેટ છે કે લૅપટોપ છે' },
+    ];
+
+    const ABLATION_CONDITIONS = [
+      { folder: 'ground_truth', label: 'Ground Truth', category: 'full_c1', accent: '#12a87a', tag: 'Reference' },
+      { folder: 'proposed_full', label: 'GLAMNet (Ours)', category: 'full_c1', accent: '#ee6c4d', tag: 'Full Proposed' },
+      { folder: 'no_language_id', label: 'w/o Language', category: 'full_c1', accent: '#e74c3c', tag: 'C1: Removal' },
+      { folder: 'acoustic_only', label: 'w/o Linguistic Cond.', category: 'full_c1', accent: '#c0392b', tag: 'C1: Removal' },
+      { folder: 'no_boundary', label: 'w/o Boundary Cond.', category: 'full_c1', accent: '#e67e22', tag: 'C1: Removal' },
+      { folder: 'language_only', label: 'w/o Grapheme (Lang-Only)', category: 'full_c1', accent: '#27ae60', tag: 'C1: Removal' },
+      { folder: 'shuffled_grapheme', label: 'Shuffled Graphemes', category: 'c2', accent: '#8e44ad', tag: 'C2: Perturbation' },
+      { folder: 'wrong_language', label: 'Swapped Wrong Lang ID', category: 'c2', accent: '#9b59b6', tag: 'C2: Perturbation' },
+      { folder: 'shifted_grapheme_minus5', label: 'Grapheme Shift -5 Frames', category: 'c2', accent: '#3498db', tag: 'C2: Perturbation' },
+      { folder: 'shifted_grapheme_plus5', label: 'Grapheme Shift +5 Frames', category: 'c2', accent: '#2980b9', tag: 'C2: Perturbation' },
+      { folder: 'no_film', label: 'No FiLM (Δγ=0, β=0)', category: 'c3', accent: '#d35400', tag: 'C3: Mechanism' },
+      { folder: 'no_gamma', label: 'Additive-Only (No Scale)', category: 'c3', accent: '#e67e22', tag: 'C3: Mechanism' },
+      { folder: 'no_beta', label: 'Scale-Only (No Shift)', category: 'c3', accent: '#f39c12', tag: 'C3: Mechanism' },
+      { folder: 'zero_embedding', label: 'Zero Embedding Override', category: 'c3', accent: '#7f8c8d', tag: 'C3: Mechanism' },
+      { folder: 'mean_embedding', label: 'Mean Lang Embedding', category: 'c3', accent: '#16a085', tag: 'C3: Mechanism' },
+      { folder: 'early_layers_only', label: 'Early Layers Only (0–3)', category: 'c4', accent: '#2c3e50', tag: 'C4: Layer Depth' },
+      { folder: 'deep_layers_only', label: 'Deep Layers Only (4–7)', category: 'c4', accent: '#1abc9c', tag: 'C4: Layer Depth' },
+    ];
+
+    let currentAblationCategory = 'all';
+    let currentAblationSampleId = ABLATION_SAMPLES[0].id;
+
+    function renderAblationPlayers() {
+      const container = document.getElementById('ablation-players-grid');
+      if (!container) return;
+
+      if (activePlayer && container.contains(activePlayer.root)) {
+        activePlayer.pause();
+        activePlayer = null;
+      }
+
+      const filtered = ABLATION_CONDITIONS.filter(c => currentAblationCategory === 'all' || c.category === currentAblationCategory);
+
+      container.innerHTML = filtered.map(c => {
+        return `
+          <div class="ablation-player-item">
+            <div class="mb-1.5 flex items-center justify-between text-[0.58rem] font-mono uppercase tracking-wider text-[var(--muted)]">
+              <span class="rounded bg-[var(--page)] px-1.5 py-0.5 font-bold" style="color: ${c.accent};">${c.tag}</span>
+            </div>
+            ${playerMarkup({
+              src: `samples/ablation/${c.folder}/${currentAblationSampleId}.wav`,
+              label: c.label,
+              accent: c.accent,
+              context: `${c.label} · ${currentAblationSampleId}`
+            })}
+          </div>`;
+      }).join('');
+
+      // Instantiate new wave players
+      container.querySelectorAll('[data-audio-player]').forEach(el => {
+        if (!el._wavePlayer) {
+          const wp = new WavePlayer(el);
+          players.push(wp);
+        }
+      });
+
+      if (typeof setupLazyWaveforms === 'function') {
+        setupLazyWaveforms();
+      }
+    }
+
+    function setupAblationControls() {
+      const sampleSelect = document.getElementById('ablation-sample-select');
+      const transcriptDisplay = document.getElementById('ablation-transcript-display');
+      const filterGroup = document.getElementById('ablation-filter-group');
+
+      if (sampleSelect) {
+        sampleSelect.addEventListener('change', (e) => {
+          currentAblationSampleId = e.target.value;
+          const found = ABLATION_SAMPLES.find(s => s.id === currentAblationSampleId);
+          if (found && transcriptDisplay) {
+            transcriptDisplay.textContent = `“${found.transcript}”`;
+          }
+          renderAblationPlayers();
+        });
+      }
+
+      if (filterGroup) {
+        // Set initial active state on 'all'
+        const allBtn = filterGroup.querySelector('[data-category="all"]');
+        if (allBtn) {
+          allBtn.style.backgroundColor = 'var(--ink)';
+          allBtn.style.color = 'var(--page)';
+        }
+
+        filterGroup.querySelectorAll('.ablation-pill').forEach(btn => {
+          btn.addEventListener('click', () => {
+            filterGroup.querySelectorAll('.ablation-pill').forEach(b => {
+              b.classList.remove('active');
+              b.style.backgroundColor = '';
+              b.style.color = '';
+            });
+            btn.classList.add('active');
+            btn.style.backgroundColor = 'var(--ink)';
+            btn.style.color = 'var(--page)';
+            currentAblationCategory = btn.dataset.category;
+            renderAblationPlayers();
+          });
+        });
+      }
+    }
+
     renderSamples();
+    renderAblationPlayers();
+    setupAblationControls();
     setupHeroWave();
 
     document.querySelectorAll('[data-audio-player]').forEach(element => players.push(new WavePlayer(element)));
