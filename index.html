@@ -387,18 +387,21 @@
         </div>
       </div>
 
-      <!-- Controls -->
-      <div class="reveal mt-10 flex flex-wrap items-center gap-4 border-y border-[var(--line)] py-5" style="transition-delay:80ms">
+      <!-- Controls & Transcript Display -->
+      <div class="reveal mt-10 flex flex-wrap items-center justify-between gap-4 border-y border-[var(--line)] py-5" style="transition-delay:80ms">
         <div class="flex items-center gap-3">
           <span class="text-xs font-bold uppercase tracking-wider text-[var(--muted)]">Sample</span>
           <div class="relative">
-            <select id="spec-sample-select" style="appearance:none;-webkit-appearance:none;background-color:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:0.75rem;padding:0.45rem 2.4rem 0.45rem 0.9rem;font-size:0.8rem;font-weight:600;font-family:inherit;cursor:pointer;outline:none;max-width:280px;">
+            <select id="spec-sample-select" style="appearance:none;-webkit-appearance:none;background-color:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:0.75rem;padding:0.45rem 2.4rem 0.45rem 0.9rem;font-size:0.8rem;font-weight:600;font-family:inherit;cursor:pointer;outline:none;min-width:200px;">
               <option value="">— select a sample —</option>
             </select>
             <span style="pointer-events:none;position:absolute;right:0.65rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true"><svg viewBox="0 0 20 20" style="width:0.85rem;height:0.85rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           </div>
         </div>
-        <div class="ml-auto flex items-center gap-2">
+        <div id="spec-transcript-display" class="flex-1 min-w-[260px] max-w-2xl text-sm font-medium italic text-[var(--ink)]">
+          — select a sample to inspect spectrogram and transcription —
+        </div>
+        <div class="flex items-center gap-2">
           <span class="text-xs font-bold uppercase tracking-wider text-[var(--muted)]">Zoom</span>
           <button id="spec-zoom-out" style="width:2rem;height:2rem;border-radius:0.5rem;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-weight:700;cursor:pointer;font-size:1.1rem;transition:background 0.18s;" aria-label="Zoom out">−</button>
           <span id="spec-zoom-label" style="font-family:var(--font-mono);font-size:0.75rem;font-weight:600;min-width:2.2rem;text-align:center;">1×</span>
@@ -1519,14 +1522,30 @@
       // ── Init ────────────────────────────────────────────────
       function initSpectrogram() {
         const sel = document.getElementById('spec-sample-select');
+        const transcriptDisplay = document.getElementById('spec-transcript-display');
         if (!sel) return;
 
-        INDIC_SAMPLES.forEach(s => {
+        INDIC_SAMPLES.forEach((s, idx) => {
           const o=document.createElement('option');
-          o.value=s.id; o.textContent=`${s.detail} — …${s.id.slice(-10)}`;
+          o.value=s.id;
+          const sampleNum = (idx % 5) + 1;
+          o.textContent=`${s.detail} · Sample ${sampleNum}`;
           sel.appendChild(o);
         });
-        sel.addEventListener('change', () => { if(sel.value){S.sampleId=sel.value; loadBothPanels(sel.value);} });
+        sel.addEventListener('change', () => {
+          if (sel.value) {
+            S.sampleId = sel.value;
+            const found = INDIC_SAMPLES.find(s => s.id === sel.value);
+            if (found && transcriptDisplay) {
+              transcriptDisplay.textContent = `“${found.transcript}”`;
+            }
+            loadBothPanels(sel.value);
+          } else {
+            if (transcriptDisplay) {
+              transcriptDisplay.textContent = '— select a sample to inspect spectrogram and transcription —';
+            }
+          }
+        });
 
         // Initial grey-out sync
         syncDropdowns();
