@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="GLAMNet Vocoder audio comparisons for Indic Voices and VCTK.">
-  <meta name="theme-color" content="#f5f4ef" id="theme-color-meta">
+  <meta name="theme-color" content="#ffffff" id="theme-color-meta">
   <title>GLAMNet · Audio Samples</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
 
@@ -12,7 +12,11 @@
     (() => {
       try {
         const savedTheme = localStorage.getItem('streaming-vocoder-theme');
-        document.documentElement.classList.toggle('dark', savedTheme ? savedTheme === 'dark' : false);
+        if (savedTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
 
         const savedFont = Number(localStorage.getItem('streaming-vocoder-font-step'));
         if (Number.isInteger(savedFont) && savedFont >= -2 && savedFont <= 2) {
@@ -128,8 +132,18 @@
         <a href="#spectrogram" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Spectrogram Analysis</a>
       </nav>
 
-      <div id="accessibility-menu" class="relative order-2 md:order-3">
-        <button id="accessibility-toggle" type="button" class="control-shell control-button flex items-center gap-2 rounded-xl px-3 py-2.5" aria-label="Open accessibility settings" aria-haspopup="dialog" aria-controls="accessibility-panel" aria-expanded="false">
+      <div class="flex items-center gap-2 order-2 md:order-3">
+        <button id="quick-theme-toggle" type="button" class="control-shell control-button flex items-center justify-center size-10 rounded-xl" aria-label="Toggle theme mode" title="Toggle Light / Dark theme">
+          <svg class="size-5 dark:hidden" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <path d="M20.1 15.1A8.2 8.2 0 0 1 8.9 3.9 8.3 8.3 0 1 0 20.1 15.1Z" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <svg class="size-5 hidden dark:block" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="3.4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div id="accessibility-menu" class="relative">
+          <button id="accessibility-toggle" type="button" class="control-shell control-button flex items-center gap-2 rounded-xl px-3 py-2.5" aria-label="Open accessibility settings" aria-haspopup="dialog" aria-controls="accessibility-panel" aria-expanded="false">
           <svg viewBox="0 0 24 24" class="size-5" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
             <circle cx="12" cy="4.5" r="2"/>
             <path d="M5 8.5c2.2 1 4.5 1.5 7 1.5s4.8-.5 7-1.5M12 10v10M8 21l4-7 4 7" stroke-linecap="round" stroke-linejoin="round"/>
@@ -202,6 +216,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </header>
@@ -921,13 +936,14 @@
 
     function setupTheme() {
       const buttons = [...document.querySelectorAll('[data-theme-option]')];
+      const quickToggle = document.getElementById('quick-theme-toggle');
       const meta = document.getElementById('theme-color-meta');
 
       const update = theme => {
         const isDark = theme === 'dark';
         document.documentElement.classList.toggle('dark', isDark);
         buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.themeOption === theme)));
-        meta.setAttribute('content', isDark ? '#0b0e14' : '#f5f4ef');
+        if (meta) meta.setAttribute('content', isDark ? '#0b0e14' : '#ffffff');
         requestAnimationFrame(() => players.forEach(player => player.draw()));
       };
 
@@ -937,7 +953,17 @@
         update(theme);
       }));
 
-      update(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+      if (quickToggle) {
+        quickToggle.addEventListener('click', () => {
+          const currentIsDark = document.documentElement.classList.contains('dark');
+          const newTheme = currentIsDark ? 'light' : 'dark';
+          try { localStorage.setItem('streaming-vocoder-theme', newTheme); } catch (_) {}
+          update(newTheme);
+        });
+      }
+
+      const savedTheme = localStorage.getItem('streaming-vocoder-theme');
+      update(savedTheme === 'dark' ? 'dark' : 'light');
     }
 
     function setupFontControls() {
