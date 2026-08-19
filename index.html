@@ -12,14 +12,14 @@
     (() => {
       try {
         const savedTheme = localStorage.getItem('streaming-vocoder-theme');
-        document.documentElement.classList.toggle('dark', savedTheme ? savedTheme === 'dark' : true);
+        document.documentElement.classList.toggle('dark', savedTheme ? savedTheme === 'dark' : false);
 
         const savedFont = Number(localStorage.getItem('streaming-vocoder-font-step'));
         if (Number.isInteger(savedFont) && savedFont >= -2 && savedFont <= 2) {
           document.documentElement.dataset.fontStep = String(savedFont);
         }
       } catch (_) {
-        document.documentElement.classList.add('dark');
+        document.documentElement.classList.remove('dark');
       }
     })();
   </script>
@@ -123,7 +123,7 @@
       </a>
 
       <nav class="order-3 hidden w-full items-center justify-center gap-1 border-t border-[var(--line)] pt-2 sm:flex md:order-2 md:w-auto md:border-0 md:pt-0" aria-label="Sample sections">
-        <a href="#indic" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Utterance Samples</a>
+        <a href="#indic" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Demo Samples</a>
         <a href="#ablation" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Ablation Studies</a>
         <a href="#spectrogram" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Spectrogram Analysis</a>
       </nav>
@@ -239,20 +239,20 @@
         <a href="#indic" class="dataset-link group flex items-center justify-between rounded-2xl p-5">
           <span>
             <span class="eyebrow block">01 · 5 Languages</span>
-            <span class="mt-2 block text-base font-bold tracking-tight sm:text-lg">IndicVoices-R</span>
+            <span class="mt-2 block text-base font-bold tracking-tight sm:text-lg">Demo Samples</span>
           </span>
           <span class="grid size-10 place-items-center rounded-full border border-[var(--line)] transition-transform group-hover:translate-x-1" aria-hidden="true">↓</span>
         </a>
         <a href="#ablation" class="dataset-link group flex items-center justify-between rounded-2xl p-5">
           <span>
-            <span class="eyebrow block">02 · 17 Variants</span>
+            <span class="eyebrow block">02 · Ablations</span>
             <span class="mt-2 block text-base font-bold tracking-tight sm:text-lg">Ablation Studies</span>
           </span>
           <span class="grid size-10 place-items-center rounded-full border border-[var(--line)] transition-transform group-hover:translate-x-1" aria-hidden="true">↓</span>
         </a>
         <a href="#spectrogram" class="dataset-link group flex items-center justify-between rounded-2xl p-5">
           <span>
-            <span class="eyebrow block">03 · FFT & Time</span>
+            <span class="eyebrow block">03 · Visualizer</span>
             <span class="mt-2 block text-base font-bold tracking-tight sm:text-lg">Spectrogram Analysis</span>
           </span>
           <span class="grid size-10 place-items-center rounded-full border border-[var(--line)] transition-transform group-hover:translate-x-1" aria-hidden="true">↓</span>
@@ -265,10 +265,9 @@
         <div class="reveal grid items-end gap-8 md:grid-cols-[auto_1fr]">
           <div class="section-number" aria-hidden="true">01</div>
           <div class="pb-1 md:pb-3">
-            <p class="eyebrow mb-3">Single speaker · 24 kHz</p>
             <div class="flex flex-wrap items-end justify-between gap-4">
-              <h2 class="text-3xl font-extrabold tracking-[-0.045em] sm:text-5xl">IndicVoices-R</h2>
-              <p class="max-w-md text-sm leading-6 text-[var(--muted)]">Five utterances, aligned across the reference and five streaming variants.</p>
+              <h2 class="text-3xl font-extrabold tracking-[-0.045em] sm:text-5xl">Demo Samples</h2>
+              <p class="max-w-md text-sm leading-6 text-[var(--muted)]">Multilingual audio reconstructions across 5 Indic languages.</p>
             </div>
           </div>
         </div>
@@ -310,250 +309,26 @@
         <div class="reveal grid items-end gap-8 md:grid-cols-[auto_1fr]">
           <div class="section-number" aria-hidden="true">02</div>
           <div class="pb-1 md:pb-3">
-            <p class="eyebrow mb-3">Architectural & Conditioning Interventions</p>
             <div class="flex flex-wrap items-end justify-between gap-4">
               <h2 class="text-3xl font-extrabold tracking-[-0.045em] sm:text-5xl">Ablation Studies</h2>
-              <p class="max-w-md text-sm leading-6 text-[var(--muted)]">Controlled inference-time interventions on the frozen GLAMNet checkpoint across 500 Indic evaluation utterances.</p>
+              <p class="max-w-md text-sm leading-6 text-[var(--muted)]">Controlled inference-time interventions on GLAMNet.</p>
             </div>
-          </div>
-        </div>
-
-        <!-- Scope Banner -->
-        <div class="reveal mt-8 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5 text-sm leading-6 text-[var(--muted)]">
-          <div class="flex items-start gap-3.5">
-            <span class="grid size-7 shrink-0 place-items-center rounded-xl bg-[var(--accent)] text-white text-xs font-bold shadow-sm">ℹ</span>
-            <div>
-              <span class="font-bold text-[var(--ink)] tracking-tight text-base">Evaluation Scope & Demonstration Language:</span>
-              <p class="mt-1 text-sm text-[var(--muted)]">
-                The quantitative master analysis ($N = 500$ evaluation utterances) is conducted across all 5 Indic languages (<strong class="text-[var(--ink)]">Gujarati, Hindi, Marathi, Tamil, Telugu</strong>).
-                For interactive auditory inspection of acoustic degradation and FiLM layer dynamics, audio reconstructions across all conditions are demonstrated below on representative validation utterances in <strong class="text-[var(--accent)]">Gujarati</strong> (single speaker, 24 kHz).
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Master Ablation Summary Table -->
-        <div class="reveal mt-12 overflow-hidden rounded-3xl border border-[var(--line)] bg-[var(--panel)] p-4 sm:p-6 lg:p-8 shadow-sm">
-          <div class="mb-6 flex flex-wrap items-center justify-between gap-4 border-b border-[var(--line)] pb-5">
-            <div>
-              <span class="eyebrow block">Table: Master Ablation Analysis</span>
-              <h3 class="mt-1 text-lg font-bold tracking-tight sm:text-xl">Master Ablation Results (500-Utterance Indic Evaluation Set)</h3>
-            </div>
-            <div class="flex items-center gap-3 font-mono text-[0.62rem] uppercase tracking-wider text-[var(--muted)]">
-              <span class="flex items-center gap-1.5"><strong class="text-[var(--ink)]">Bold</strong> = Best</span>
-              <span class="flex items-center gap-1.5"><u class="decoration-[var(--accent)] decoration-2">Underline</u> = 2nd Best</span>
-            </div>
-          </div>
-
-          <div class="overflow-x-auto">
-            <table class="w-full text-left font-mono text-xs" style="border-collapse: separate; border-spacing: 0;">
-              <thead>
-                <tr class="border-b border-[var(--line)] bg-[var(--page)] text-[0.65rem] uppercase tracking-wider text-[var(--muted)]">
-                  <th class="py-3.5 pl-4 pr-3 font-bold">Cat.</th>
-                  <th class="py-3.5 px-3 font-bold">Condition System</th>
-                  <th class="py-3.5 px-3 text-right font-bold">PESQ (↑)</th>
-                  <th class="py-3.5 px-3 text-right font-bold">STOI (↑)</th>
-                  <th class="py-3.5 px-3 text-right font-bold">MCD (↓)</th>
-                  <th class="py-3.5 px-3 text-right font-bold">LSD dB (↓)</th>
-                  <th class="py-3.5 px-3 text-right font-bold">MR-STFT (↓)</th>
-                  <th class="py-3.5 pr-4 pl-3 text-right font-bold">F0 MAE Hz (↓)</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-[var(--line)] text-[0.72rem]">
-                <!-- Full Reference -->
-                <tr class="bg-[var(--panel-solid)] font-semibold transition-colors hover:bg-[var(--page)]">
-                  <td class="py-3 pl-4 pr-3 text-[var(--accent)] font-bold">Full</td>
-                  <td class="py-3 px-3 font-bold text-[var(--ink)]">GLAMNet (Ours)</td>
-                  <td class="py-3 px-3 text-right font-bold"><u class="decoration-[var(--accent)] decoration-1.5">3.191 ± 0.310</u></td>
-                  <td class="py-3 px-3 text-right font-bold text-[var(--accent)]"><strong>0.956 ± 0.014</strong></td>
-                  <td class="py-3 px-3 text-right font-bold text-[var(--accent)]"><strong>71.535 ± 13.753</strong></td>
-                  <td class="py-3 px-3 text-right font-bold text-[var(--accent)]"><strong>7.281 ± 0.151</strong></td>
-                  <td class="py-3 px-3 text-right font-bold text-[var(--accent)]"><strong>0.900 ± 0.041</strong></td>
-                  <td class="py-3 pr-4 pl-3 text-right font-bold text-[var(--accent)]"><strong>14.100 ± 10.540</strong></td>
-                </tr>
-
-                <!-- C1 Category -->
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C1</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">w/o Language at Inference</td>
-                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">1.174 ± 0.074</td>
-                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">0.751 ± 0.042</td>
-                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">508.751 ± 64.845</td>
-                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">22.632 ± 2.509</td>
-                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">5.860 ± 1.240</td>
-                  <td class="py-2.5 pr-4 pl-3 text-right text-red-500 font-semibold">73.030 ± 23.970</td>
-                </tr>
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C1</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">w/o Linguistic Conditioning at Inference</td>
-                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">1.152 ± 0.061</td>
-                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">0.735 ± 0.045</td>
-                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">532.373 ± 66.741</td>
-                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">23.750 ± 2.270</td>
-                  <td class="py-2.5 px-3 text-right text-red-500 font-semibold">6.513 ± 1.371</td>
-                  <td class="py-2.5 pr-4 pl-3 text-right text-red-500 font-semibold">78.080 ± 26.280</td>
-                </tr>
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C1</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">w/o Boundary Conditioning</td>
-                  <td class="py-2.5 px-3 text-right">3.191 ± 0.310</td>
-                  <td class="py-2.5 px-3 text-right">0.956 ± 0.014</td>
-                  <td class="py-2.5 px-3 text-right">71.535 ± 13.753</td>
-                  <td class="py-2.5 px-3 text-right">7.281 ± 0.151</td>
-                  <td class="py-2.5 px-3 text-right">0.900 ± 0.041</td>
-                  <td class="py-2.5 pr-4 pl-3 text-right">14.100 ± 10.540</td>
-                </tr>
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C1</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">w/o Grapheme at Inference</td>
-                  <td class="py-2.5 px-3 text-right font-bold text-emerald-500"><strong>3.195 ± 0.305</strong></td>
-                  <td class="py-2.5 px-3 text-right font-bold text-emerald-500"><strong>0.957 ± 0.014</strong></td>
-                  <td class="py-2.5 px-3 text-right font-bold text-emerald-500"><strong>71.286 ± 13.952</strong></td>
-                  <td class="py-2.5 px-3 text-right font-bold text-emerald-500"><strong>7.276 ± 0.150</strong></td>
-                  <td class="py-2.5 px-3 text-right font-bold text-emerald-500"><strong>0.899 ± 0.041</strong></td>
-                  <td class="py-2.5 pr-4 pl-3 text-right font-bold text-emerald-500"><strong>14.014 ± 10.551</strong></td>
-                </tr>
-
-                <!-- C2 Category -->
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C2</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">Shuffled Grapheme Labels</td>
-                  <td class="py-2.5 px-3 text-right">3.186 ± 0.302</td>
-                  <td class="py-2.5 px-3 text-right">0.956 ± 0.014</td>
-                  <td class="py-2.5 px-3 text-right">72.277 ± 14.172</td>
-                  <td class="py-2.5 px-3 text-right">7.282 ± 0.150</td>
-                  <td class="py-2.5 px-3 text-right">0.902 ± 0.041</td>
-                  <td class="py-2.5 pr-4 pl-3 text-right">14.160 ± 10.470</td>
-                </tr>
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C2</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">Swapped Wrong Language ID</td>
-                  <td class="py-2.5 px-3 text-right">3.187 ± 0.309</td>
-                  <td class="py-2.5 px-3 text-right"><u class="decoration-[var(--accent)] decoration-1">0.956 ± 0.015</u></td>
-                  <td class="py-2.5 px-3 text-right"><u class="decoration-[var(--accent)] decoration-1">72.063 ± 15.032</u></td>
-                  <td class="py-2.5 px-3 text-right"><u class="decoration-[var(--accent)] decoration-1">7.281 ± 0.151</u></td>
-                  <td class="py-2.5 px-3 text-right"><u class="decoration-[var(--accent)] decoration-1">0.901 ± 0.041</u></td>
-                  <td class="py-2.5 pr-4 pl-3 text-right"><u class="decoration-[var(--accent)] decoration-1">14.120 ± 10.680</u></td>
-                </tr>
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C2</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">Grapheme Alignment Shift -10 Frames</td>
-                  <td class="py-2.5 px-3 text-right">3.195 ± 0.306</td>
-                  <td class="py-2.5 px-3 text-right">0.956 ± 0.014</td>
-                  <td class="py-2.5 px-3 text-right">71.247 ± 13.630</td>
-                  <td class="py-2.5 px-3 text-right">7.281 ± 0.151</td>
-                  <td class="py-2.5 px-3 text-right">0.900 ± 0.040</td>
-                  <td class="py-2.5 pr-4 pl-3 text-right">14.113 ± 10.690</td>
-                </tr>
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C2</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">Grapheme Alignment Shift +10 Frames</td>
-                  <td class="py-2.5 px-3 text-right">3.192 ± 0.305</td>
-                  <td class="py-2.5 px-3 text-right">0.956 ± 0.014</td>
-                  <td class="py-2.5 px-3 text-right">71.454 ± 13.593</td>
-                  <td class="py-2.5 px-3 text-right">7.282 ± 0.151</td>
-                  <td class="py-2.5 px-3 text-right">0.901 ± 0.041</td>
-                  <td class="py-2.5 pr-4 pl-3 text-right">14.127 ± 10.584</td>
-                </tr>
-
-                <!-- C3 Category -->
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C3</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">No FiLM (Δγ=0, β=0)</td>
-                  <td class="py-2.5 px-3 text-right text-red-500">1.150 ± 0.060</td>
-                  <td class="py-2.5 px-3 text-right text-red-500">0.734 ± 0.045</td>
-                  <td class="py-2.5 px-3 text-right text-red-500">535.900 ± 66.900</td>
-                  <td class="py-2.5 px-3 text-right text-red-500">23.810 ± 2.200</td>
-                  <td class="py-2.5 px-3 text-right text-red-500">6.540 ± 1.380</td>
-                  <td class="py-2.5 pr-4 pl-3 text-right text-red-500">80.600 ± 28.300</td>
-                </tr>
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C3</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">Additive-Only (No Scale)</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">1.250 ± 0.100</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">0.794 ± 0.038</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">458.730 ± 56.680</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">19.400 ± 2.620</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">4.160 ± 0.800</td>
-                  <td class="py-2.5 pr-4 pl-3 text-right text-orange-500">82.300 ± 30.500</td>
-                </tr>
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C3</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">Scale-Only (No Shift)</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">1.200 ± 0.080</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">0.670 ± 0.048</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">366.110 ± 45.860</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">12.500 ± 1.630</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">2.120 ± 0.190</td>
-                  <td class="py-2.5 pr-4 pl-3 text-right text-orange-500">28.900 ± 16.600</td>
-                </tr>
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C3</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">Zero Embedding Override</td>
-                  <td class="py-2.5 px-3 text-right text-red-500">1.170 ± 0.070</td>
-                  <td class="py-2.5 px-3 text-right text-red-500">0.751 ± 0.042</td>
-                  <td class="py-2.5 px-3 text-right text-red-500">508.750 ± 64.840</td>
-                  <td class="py-2.5 px-3 text-right text-red-500">22.630 ± 2.510</td>
-                  <td class="py-2.5 px-3 text-right text-red-500">5.860 ± 1.240</td>
-                  <td class="py-2.5 pr-4 pl-3 text-right text-red-500">73.000 ± 24.000</td>
-                </tr>
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C3</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">Mean Language Embedding</td>
-                  <td class="py-2.5 px-3 text-right font-bold text-emerald-500"><strong>3.220 ± 0.300</strong></td>
-                  <td class="py-2.5 px-3 text-right">0.955 ± 0.015</td>
-                  <td class="py-2.5 px-3 text-right">99.880 ± 22.200</td>
-                  <td class="py-2.5 px-3 text-right">7.580 ± 0.210</td>
-                  <td class="py-2.5 px-3 text-right">1.020 ± 0.050</td>
-                  <td class="py-2.5 pr-4 pl-3 text-right">15.000 ± 11.000</td>
-                </tr>
-
-                <!-- C4 Category -->
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C4</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">Early Layers Only (Blocks 0–3)</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">1.250 ± 0.100</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">0.775 ± 0.039</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">464.450 ± 64.700</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">18.460 ± 2.020</td>
-                  <td class="py-2.5 px-3 text-right text-orange-500">4.810 ± 0.960</td>
-                  <td class="py-2.5 pr-4 pl-3 text-right text-orange-500">74.500 ± 25.900</td>
-                </tr>
-                <tr class="transition-colors hover:bg-[var(--page)]">
-                  <td class="py-2.5 pl-4 pr-3 text-[var(--muted)] font-medium">C4</td>
-                  <td class="py-2.5 px-3 text-[var(--ink)]">Deep Layers Only (Blocks 4–7)</td>
-                  <td class="py-2.5 px-3 text-right font-semibold text-[var(--ink)]">3.090 ± 0.330</td>
-                  <td class="py-2.5 px-3 text-right font-semibold text-[var(--ink)]">0.943 ± 0.018</td>
-                  <td class="py-2.5 px-3 text-right font-semibold text-[var(--ink)]">104.260 ± 19.170</td>
-                  <td class="py-2.5 px-3 text-right font-semibold text-[var(--ink)]">7.780 ± 1.070</td>
-                  <td class="py-2.5 px-3 text-right font-semibold text-[var(--ink)]">1.050 ± 0.130</td>
-                  <td class="py-2.5 pr-4 pl-3 text-right font-semibold text-[var(--ink)]">15.600 ± 11.100</td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
 
         <!-- Interactive Ablation Audio Showcase -->
-        <div class="reveal mt-16">
-          <div class="flex flex-wrap items-center justify-between gap-4 border-b border-[var(--line)] pb-5">
-            <div>
-              <p class="eyebrow mb-2">Auditory Demonstration</p>
-              <h3 class="text-2xl font-extrabold tracking-tight sm:text-3xl">Interactive Ablation Audio Player</h3>
-            </div>
-
-            <!-- Category Filter Controls -->
-            <div class="flex flex-wrap items-center gap-2" id="ablation-filter-group">
-              <button type="button" class="ablation-pill control-button rounded-xl px-3.5 py-2 text-xs font-bold" data-category="all">All Variants (17)</button>
-              <button type="button" class="ablation-pill control-button rounded-xl px-3.5 py-2 text-xs font-bold" data-category="full_c1">Full & C1: Conditioning</button>
-              <button type="button" class="ablation-pill control-button rounded-xl px-3.5 py-2 text-xs font-bold" data-category="c2">C2: Perturbations</button>
-              <button type="button" class="ablation-pill control-button rounded-xl px-3.5 py-2 text-xs font-bold" data-category="c3">C3: FiLM Mechanism</button>
-              <button type="button" class="ablation-pill control-button rounded-xl px-3.5 py-2 text-xs font-bold" data-category="c4">C4: Layer Depth</button>
-            </div>
+        <div class="reveal mt-12">
+          <!-- Category Filter Controls with Generous Spacing -->
+          <div class="flex flex-wrap items-center gap-3 sm:gap-4 border-b border-[var(--line)] pb-6" id="ablation-filter-group">
+            <button type="button" class="ablation-pill active control-button rounded-xl px-4 py-2.5 text-xs font-bold border border-[var(--line)] transition-all" data-category="all">All Variants (14)</button>
+            <button type="button" class="ablation-pill control-button rounded-xl px-4 py-2.5 text-xs font-bold border border-[var(--line)] transition-all" data-category="full_c1">Full & C1: Conditioning</button>
+            <button type="button" class="ablation-pill control-button rounded-xl px-4 py-2.5 text-xs font-bold border border-[var(--line)] transition-all" data-category="c2">C2: Perturbations</button>
+            <button type="button" class="ablation-pill control-button rounded-xl px-4 py-2.5 text-xs font-bold border border-[var(--line)] transition-all" data-category="c3">C3: FiLM Mechanism</button>
+            <button type="button" class="ablation-pill control-button rounded-xl px-4 py-2.5 text-xs font-bold border border-[var(--line)] transition-all" data-category="c4">C4: Layer Depth</button>
           </div>
 
           <!-- Sample Selection Dropdown & Info -->
-          <div class="mt-6 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4 sm:p-5">
+          <div class="mt-8 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4 sm:p-5">
             <div class="flex items-center gap-3">
               <label for="ablation-sample-select" class="text-xs font-bold uppercase tracking-wider text-[var(--muted)]">Select Utterance:</label>
               <div class="relative">
@@ -587,10 +362,9 @@
       <div class="reveal grid items-end gap-8 md:grid-cols-[auto_1fr]">
         <div class="section-number" aria-hidden="true">03</div>
         <div class="pb-1 md:pb-3">
-          <p class="eyebrow mb-3">Frequency · Time · FFT</p>
           <div class="flex flex-wrap items-end justify-between gap-4">
             <h2 class="text-3xl font-extrabold tracking-[-0.045em] sm:text-5xl">Spectrogram Analysis</h2>
-            <p class="max-w-md text-sm leading-6 text-[var(--muted)]">Ground Truth vs GLAMNet — synchronized spectrogram comparison with shared scrollbar and linked playback cursor.</p>
+            <p class="max-w-md text-sm leading-6 text-[var(--muted)]">Synchronized spectrogram comparison</p>
           </div>
         </div>
       </div>
@@ -1305,20 +1079,17 @@
 
     const ABLATION_CONDITIONS = [
       { folder: 'ground_truth', label: 'Ground Truth', category: 'full_c1', accent: '#12a87a', tag: 'Reference' },
-      { folder: 'proposed_full', label: 'GLAMNet (Ours)', category: 'full_c1', accent: '#ee6c4d', tag: 'Full Proposed' },
+      { folder: 'proposed_full', label: 'GLAMNet (Ours)', category: 'full_c1', accent: '#ee6c4d', tag: 'Full Model' },
       { folder: 'no_language_id', label: 'w/o Language', category: 'full_c1', accent: '#e74c3c', tag: 'C1: Removal' },
       { folder: 'acoustic_only', label: 'w/o Linguistic Cond.', category: 'full_c1', accent: '#c0392b', tag: 'C1: Removal' },
       { folder: 'no_boundary', label: 'w/o Boundary Cond.', category: 'full_c1', accent: '#e67e22', tag: 'C1: Removal' },
-      { folder: 'language_only', label: 'w/o Grapheme (Lang-Only)', category: 'full_c1', accent: '#27ae60', tag: 'C1: Removal' },
       { folder: 'shuffled_grapheme', label: 'Shuffled Graphemes', category: 'c2', accent: '#8e44ad', tag: 'C2: Perturbation' },
       { folder: 'wrong_language', label: 'Swapped Wrong Lang ID', category: 'c2', accent: '#9b59b6', tag: 'C2: Perturbation' },
-      { folder: 'shifted_grapheme_minus5', label: 'Grapheme Shift -5 Frames', category: 'c2', accent: '#3498db', tag: 'C2: Perturbation' },
-      { folder: 'shifted_grapheme_plus5', label: 'Grapheme Shift +5 Frames', category: 'c2', accent: '#2980b9', tag: 'C2: Perturbation' },
-      { folder: 'no_film', label: 'No FiLM (Δγ=0, β=0)', category: 'c3', accent: '#d35400', tag: 'C3: Mechanism' },
-      { folder: 'no_gamma', label: 'Additive-Only (No Scale)', category: 'c3', accent: '#e67e22', tag: 'C3: Mechanism' },
-      { folder: 'no_beta', label: 'Scale-Only (No Shift)', category: 'c3', accent: '#f39c12', tag: 'C3: Mechanism' },
-      { folder: 'zero_embedding', label: 'Zero Embedding Override', category: 'c3', accent: '#7f8c8d', tag: 'C3: Mechanism' },
-      { folder: 'mean_embedding', label: 'Mean Lang Embedding', category: 'c3', accent: '#16a085', tag: 'C3: Mechanism' },
+      { folder: 'no_film', label: 'No FiLM (Δγ=0, β=0)', category: 'c3', accent: '#d35400', tag: 'C3: FiLM Mechanism' },
+      { folder: 'no_gamma', label: 'Additive-Only (No Scale)', category: 'c3', accent: '#e67e22', tag: 'C3: FiLM Mechanism' },
+      { folder: 'no_beta', label: 'Scale-Only (No Shift)', category: 'c3', accent: '#f39c12', tag: 'C3: FiLM Mechanism' },
+      { folder: 'zero_embedding', label: 'Zero Embedding Override', category: 'c3', accent: '#7f8c8d', tag: 'C3: FiLM Mechanism' },
+      { folder: 'mean_embedding', label: 'Mean Lang Embedding', category: 'c3', accent: '#16a085', tag: 'C3: FiLM Mechanism' },
       { folder: 'early_layers_only', label: 'Early Layers Only (0–3)', category: 'c4', accent: '#2c3e50', tag: 'C4: Layer Depth' },
       { folder: 'deep_layers_only', label: 'Deep Layers Only (4–7)', category: 'c4', accent: '#1abc9c', tag: 'C4: Layer Depth' },
     ];
@@ -1395,10 +1166,12 @@
               b.classList.remove('active');
               b.style.backgroundColor = '';
               b.style.color = '';
+              b.style.borderColor = 'var(--line)';
             });
             btn.classList.add('active');
             btn.style.backgroundColor = 'var(--ink)';
             btn.style.color = 'var(--page)';
+            btn.style.borderColor = 'var(--ink)';
             currentAblationCategory = btn.dataset.category;
             renderAblationPlayers();
           });
