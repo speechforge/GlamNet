@@ -390,11 +390,11 @@
 
       <!-- Play buttons -->
       <div class="reveal mt-5 flex flex-wrap items-center gap-3" style="transition-delay:120ms">
-        <button id="spec-play-gt" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:#12a87a44;" disabled>
+        <button id="spec-play-gt" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:#10b98144;" disabled>
           <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
           Ground Truth
         </button>
-        <button id="spec-play-gl" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:#ee6c4d44;" disabled>
+        <button id="spec-play-gl" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:#ea580c44;" disabled>
           <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
           GLAMNet
         </button>
@@ -514,12 +514,12 @@
 
   <script>
         const METHODS = [
-      { folder: 'ground_truth', label: 'Ground Truth', accent: '#12a87a' },
-      { folder: 'parallel_wavegan', label: 'Parallel WaveGAN', accent: '#7c879a' },
-      { folder: 'hifigan', label: 'HiFi-GAN', accent: '#6f7ee8' },
-      { folder: 'bigvgan', label: 'BigVGAN', accent: '#2374e1' },
-      { folder: 'vocos', label: 'Vocos', accent: '#9a61d0' },
-      { folder: 'glamnet', label: 'GLAMNet', accent: '#ee6c4d' }
+      { folder: 'ground_truth', label: 'Ground Truth', accent: '#10b981' },
+      { folder: 'parallel_wavegan', label: 'Parallel WaveGAN', accent: '#64748b' },
+      { folder: 'hifigan', label: 'HiFi-GAN', accent: '#0284c7' },
+      { folder: 'bigvgan', label: 'BigVGAN', accent: '#2563eb' },
+      { folder: 'vocos', label: 'Vocos', accent: '#8b5cf6' },
+      { folder: 'glamnet', label: 'GLAMNet', accent: '#ea580c' }
     ];
 
             const INDIC_SAMPLES = [
@@ -1078,20 +1078,20 @@
     ];
 
     const ABLATION_CONDITIONS = [
-      { folder: 'ground_truth', label: 'Ground Truth', category: 'full_c1', accent: '#12a87a', tag: 'Reference' },
-      { folder: 'proposed_full', label: 'GLAMNet (Ours)', category: 'full_c1', accent: '#ee6c4d', tag: 'Full Model' },
-      { folder: 'no_language_id', label: 'w/o Language', category: 'full_c1', accent: '#e74c3c', tag: 'C1: Removal' },
-      { folder: 'acoustic_only', label: 'w/o Linguistic Cond.', category: 'full_c1', accent: '#c0392b', tag: 'C1: Removal' },
-      { folder: 'no_boundary', label: 'w/o Boundary Cond.', category: 'full_c1', accent: '#e67e22', tag: 'C1: Removal' },
-      { folder: 'shuffled_grapheme', label: 'Shuffled Graphemes', category: 'c2', accent: '#8e44ad', tag: 'C2: Perturbation' },
-      { folder: 'wrong_language', label: 'Swapped Wrong Lang ID', category: 'c2', accent: '#9b59b6', tag: 'C2: Perturbation' },
-      { folder: 'no_film', label: 'No FiLM (Δγ=0, β=0)', category: 'c3', accent: '#d35400', tag: 'C3: FiLM Mechanism' },
-      { folder: 'no_gamma', label: 'Additive-Only (No Scale)', category: 'c3', accent: '#e67e22', tag: 'C3: FiLM Mechanism' },
-      { folder: 'no_beta', label: 'Scale-Only (No Shift)', category: 'c3', accent: '#f39c12', tag: 'C3: FiLM Mechanism' },
-      { folder: 'zero_embedding', label: 'Zero Embedding Override', category: 'c3', accent: '#7f8c8d', tag: 'C3: FiLM Mechanism' },
-      { folder: 'mean_embedding', label: 'Mean Lang Embedding', category: 'c3', accent: '#16a085', tag: 'C3: FiLM Mechanism' },
-      { folder: 'early_layers_only', label: 'Early Layers Only (0–3)', category: 'c4', accent: '#2c3e50', tag: 'C4: Layer Depth' },
-      { folder: 'deep_layers_only', label: 'Deep Layers Only (4–7)', category: 'c4', accent: '#1abc9c', tag: 'C4: Layer Depth' },
+      { folder: 'ground_truth', label: 'Ground Truth', category: 'full_c1', accent: '#10b981', tag: 'Reference' },
+      { folder: 'proposed_full', label: 'GLAMNet (Ours)', category: 'full_c1', accent: '#ea580c', tag: 'Full Model' },
+      { folder: 'no_language_id', label: 'w/o Language', category: 'full_c1', accent: '#64748b', tag: 'C1: Removal' },
+      { folder: 'acoustic_only', label: 'w/o Linguistic Cond.', category: 'full_c1', accent: '#0284c7', tag: 'C1: Removal' },
+      { folder: 'no_boundary', label: 'w/o Boundary Cond.', category: 'full_c1', accent: '#2563eb', tag: 'C1: Removal' },
+      { folder: 'shuffled_grapheme', label: 'Shuffled Graphemes', category: 'c2', accent: '#8b5cf6', tag: 'C2: Perturbation' },
+      { folder: 'wrong_language', label: 'Swapped Wrong Lang ID', category: 'c2', accent: '#d946ef', tag: 'C2: Perturbation' },
+      { folder: 'no_film', label: 'No FiLM (Δγ=0, β=0)', category: 'c3', accent: '#e11d48', tag: 'C3: FiLM Mechanism' },
+      { folder: 'no_gamma', label: 'Additive-Only (No Scale)', category: 'c3', accent: '#d97706', tag: 'C3: FiLM Mechanism' },
+      { folder: 'no_beta', label: 'Scale-Only (No Shift)', category: 'c3', accent: '#0d9488', tag: 'C3: FiLM Mechanism' },
+      { folder: 'zero_embedding', label: 'Zero Embedding Override', category: 'c3', accent: '#06b6d4', tag: 'C3: FiLM Mechanism' },
+      { folder: 'mean_embedding', label: 'Mean Lang Embedding', category: 'c3', accent: '#65a30d', tag: 'C3: FiLM Mechanism' },
+      { folder: 'early_layers_only', label: 'Early Layers Only (0–3)', category: 'c4', accent: '#4f46e5', tag: 'C4: Layer Depth' },
+      { folder: 'deep_layers_only', label: 'Deep Layers Only (4–7)', category: 'c4', accent: '#7e22ce', tag: 'C4: Layer Depth' },
     ];
 
     let currentAblationCategory = 'all';
@@ -1439,7 +1439,7 @@
         if (el) { el.textContent=msg; el.style.color=color||'var(--muted)'; }
       }
 
-      const MODEL_COLORS = {ground_truth:'#12a87a',parallel_wavegan:'#7c879a',hifigan:'#6f7ee8',bigvgan:'#2374e1',vocos:'#9a61d0',glamnet:'#ee6c4d'};
+      const MODEL_COLORS = {ground_truth:'#10b981',parallel_wavegan:'#64748b',hifigan:'#0284c7',bigvgan:'#2563eb',vocos:'#8b5cf6',glamnet:'#ea580c'};
 
       // ── Load ────────────────────────────────────────────────
       async function loadPanel(side, modelKey, sampleId) {
@@ -1462,7 +1462,7 @@
             S.rightData=data; S.rightAudio=audio; S.rightModel=modelKey;
           }
           if (lEl) lEl.style.display='none';
-          setStatus(side, '✓ Ready', MODEL_COLORS[modelKey]||'#12a87a');
+          setStatus(side, '✓ Ready', MODEL_COLORS[modelKey]||'#10b981');
           const dur = document.getElementById('spec-dur-label');
           if (dur && S.duration) dur.textContent = formatTime(S.duration);
           enableBtns(!!(S.leftAudio && S.rightAudio));
