@@ -127,10 +127,14 @@
         <span class="max-w-44 text-xs font-extrabold leading-tight tracking-[-0.025em] sm:max-w-none sm:text-sm">GLAMNet</span>
       </a>
 
-      <nav class="order-3 hidden w-full items-center justify-center gap-1 border-t border-[var(--line)] pt-2 sm:flex md:order-2 md:w-auto md:border-0 md:pt-0" aria-label="Sample sections">
+      <nav class="order-3 hidden w-full items-center justify-center gap-1.5 border-t border-[var(--line)] pt-2 sm:flex md:order-2 md:w-auto md:border-0 md:pt-0" aria-label="Sample sections">
         <a href="#indic" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Demo Samples</a>
         <a href="#ablation" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Ablation Studies</a>
         <a href="#spectrogram" class="control-button rounded-lg px-3 py-2 text-xs font-semibold">Spectrogram Analysis</a>
+        <a href="https://github.com/speechforge/GlamNet" target="_blank" rel="noopener noreferrer" class="control-button flex items-center gap-1.5 rounded-lg px-3 py-2 text-xs font-bold text-[var(--ink)] hover:text-[var(--accent)]" aria-label="View source code on GitHub">
+          <svg viewBox="0 0 24 24" class="size-4" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"/></svg>
+          <span>Code</span>
+        </a>
       </nav>
 
       <div id="accessibility-menu" class="relative order-2 md:order-3">
@@ -225,7 +229,20 @@
             Compare aligned reconstructions and unseen-speaker references. Click any waveform to play or pause it.
           </p>
 
-          <div class="mt-8 flex flex-wrap gap-2 font-mono text-[0.66rem] font-medium uppercase tracking-wider text-[var(--muted)]">
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href="https://github.com/speechforge/GlamNet" target="_blank" rel="noopener noreferrer" class="group inline-flex items-center gap-2.5 rounded-2xl border border-[var(--line)] bg-[var(--panel-solid)] px-5 py-3 text-xs font-bold text-[var(--ink)] shadow-sm transition-all hover:scale-105 hover:border-[var(--accent)] hover:bg-[var(--panel)]">
+              <svg viewBox="0 0 24 24" class="size-5 transition-transform group-hover:rotate-6" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"/>
+              </svg>
+              <span>Code</span>
+              <span class="font-mono text-[0.62rem] text-[var(--muted)] font-normal">github.com/speechforge/GlamNet</span>
+              <svg viewBox="0 0 20 20" class="size-3.5 text-[var(--muted)] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 16 16 4m0 0H7m9 0v9" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-2 font-mono text-[0.66rem] font-medium uppercase tracking-wider text-[var(--muted)]">
             <span class="rounded-full border border-[var(--line)] bg-[var(--panel)] px-3 py-2"><strong class="mr-1 text-[var(--ink)]">01</strong> dataset</span>
             <span class="rounded-full border border-[var(--line)] bg-[var(--panel)] px-3 py-2"><strong class="mr-1 text-[var(--ink)]">05</strong> model variants</span>
             <span class="rounded-full border border-[var(--line)] bg-[var(--panel)] px-3 py-2"><strong class="mr-1 text-[var(--ink)]">30</strong> clips</span>
@@ -502,8 +519,12 @@
   </div>
 
   <footer class="border-t border-[var(--line)] py-8">
-    <div class="mx-auto max-w-7xl px-4 text-center font-mono text-[0.62rem] uppercase tracking-[0.12em] text-[var(--muted)] sm:px-6 lg:px-8">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-4 font-mono text-[0.65rem] uppercase tracking-[0.12em] text-[var(--muted)] sm:px-6 lg:px-8">
       <span>GLAMNet &copy; 2026 Ravindrakumar Purohit</span>
+      <a href="https://github.com/speechforge/GlamNet" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 font-bold text-[var(--ink)] transition-colors hover:text-[var(--accent)]" aria-label="View source code on GitHub">
+        <svg viewBox="0 0 24 24" class="size-4" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0 0 22 12.017C22 6.484 17.522 2 12 2Z"/></svg>
+        <span>Code · github.com/speechforge/GlamNet</span>
+      </a>
     </div>
   </footer>
 
