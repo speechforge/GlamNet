@@ -225,7 +225,7 @@
           <h1 class="display-title max-w-4xl font-extrabold">
             Audio<br><span class="outline-word">samples.</span>
           </h1>
-          <p class="mt-8 max-w-xl text-base leading-7 text-[var(--muted)] sm:text-lg">
+          <p class="mt-8 max-w-xl text-base leading-7 text-[var(--muted)] sm:text-lg" style="margin-bottom: 2.25rem;">
             Compare aligned reconstructions and unseen-speaker references. Click any waveform to play or pause it.
           </p>
         </div>
@@ -240,7 +240,7 @@
         </div>
       </div>
 
-      <div class="mt-14 sm:mt-16 reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(0.75rem,1.8vw,1.25rem);transition-delay:140ms;" aria-label="Contents">
+      <div class="mt-10 sm:mt-12 lg:mt-14 reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(0.75rem,1.8vw,1.25rem);margin-top:2.5rem;transition-delay:140ms;" aria-label="Contents">
         <a href="#indic" class="dataset-link group flex items-center justify-between rounded-2xl p-4 sm:p-5 shadow-sm transition-all hover:scale-[1.02]">
           <span class="min-w-0 flex-1 pr-2">
             <span class="eyebrow block truncate text-[0.65rem] sm:text-xs font-semibold">01 · 5 Languages</span>
@@ -392,65 +392,61 @@
       </div>
 
       <div class="reveal mt-12">
-        <!-- Sample Selection Dropdown & Spacious Transcript Box -->
-        <div class="flex flex-wrap items-center justify-between gap-5 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-5 sm:p-6 shadow-sm">
+        <!-- Sample Selection Dropdown & Spacious Transcript Box & Toolbar -->
+        <div class="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4 sm:p-5 shadow-sm">
           <div class="flex items-center gap-3">
             <label for="spec-sample-select" class="text-xs font-bold uppercase tracking-wider text-[var(--muted)] shrink-0">Select Utterance:</label>
             <div class="relative">
-              <select id="spec-sample-select" style="appearance:none;-webkit-appearance:none;background-color:var(--panel-solid);color:var(--ink);border:1px solid var(--line);border-radius:0.75rem;padding:0.55rem 2.5rem 0.55rem 1.1rem;font-size:0.875rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;">
+              <select id="spec-sample-select" style="appearance:none;-webkit-appearance:none;background-color:var(--panel-solid);color:var(--ink);border:1px solid var(--line);border-radius:0.75rem;padding:0.5rem 2.4rem 0.5rem 1rem;font-size:0.85rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;">
               </select>
-              <span style="pointer-events:none;position:absolute;right:0.8rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true">
+              <span style="pointer-events:none;position:absolute;right:0.75rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true">
                 <svg viewBox="0 0 20 20" style="width:1rem;height:1rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </span>
             </div>
           </div>
-          <div id="spec-transcript-display" class="flex-1 min-w-[280px] max-w-2xl text-sm sm:text-base font-medium italic text-[var(--ink)] leading-relaxed">
+          <div id="spec-transcript-display" class="flex-1 min-w-[240px] max-w-xl text-sm font-medium italic text-[var(--ink)] leading-relaxed">
             “શું મધર હૅલ્પેજ એન જી ઓની યાદીમાં છે જો હોય તો કૃપયા તેને રૂપિયા ત્રણ હજારનું ધ્યા દાન આપજો”
           </div>
-          <div class="flex items-center gap-2">
-            <span class="text-xs font-bold uppercase tracking-wider text-[var(--muted)]">Zoom</span>
-            <button id="spec-zoom-out" style="width:2.25rem;height:2.25rem;border-radius:0.5rem;border:1px solid var(--line);background:var(--panel-solid);color:var(--ink);font-weight:700;cursor:pointer;font-size:1.1rem;transition:background 0.18s;" aria-label="Zoom out">−</button>
-            <span id="spec-zoom-label" style="font-family:var(--font-mono);font-size:0.8rem;font-weight:600;min-width:2.4rem;text-align:center;">1×</span>
-            <button id="spec-zoom-in" style="width:2.25rem;height:2.25rem;border-radius:0.5rem;border:1px solid var(--line);background:var(--panel-solid);color:var(--ink);font-weight:700;cursor:pointer;font-size:1.1rem;transition:background 0.18s;" aria-label="Zoom in">+</button>
+          <div class="flex items-center gap-3">
+            <button id="spec-play-both" class="control-button flex items-center gap-1.5 rounded-xl px-3.5 py-2 text-xs font-bold shadow-sm" style="border-color:var(--accent);color:var(--accent);" disabled>
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
+              Sync Play Both
+            </button>
+            <span id="spec-time-label" class="font-mono text-xs font-semibold text-[var(--muted)]">0:00 / —:——</span>
+            <div class="flex items-center gap-1.5 border-l border-[var(--line)] pl-3">
+              <span class="text-[0.65rem] font-bold uppercase tracking-wider text-[var(--muted)]">Zoom</span>
+              <button id="spec-zoom-out" style="width:2rem;height:2rem;border-radius:0.4rem;border:1px solid var(--line);background:var(--panel-solid);color:var(--ink);font-weight:700;cursor:pointer;font-size:1rem;transition:background 0.18s;" aria-label="Zoom out">−</button>
+              <span id="spec-zoom-label" style="font-family:var(--font-mono);font-size:0.75rem;font-weight:600;min-width:2rem;text-align:center;">1×</span>
+              <button id="spec-zoom-in" style="width:2rem;height:2rem;border-radius:0.4rem;border:1px solid var(--line);background:var(--panel-solid);color:var(--ink);font-weight:700;cursor:pointer;font-size:1rem;transition:background 0.18s;" aria-label="Zoom in">+</button>
+            </div>
           </div>
         </div>
 
-        <!-- Play buttons & Time -->
-        <div class="mt-6 flex flex-wrap items-center gap-3.5">
-          <button id="spec-play-gt" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:#10b98144;" disabled>
-            <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
-            Ground Truth
-          </button>
-          <button id="spec-play-gl" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:#ea580c44;" disabled>
-            <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
-            GLAMNet
-          </button>
-          <button id="spec-play-both" class="control-button flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold" style="border-color:var(--accent);color:var(--accent);" disabled>
-            <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
-            Sync Play Both
-          </button>
-          <span id="spec-time-label" class="ml-auto font-mono text-xs font-semibold text-[var(--muted)]">0:00 / —:——</span>
-        </div>
-
-        <!-- Two spectrogram panels -->
+        <!-- Two spectrogram panels (Play buttons directly above their respective spectrogram) -->
         <div class="mt-6" style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;">
           <!-- Left panel -->
-          <div>
-            <div class="mb-2 flex items-center justify-between">
-              <div class="relative">
-                <select id="spec-left-model" style="appearance:none;-webkit-appearance:none;background-color:var(--panel-solid);color:var(--ink);border:1px solid var(--line);border-radius:0.6rem;padding:0.35rem 2rem 0.35rem 0.75rem;font-size:0.78rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;">
-                  <option value="ground_truth" selected>Ground Truth (Reference)</option>
-                  <option value="parallel_wavegan">Parallel WaveGAN</option>
-                  <option value="hifigan">HiFi-GAN</option>
-                  <option value="bigvgan">BigVGAN</option>
-                  <option value="vocos">Vocos</option>
-                  <option value="glamnet">GLAMNet (Ours)</option>
-                </select>
-                <span style="pointer-events:none;position:absolute;right:0.6rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true"><svg viewBox="0 0 20 20" style="width:0.75rem;height:0.75rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div class="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4 sm:p-5 shadow-sm">
+            <div class="mb-3 flex flex-wrap items-center justify-between gap-2.5">
+              <div class="flex items-center gap-2">
+                <div class="relative">
+                  <select id="spec-left-model" style="appearance:none;-webkit-appearance:none;background-color:var(--panel-solid);color:var(--ink);border:1px solid var(--line);border-radius:0.6rem;padding:0.4rem 2.2rem 0.4rem 0.85rem;font-size:0.8rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;">
+                    <option value="ground_truth" selected>Ground Truth (Reference)</option>
+                    <option value="parallel_wavegan">Parallel WaveGAN</option>
+                    <option value="hifigan">HiFi-GAN</option>
+                    <option value="bigvgan">BigVGAN</option>
+                    <option value="vocos">Vocos</option>
+                    <option value="glamnet">GLAMNet (Ours)</option>
+                  </select>
+                  <span style="pointer-events:none;position:absolute;right:0.65rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true"><svg viewBox="0 0 20 20" style="width:0.75rem;height:0.75rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </div>
+                <button id="spec-play-gt" class="control-button flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold shadow-sm transition-all" style="border-color:#10b98166;color:#10b981;" disabled>
+                  <svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
+                  Ground Truth
+                </button>
               </div>
-              <span id="spec-status-left" class="font-mono text-xs text-[var(--muted)]">No audio loaded</span>
+              <span id="spec-status-left" class="font-mono text-xs text-[var(--muted)] font-semibold">No audio loaded</span>
             </div>
-            <div id="spec-gt-wrap" style="position:relative;border:1px solid var(--line);border-radius:1rem;overflow:hidden;background:#05070a;height:180px;">
+            <div id="spec-gt-wrap" style="position:relative;border:1px solid var(--line);border-radius:0.85rem;overflow:hidden;background:#05070a;height:185px;">
               <canvas id="spec-gt-canvas" style="width:100%;height:100%;display:block;"></canvas>
               <div id="spec-cursor-gt" style="display:none;position:absolute;top:0;bottom:0;width:2px;background:#ffffff;box-shadow:0 0 6px #ffffff;pointer-events:none;left:0;"></div>
               <div id="spec-loading-left" style="display:none;position:absolute;inset:0;background:#000000bb;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:0.8rem;">Rendering...</div>
@@ -458,22 +454,28 @@
           </div>
 
           <!-- Right panel -->
-          <div>
-            <div class="mb-2 flex items-center justify-between">
-              <div class="relative">
-                <select id="spec-right-model" style="appearance:none;-webkit-appearance:none;background-color:var(--panel-solid);color:var(--ink);border:1px solid var(--line);border-radius:0.6rem;padding:0.35rem 2rem 0.35rem 0.75rem;font-size:0.78rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;">
-                  <option value="ground_truth">Ground Truth (Reference)</option>
-                  <option value="parallel_wavegan">Parallel WaveGAN</option>
-                  <option value="hifigan">HiFi-GAN</option>
-                  <option value="bigvgan">BigVGAN</option>
-                  <option value="vocos">Vocos</option>
-                  <option value="glamnet" selected>GLAMNet (Ours)</option>
-                </select>
-                <span style="pointer-events:none;position:absolute;right:0.6rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true"><svg viewBox="0 0 20 20" style="width:0.75rem;height:0.75rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div class="rounded-2xl border border-[var(--line)] bg-[var(--panel)] p-4 sm:p-5 shadow-sm">
+            <div class="mb-3 flex flex-wrap items-center justify-between gap-2.5">
+              <div class="flex items-center gap-2">
+                <div class="relative">
+                  <select id="spec-right-model" style="appearance:none;-webkit-appearance:none;background-color:var(--panel-solid);color:var(--ink);border:1px solid var(--line);border-radius:0.6rem;padding:0.4rem 2.2rem 0.4rem 0.85rem;font-size:0.8rem;font-weight:700;font-family:inherit;cursor:pointer;outline:none;">
+                    <option value="ground_truth">Ground Truth (Reference)</option>
+                    <option value="parallel_wavegan">Parallel WaveGAN</option>
+                    <option value="hifigan">HiFi-GAN</option>
+                    <option value="bigvgan">BigVGAN</option>
+                    <option value="vocos">Vocos</option>
+                    <option value="glamnet" selected>GLAMNet (Ours)</option>
+                  </select>
+                  <span style="pointer-events:none;position:absolute;right:0.65rem;top:50%;transform:translateY(-50%);color:var(--muted);" aria-hidden="true"><svg viewBox="0 0 20 20" style="width:0.75rem;height:0.75rem;" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m6 8 4 4 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                </div>
+                <button id="spec-play-gl" class="control-button flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-xs font-bold shadow-sm transition-all" style="border-color:#ea580c66;color:#ea580c;" disabled>
+                  <svg viewBox="0 0 24 24" fill="currentColor" style="width:12px;height:12px;flex-shrink:0"><path d="M8.2 5.4a1 1 0 0 1 1.52-.85l10 6.6a1 1 0 0 1 0 1.7l-10 6.6a1 1 0 0 1-1.52-.85V5.4Z"/></svg>
+                  GLAMNet
+                </button>
               </div>
-              <span id="spec-status-right" class="font-mono text-xs text-[var(--muted)]">No audio loaded</span>
+              <span id="spec-status-right" class="font-mono text-xs text-[var(--muted)] font-semibold">No audio loaded</span>
             </div>
-            <div id="spec-glamnet-wrap" style="position:relative;border:1px solid var(--line);border-radius:1rem;overflow:hidden;background:#05070a;height:180px;">
+            <div id="spec-glamnet-wrap" style="position:relative;border:1px solid var(--line);border-radius:0.85rem;overflow:hidden;background:#05070a;height:185px;">
               <canvas id="spec-glamnet-canvas" style="width:100%;height:100%;display:block;"></canvas>
               <div id="spec-cursor-glamnet" style="display:none;position:absolute;top:0;bottom:0;width:2px;background:#ffffff;box-shadow:0 0 6px #ffffff;pointer-events:none;left:0;"></div>
               <div id="spec-loading-right" style="display:none;position:absolute;inset:0;background:#000000bb;align-items:center;justify-content:center;color:#fff;font-family:var(--font-mono);font-size:0.8rem;">Rendering...</div>
@@ -1660,11 +1662,22 @@
         if (!bg) return;
         const lSel = document.getElementById('spec-left-model');
         const rSel = document.getElementById('spec-right-model');
+        const lKey = lSel?.value || 'ground_truth';
+        const rKey = rSel?.value || 'glamnet';
+        const lColor = MODEL_COLORS[lKey] || '#10b981';
+        const rColor = MODEL_COLORS[rKey] || '#ea580c';
         const lLabel = lSel?.options[lSel?.selectedIndex]?.text?.replace(/\s*\(.*\)/, '') || 'Left';
         const rLabel = rSel?.options[rSel?.selectedIndex]?.text?.replace(/\s*\(.*\)/, '') || 'Right';
+        
+        bg.style.borderColor = `${lColor}66`;
+        bg.style.color = lColor;
         bg.innerHTML = (mode==='left'  ? PAUSE_ICON : PLAY_ICON) + ' ' + lLabel;
+        
+        bl.style.borderColor = `${rColor}66`;
+        bl.style.color = rColor;
         bl.innerHTML = (mode==='right' ? PAUSE_ICON : PLAY_ICON) + ' ' + rLabel;
-        bb.innerHTML = (mode==='both'  ? PAUSE_ICON : PLAY_ICON) + ' Sync Play Both';
+        
+        if (bb) bb.innerHTML = (mode==='both'  ? PAUSE_ICON : PLAY_ICON) + ' Sync Play Both';
       }
 
       function setStatus(side, msg, color) {
